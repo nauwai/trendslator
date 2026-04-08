@@ -12,6 +12,7 @@
     --font: "DM Sans", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
     --font-display: "Gasoek One", sans-serif;
     --dock-height: 88px;
+    --safe-top: env(safe-area-inset-top, 0px);
     --safe-bottom: env(safe-area-inset-bottom, 0px);
 }
 
@@ -50,59 +51,8 @@ body {
     flex-direction: column;
     position: relative;
     overflow: hidden;
+    padding-top: var(--safe-top);
     padding-bottom: calc(var(--dock-height) + var(--safe-bottom) + 8px);
-}
-
-/* Barre d’état type iOS */
-.status-bar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 20px 6px;
-    font-size: 15px;
-    font-weight: 600;
-    letter-spacing: -0.02em;
-    color: var(--color-text);
-    flex-shrink: 0;
-}
-
-.status-bar__icons {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-}
-
-.status-bar__battery {
-    display: inline-flex;
-    align-items: center;
-    margin-left: 4px;
-}
-
-.status-bar__battery-body {
-    width: 22px;
-    height: 11px;
-    border: 1.5px solid var(--color-text);
-    border-radius: 2px;
-    position: relative;
-}
-
-.status-bar__battery-body::after {
-    content: "";
-    position: absolute;
-    left: 2px;
-    top: 2px;
-    bottom: 2px;
-    right: 4px;
-    background: var(--color-text);
-    border-radius: 1px;
-}
-
-.status-bar__battery-cap {
-    width: 2px;
-    height: 5px;
-    background: var(--color-text);
-    border-radius: 0 1px 1px 0;
-    margin-left: -1px;
 }
 
 /* En-tête */
@@ -758,10 +708,6 @@ body {
     background: #f2f2f7;
 }
 
-.app--glossary .status-bar {
-    background: #f2f2f7;
-}
-
 .app--glossary .app-dock {
     background: #fff;
 }
@@ -915,26 +861,35 @@ body {
 
 .glossary-index {
     flex-shrink: 0;
-    width: 22px;
+    align-self: stretch;
+    width: 24px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1px;
-    padding: 4px 2px 8px 4px;
+    justify-content: space-between;
+    gap: 0;
+    padding: 6px 2px 10px 4px;
     font-size: 8px;
     font-weight: 700;
     line-height: 1.1;
     text-align: center;
     user-select: none;
-    max-height: 100%;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
+    touch-action: none;
+    -webkit-user-select: none;
+}
+
+.glossary-index--scrubbing {
+    cursor: grab;
+}
+
+.glossary-index--scrubbing:active {
+    cursor: grabbing;
 }
 
 .glossary-index__letter {
     display: block;
-    padding: 1px 0;
-    min-height: 14px;
+    padding: 0;
+    flex-shrink: 0;
 }
 
 .glossary-index__letter--inactive {
@@ -942,10 +897,16 @@ body {
     font-weight: 600;
 }
 
+.glossary-index__letter--active {
+    color: var(--color-text);
+    font-size: 11px;
+    font-weight: 800;
+}
+
 .glossary-index__link {
     display: block;
-    padding: 1px 0;
-    min-height: 14px;
+    padding: 0;
+    flex-shrink: 0;
     text-decoration: none;
     color: #aeaeb2;
     font-weight: 600;

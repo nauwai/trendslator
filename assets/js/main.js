@@ -5,13 +5,51 @@
         if (!scrollEl || !indexEl) return;
 
         var sections = scrollEl.querySelectorAll(".glossary-section");
-        var links = indexEl.querySelectorAll(".glossary-index__link[data-letter]");
+        var scrubPointerId = null;
+        var scrubStartY = 0;
+        var scrubMode = false;
+        var lastScrubLetter = "";
+        var suppressIndexLinkClick = false;
 
         function setActiveLetter(letter) {
-            links.forEach(function (link) {
-                var on = link.getAttribute("data-letter") === letter;
-                link.classList.toggle("glossary-index__link--active", on);
+            indexEl.querySelectorAll("[data-letter]").forEach(function (el) {
+                var on = el.getAttribute("data-letter") === letter;
+                if (el.matches("a.glossary-index__link")) {
+                    el.classList.toggle("glossary-index__link--active", on);
+                } else {
+                    el.classList.toggle("glossary-index__letter--active", on);
+                    el.classList.toggle("glossary-index__letter--inactive", !on);
+                }
             });
+        }
+
+        function letterFromIndexPoint(clientY, clientX) {
+            var rect = indexEl.getBoundingClientRect();
+            if (clientX < rect.left - 32 || clientX > rect.right + 16) return null;
+            var y = Math.min(rect.bottom, Math.max(rect.top, clientY));
+            var ratio = (y - rect.top) / Math.max(1, rect.height - 1);
+            var idx = Math.min(25, Math.max(0, Math.floor(ratio * 26)));
+            return String.fromCharCode(65 + idx);
+        }
+
+        function scrollToLetter(letter, instant) {
+            var target = document.getElementById("glossary-letter-" + letter);
+            if (target) {
+                if (instant) {
+                    var margin = 12;
+                    scrollEl.scrollTop = Math.max(0, target.offsetTop - margin);
+                } else {
+                    target.scrollIntoView({ behavior: "smooth", block: "start" });
+                }
+            }
+            setActiveLetter(letter);
+        }
+
+        function applyScrub(clientY, clientX) {
+            var letter = letterFromIndexPoint(clientY, clientX);
+            if (!letter || letter === lastScrubLetter) return;
+            lastScrubLetter = letter;
+            scrollToLetter(letter, true);
         }
 
         function syncActiveFromScroll() {
@@ -31,6 +69,18 @@
         scrollEl.addEventListener("scroll", syncActiveFromScroll, { passive: true });
         syncActiveFromScroll();
 
+        indexEl.addEventListener(
+            "click",
+            function (e) {
+                if (!suppressIndexLinkClick) return;
+                if (e.target.closest('a[href^="#glossary-letter-"]')) {
+                    e.preventDefault();
+                }
+                suppressIndexLinkClick = false;
+            },
+            true
+        );
+
         indexEl.querySelectorAll('a[href^="#glossary-letter-"]').forEach(function (a) {
             a.addEventListener("click", function (e) {
                 e.preventDefault();
@@ -42,6 +92,53 @@
                 var letter = id.replace("glossary-letter-", "");
                 if (letter.length === 1) setActiveLetter(letter);
             });
+        });
+
+        indexEl.addEventListener("pointerdown", function (e) {
+            if (typeof e.button === "number" && e.button !== 0) return;
+            scrubPointerId = e.pointerId;
+            scrubStartY = e.clientY;
+            scrubMode = false;
+            lastScrubLetter = "";
+            indexEl.setPointerCapture(e.pointerId);
+        });
+
+        indexEl.addEventListener("pointermove", function (e) {
+            if (scrubPointerId !== e.pointerId) return;
+            if (!scrubMode && Math.abs(e.clientY - scrubStartY) > 6) {
+                scrubMode = true;
+                indexEl.classList.add("glossary-index--scrubbing");
+            }
+            if (scrubMode) {
+                e.preventDefault();
+                applyScrub(e.clientY, e.clientX);
+            }
+        });
+
+        indexEl.addEventListener("pointerup", function (e) {
+            if (scrubPointerId !== e.pointerId) return;
+            scrubPointerId = null;
+            indexEl.classList.remove("glossary-index--scrubbing");
+            try {
+                indexEl.releasePointerCapture(e.pointerId);
+            } catch (err) {}
+            if (scrubMode) {
+                suppressIndexLinkClick = true;
+                syncActiveFromScroll();
+            }
+            scrubMode = false;
+            lastScrubLetter = "";
+        });
+
+        indexEl.addEventListener("pointercancel", function (e) {
+            if (scrubPointerId !== e.pointerId) return;
+            scrubPointerId = null;
+            indexEl.classList.remove("glossary-index--scrubbing");
+            scrubMode = false;
+            lastScrubLetter = "";
+            try {
+                indexEl.releasePointerCapture(e.pointerId);
+            } catch (err2) {}
         });
 
         var input = document.getElementById("glossary-search-input");
