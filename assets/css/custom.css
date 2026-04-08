@@ -752,16 +752,6 @@ body {
     filter: brightness(0) saturate(100%) invert(45%) sepia(93%) saturate(3200%) hue-rotate(349deg) brightness(101%) contrast(98%);
 }
 
-.home-indicator {
-    width: 128px;
-    height: 4px;
-    margin: 4px auto 8px;
-    background: var(--color-text);
-    border-radius: 2px;
-    pointer-events: none;
-    max-width: calc(100% - 48px);
-}
-
 /* ——— Glossaire ——— */
 
 .app--glossary {

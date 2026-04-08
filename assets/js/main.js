@@ -236,9 +236,15 @@
         panel.addEventListener("touchcancel", onTouchEnd, { passive: true });
     }
 
+    function registerServiceWorker() {
+        if (!("serviceWorker" in navigator)) return;
+        navigator.serviceWorker.register("sw.js", { scope: "./" }).catch(function () {});
+    }
+
     document.addEventListener("DOMContentLoaded", function () {
         initGlossary();
         initSearchPage();
         initTrendSheet();
+        registerServiceWorker();
     });
 })();
