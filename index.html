@@ -1,1 +1,97 @@
-test Noé
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+    <meta name="description" content="Trendslator — tendances et langage du web francophone"/>
+    <meta name="author" content="Trendslator"/>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Gasoek+One&display=swap" rel="stylesheet"/>
+
+    <link rel="stylesheet" href="assets/css/custom.css"/>
+
+    <title>Accueil — Trendslator</title>
+</head>
+
+<body>
+<div class="app">
+    <div class="status-bar" aria-hidden="true">
+        <span class="status-bar__time">9:41</span>
+        <span class="status-bar__icons">
+            <svg class="status-bar__signal" width="18" height="12" viewBox="0 0 18 12" fill="none" aria-hidden="true">
+                <path d="M1 11V9M5 11V6M9 11V3M13 11V7M17 11V1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <svg class="status-bar__wifi" width="16" height="12" viewBox="0 0 16 12" fill="none" aria-hidden="true">
+                <path d="M8 11a1 1 0 100-2 1 1 0 000 2zM3.5 6.5L2 8M12.5 6.5L14 8M8 3l-5 4M8 3l5 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span class="status-bar__battery">
+                <span class="status-bar__battery-body"></span>
+                <span class="status-bar__battery-cap"></span>
+            </span>
+        </span>
+    </div>
+
+    <header class="page-head">
+        <h1 class="page-head__title">Accueil</h1>
+        <div class="page-head__row">
+            <span class="pill pill--purple">À la une</span>
+            <span class="page-head__section-title">Top Tendance</span>
+        </div>
+    </header>
+
+    <main class="content">
+        <article class="featured">
+            <div class="featured__media neo-shadow neo-shadow--purple">
+                <img src="assets/img/thumbnail/skibiditentafruit.png" alt="Illustration — L’île de la skididi tentafruit" width="800" height="450" loading="eager"/>
+            </div>
+            <h2 class="featured__title">L’île de la skididi tentafruit</h2>
+            <p class="featured__desc">
+                Une fausse télé-réalité produite sur TikTok où les candidats sont des fruits en 3D (bananes, fraises&hellip;) qui vivent des &laquo; dramas &raquo; de couple.
+            </p>
+        </article>
+
+        <section class="word-of-day" aria-labelledby="word-of-day-heading">
+            <h2 id="word-of-day-heading" class="word-of-day__heading">
+                Mot du jour <span class="word-of-day__highlight">Goumin</span>
+            </h2>
+            <div class="word-of-day__card">
+                <p class="word-of-day__definition">
+                    Ce terme est utilisé pour définir les chagrins d’amour, ce mot provient d’une langue ivoirienne appelée le Nouchi.
+                </p>
+            </div>
+            <div class="word-of-day__actions">
+                <button type="button" class="btn-brutal">Button</button>
+            </div>
+        </section>
+    </main>
+
+    <div class="app-dock">
+        <nav class="bottom-nav" aria-label="Navigation principale">
+            <a href="index.html" class="bottom-nav__item bottom-nav__item--active" aria-current="page">
+                <img class="bottom-nav__icon bottom-nav__icon--home" src="assets/img/icon/home_icon.svg" alt="" width="24" height="24" decoding="async"/>
+                <span>Accueil</span>
+            </a>
+            <a href="trends.html" class="bottom-nav__item">
+                <img class="bottom-nav__icon bottom-nav__icon--trends" src="assets/img/icon/card_icon.svg" alt="" width="28" height="21" decoding="async"/>
+                <span>Trends</span>
+            </a>
+            <a href="glossaire.html" class="bottom-nav__item">
+                <img class="bottom-nav__icon bottom-nav__icon--glossaire" src="assets/img/icon/glossaire_icon.svg" alt="" width="24" height="23" decoding="async"/>
+                <span>Glossaire</span>
+            </a>
+            <a href="rechercher.html" class="bottom-nav__item">
+                <img class="bottom-nav__icon bottom-nav__icon--search" src="assets/img/icon/search_icon.svg" alt="" width="22" height="22" decoding="async"/>
+                <span>Rechercher</span>
+            </a>
+        </nav>
+        <div class="home-indicator" aria-hidden="true"></div>
+    </div>
+</div>
+
+<script src="assets/js/main.js" defer></script>
+</body>
+
+</html>
