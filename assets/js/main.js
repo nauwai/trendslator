@@ -345,3 +345,90 @@
         registerServiceWorker();
     });
 })();
+
+(function () {
+    const questions = [
+        {
+            question: 'Que signifie l\'expression "C\'est ciao" ?',
+            answers: [
+                { text: 'A. C\'est l\'heure de manger', correct: false },
+                { text: 'B. C\'est terminé / c\'est raté', correct: true },
+                { text: 'C. C\'est dommage', correct: false }
+            ],
+            feedback: 'Exact. "C\'est ciao" veut dire que c\'est fini, mort, terminé.'
+        },
+        {
+            question: 'Que veut dire "être en goumin" ?',
+            answers: [
+                { text: 'A. Être en chagrin d\'amour', correct: true },
+                { text: 'B. Être très en colère', correct: false },
+                { text: 'C. Être très riche', correct: false }
+            ],
+            feedback: 'Bien vu. "Goumin" renvoie au chagrin d\'amour.'
+        },
+        {
+            question: 'Quand quelqu\'un dit "cheh", il veut dire quoi ?',
+            answers: [
+                { text: 'A. Je suis choqué', correct: false },
+                { text: 'B. Bien fait pour toi', correct: true },
+                { text: 'C. Viens ici', correct: false }
+            ],
+            feedback: 'Oui. "Cheh" exprime clairement le "bien fait".'
+        }
+    ];
+
+    const questionEl = document.getElementById('tt-quiz-question');
+    const optionsEl = document.getElementById('tt-quiz-options');
+    const feedbackEl = document.getElementById('tt-quiz-feedback');
+    const nextBtn = document.getElementById('tt-quiz-next');
+
+    let current = 0;
+    let locked = false;
+
+    function renderQuestion() {
+        const item = questions[current];
+        locked = false;
+        questionEl.textContent = item.question;
+        feedbackEl.textContent = '';
+        nextBtn.hidden = true;
+
+        optionsEl.innerHTML = item.answers.map(answer => `
+        <button class="tt-quiz-btn" data-correct="${answer.correct}">
+          ${answer.text}
+        </button>
+      `).join('');
+
+        optionsEl.querySelectorAll('.tt-quiz-btn').forEach(btn => {
+            btn.addEventListener('click', () => handleAnswer(btn, item));
+        });
+    }
+
+    function handleAnswer(btn, item) {
+        if (locked) return;
+        locked = true;
+
+        const isCorrect = btn.dataset.correct === 'true';
+        const buttons = optionsEl.querySelectorAll('.tt-quiz-btn');
+
+        buttons.forEach(button => {
+            const correct = button.dataset.correct === 'true';
+            button.classList.add('is-disabled');
+
+            if (correct) button.classList.add('is-correct');
+            if (button === btn && !isCorrect) button.classList.add('is-wrong');
+        });
+
+        feedbackEl.textContent = isCorrect
+            ? item.feedback
+            : 'Pas tout à fait. La bonne réponse est surlignée en jaune.';
+
+        nextBtn.hidden = false;
+    }
+
+    nextBtn.addEventListener('click', () => {
+        current = (current + 1) % questions.length;
+        renderQuestion();
+    });
+
+    renderQuestion();
+})();

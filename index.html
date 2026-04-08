@@ -56,7 +56,34 @@
                 </p>
             </div>
             <div class="word-of-day__actions">
-                <button type="button" class="btn-brutal">Button</button>
+                <button type="button" class="btn-brutal">Voir le Glossaire</button>
+            </div>
+        </section>
+
+        <section class="tt-quiz-module">
+            <div class="tt-quiz-title">Es-tu à la page ?</div>
+            <div class="tt-quiz-stack">
+                <div class="tt-quiz-card">
+                    <div class="tt-quiz-header">
+                        <div class="tt-quiz-heading">Quiz Express</div>
+                    </div>
+
+                    <div class="tt-quiz-question" id="tt-quiz-question">
+                        Que signifie l'expression "C'est ciao" ?
+                    </div>
+
+                    <div class="tt-quiz-options" id="tt-quiz-options">
+                        <button class="tt-quiz-btn" data-correct="false">A. C'est l'heure de manger</button>
+                        <button class="tt-quiz-btn" data-correct="true">B. C'est terminé / c'est raté</button>
+                        <button class="tt-quiz-btn" data-correct="false">C. C'est dommage</button>
+                    </div>
+
+                    <div class="tt-quiz-feedback" id="tt-quiz-feedback" aria-live="polite"></div>
+
+                    <button class="tt-quiz-next" id="tt-quiz-next" type="button" hidden>Question suivante</button>
+                </div>
+
+                <div class="tt-quiz-accent"></div>
             </div>
         </section>
     </main>

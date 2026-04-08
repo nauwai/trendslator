@@ -1060,3 +1060,138 @@ body {
         box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06);
     }
 }
+
+
+.tt-quiz-module {
+    padding: 0 20px 40px;
+    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.tt-quiz-title {
+    font-size: 20px;
+    font-weight: 800;
+    color: #000;
+    margin-bottom: 14px;
+    letter-spacing: -0.5px;
+}
+
+.tt-quiz-stack {
+    position: relative;
+}
+
+.tt-quiz-card {
+    position: relative;
+    z-index: 2;
+    background: #7B2FBE;
+    border: 2px solid #1C1C1E;
+    padding: 20px;
+}
+
+.tt-quiz-accent {
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    right: -6px;
+    bottom: -6px;
+    background: #FF9A3C;
+    z-index: 1;
+}
+
+.tt-quiz-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.tt-quiz-heading {
+    font-size: 18px;
+    font-weight: 800;
+    color: #fff;
+}
+
+.tt-quiz-badge {
+    background: #fff;
+    color: #000;
+    font-size: 11px;
+    font-weight: 800;
+    padding: 4px 10px;
+    border-radius: 999px;
+    white-space: nowrap;
+}
+
+.tt-quiz-question {
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.4;
+    color: #fff;
+    margin-bottom: 16px;
+}
+
+.tt-quiz-options {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.tt-quiz-btn {
+    width: 100%;
+    border: 2px solid #1C1C1E;
+    background: #fff;
+    color: #000;
+    text-align: left;
+    padding: 11px 12px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.15s ease, transform 0.15s ease, border-color 0.15s ease;
+    font-family: inherit;
+}
+
+.tt-quiz-btn:hover {
+    background: #FFE600;
+}
+
+.tt-quiz-btn:active {
+    transform: scale(0.99);
+}
+
+.tt-quiz-btn.is-correct {
+    background: #FFE600;
+    border-color: #1C1C1E;
+}
+
+.tt-quiz-btn.is-wrong {
+    background: #FFD7CC;
+    border-color: #1C1C1E;
+}
+
+.tt-quiz-btn.is-disabled {
+    opacity: 0.72;
+    cursor: default;
+}
+
+.tt-quiz-feedback {
+    min-height: 22px;
+    margin-top: 14px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #fff;
+}
+
+.tt-quiz-next {
+    margin-top: 10px;
+    border: 2px solid #1C1C1E;
+    background: #fff;
+    color: #000;
+    font-size: 13px;
+    font-weight: 800;
+    padding: 10px 14px;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.tt-quiz-next:hover {
+    background: #FFE600;
+}
