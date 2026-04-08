@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+    <meta name="description" content="Kiki & Pitchoune — Trendslator"/>
+    <meta name="author" content="Trendslator"/>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Gasoek+One&display=swap" rel="stylesheet"/>
+
+    <link rel="stylesheet" href="assets/css/custom.css"/>
+
+    <title>Kiki &amp; Pitchoune — Trendslator</title>
+</head>
+
+<body>
+<div class="app">
+    <div class="status-bar" aria-hidden="true">
+        <span class="status-bar__time">9:41</span>
+        <span class="status-bar__icons">
+            <svg class="status-bar__signal" width="18" height="12" viewBox="0 0 18 12" fill="none" aria-hidden="true">
+                <path d="M1 11V9M5 11V6M9 11V3M13 11V7M17 11V1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <svg class="status-bar__wifi" width="16" height="12" viewBox="0 0 16 12" fill="none" aria-hidden="true">
+                <path d="M8 11a1 1 0 100-2 1 1 0 000 2zM3.5 6.5L2 8M12.5 6.5L14 8M8 3l-5 4M8 3l5 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span class="status-bar__battery">
+                <span class="status-bar__battery-body"></span>
+                <span class="status-bar__battery-cap"></span>
+            </span>
+        </span>
+    </div>
+
+    <main class="content content--trend-detail">
+        <div class="trend-hero">
+            <div class="trend-hero__media">
+                <img src="assets/img/thumbnail/kiki-pitchoune.jpg" alt="" width="900" height="600" loading="eager"/>
+                <div class="trend-hero__vigilance" role="status">
+                    <svg class="trend-hero__vigilance-icon" width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+                        <path d="M9 2L2 15h14L9 2z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+                        <path d="M9 7v4M9 12h.01" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                    </svg>
+                    <span class="trend-hero__vigilance-text">Indice de vigilance : 40%</span>
+                    <span class="trend-hero__vigilance-info" title="Information" aria-label="Plus d’informations sur l’indice">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                            <circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.2"/>
+                            <path d="M7 6v4M7 4h.01" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+                        </svg>
+                    </span>
+                </div>
+                <button type="button" class="trend-hero__expand" aria-label="Plein écran">
+                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+                        <path d="M6 2H2v4M12 2h4v4M12 16h4v-4M6 16H2v-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+                <button type="button" class="trend-hero__play" aria-label="Lire la vidéo">
+                    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+                        <path d="M11 8l10 6-10 6V8z" fill="currentColor"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="trend-hero__divider trend-hero__divider--yellow" aria-hidden="true"></div>
+            <div class="trend-detail__inner">
+                <ul class="trend-tags" aria-label="Thématiques">
+                    <li><span class="trend-tag trend-tag--purple">foot</span></li>
+                    <li><span class="trend-tag trend-tag--orange">pied à balle</span></li>
+                    <li><span class="trend-tag trend-tag--challenge">défi</span></li>
+                    <li><span class="trend-tag trend-tag--orange">humour</span></li>
+                </ul>
+                <h1 class="trend-detail__title">Kiki &amp; Pitchoune</h1>
+                <div class="trend-detail__body">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    </p>
+                    <p>
+                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </p>
+                    <p>
+                        Integer vitae lacus vel ligula faucibus dignissim. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Nullam vehicula, augue id tincidunt viverra, lectus magna bibendum ex.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div class="app-dock">
+        <nav class="bottom-nav" aria-label="Navigation principale">
+            <a href="index.html" class="bottom-nav__item">
+                <img class="bottom-nav__icon bottom-nav__icon--home" src="assets/img/icon/home_icon.svg" alt="" width="24" height="24" decoding="async"/>
+                <span>Accueil</span>
+            </a>
+            <a href="trends.html" class="bottom-nav__item bottom-nav__item--active" aria-current="page">
+                <img class="bottom-nav__icon bottom-nav__icon--trends" src="assets/img/icon/card_icon.svg" alt="" width="28" height="21" decoding="async"/>
+                <span>Trends</span>
+            </a>
+            <a href="glossaire.html" class="bottom-nav__item">
+                <img class="bottom-nav__icon bottom-nav__icon--glossaire" src="assets/img/icon/glossaire_icon.svg" alt="" width="24" height="23" decoding="async"/>
+                <span>Glossaire</span>
+            </a>
+            <a href="rechercher.html" class="bottom-nav__item">
+                <img class="bottom-nav__icon bottom-nav__icon--search" src="assets/img/icon/search_icon.svg" alt="" width="22" height="22" decoding="async"/>
+                <span>Rechercher</span>
+            </a>
+        </nav>
+        <div class="home-indicator" aria-hidden="true"></div>
+    </div>
+</div>
+
+<script src="assets/js/main.js" defer></script>
+</body>
+
+</html>

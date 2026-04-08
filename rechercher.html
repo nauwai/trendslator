@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+    <meta name="description" content="Rechercher — Trendslator"/>
+    <meta name="author" content="Trendslator"/>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Gasoek+One&display=swap" rel="stylesheet"/>
+
+    <link rel="stylesheet" href="assets/css/custom.css"/>
+
+    <title>Rechercher — Trendslator</title>
+</head>
+
+<body>
+<div class="app app--search">
+    <div class="status-bar" aria-hidden="true">
+        <span class="status-bar__time">9:41</span>
+        <span class="status-bar__icons">
+            <svg class="status-bar__signal" width="18" height="12" viewBox="0 0 18 12" fill="none" aria-hidden="true">
+                <path d="M1 11V9M5 11V6M9 11V3M13 11V7M17 11V1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <svg class="status-bar__wifi" width="16" height="12" viewBox="0 0 16 12" fill="none" aria-hidden="true">
+                <path d="M8 11a1 1 0 100-2 1 1 0 000 2zM3.5 6.5L2 8M12.5 6.5L14 8M8 3l-5 4M8 3l5 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span class="status-bar__battery">
+                <span class="status-bar__battery-body"></span>
+                <span class="status-bar__battery-cap"></span>
+            </span>
+        </span>
+    </div>
+
+    <main class="content content--search">
+        <div class="search-toolbar">
+            <label class="glossary-search search-toolbar__field">
+                <span class="glossary-search__icon-wrap" aria-hidden="true">
+                    <svg class="glossary-search__icon" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                        <circle cx="7.5" cy="7.5" r="5" stroke="currentColor" stroke-width="1.6"/>
+                        <path d="M11.5 11.5L16 16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                    </svg>
+                </span>
+                <input type="search" class="glossary-search__input" id="search-page-input" placeholder="Rechercher" autocomplete="off" enterkeyhint="search"/>
+            </label>
+            <button type="button" class="glossary-cancel" id="search-page-cancel">Annuler</button>
+        </div>
+
+        <div class="search-body">
+            <section class="search-block" aria-labelledby="search-trends-heading">
+                <div class="search-block__head">
+                    <h2 id="search-trends-heading" class="search-block__title">Les trends du moment</h2>
+                    <button type="button" class="search-block__action">Actualiser</button>
+                </div>
+                <ul class="search-list">
+                    <li class="search-hit">
+                        <span class="search-hit__dot search-hit__dot--orange" aria-hidden="true"></span>
+                        <span class="search-hit__label search-hit__label--orange">Île de la sikibidi tentafruits</span>
+                    </li>
+                    <li class="search-hit">
+                        <span class="search-hit__dot search-hit__dot--purple" aria-hidden="true"></span>
+                        <span class="search-hit__label search-hit__label--purple">Oula Jean</span>
+                    </li>
+                    <li class="search-hit">
+                        <span class="search-hit__dot search-hit__dot--grey" aria-hidden="true"></span>
+                        <span class="search-hit__label search-hit__label--muted">Tanaland</span>
+                    </li>
+                    <li class="search-hit">
+                        <span class="search-hit__dot search-hit__dot--grey" aria-hidden="true"></span>
+                        <span class="search-hit__label search-hit__label--muted">AquaBoulevard</span>
+                    </li>
+                    <li class="search-hit">
+                        <span class="search-hit__dot search-hit__dot--grey" aria-hidden="true"></span>
+                        <span class="search-hit__label search-hit__label--muted">Pupuce</span>
+                    </li>
+                    <li class="search-hit">
+                        <span class="search-hit__dot search-hit__dot--grey" aria-hidden="true"></span>
+                        <span class="search-hit__label search-hit__label--muted">Ça vient d’où&nbsp;?</span>
+                    </li>
+                </ul>
+            </section>
+
+            <hr class="search-divider"/>
+
+            <section class="search-block" aria-labelledby="search-essentials-heading">
+                <h2 id="search-essentials-heading" class="search-block__title search-block__title--solo">Les incontournables</h2>
+                <ul class="search-list">
+                    <li class="search-hit">
+                        <span class="search-hit__dot search-hit__dot--grey" aria-hidden="true"></span>
+                        <span class="search-hit__label search-hit__label--muted">Its the first of the mouth</span>
+                    </li>
+                    <li class="search-hit">
+                        <span class="search-hit__dot search-hit__dot--grey" aria-hidden="true"></span>
+                        <span class="search-hit__label search-hit__label--muted">Oh p****n Laurent&nbsp;!</span>
+                    </li>
+                    <li class="search-hit">
+                        <span class="search-hit__dot search-hit__dot--grey" aria-hidden="true"></span>
+                        <span class="search-hit__label search-hit__label--muted">Quoicoubeh / Apagnan</span>
+                    </li>
+                    <li class="search-hit">
+                        <span class="search-hit__dot search-hit__dot--grey" aria-hidden="true"></span>
+                        <span class="search-hit__label search-hit__label--muted">Six Seven</span>
+                    </li>
+                    <li class="search-hit">
+                        <span class="search-hit__dot search-hit__dot--grey" aria-hidden="true"></span>
+                        <span class="search-hit__label search-hit__label--muted">La tiktokerie</span>
+                    </li>
+                    <li class="search-hit">
+                        <span class="search-hit__dot search-hit__dot--grey" aria-hidden="true"></span>
+                        <span class="search-hit__label search-hit__label--muted">Ça c’est un gâté</span>
+                    </li>
+                </ul>
+            </section>
+        </div>
+    </main>
+
+    <div class="app-dock">
+        <nav class="bottom-nav" aria-label="Navigation principale">
+            <a href="index.html" class="bottom-nav__item">
+                <img class="bottom-nav__icon bottom-nav__icon--home" src="assets/img/icon/home_icon.svg" alt="" width="24" height="24" decoding="async"/>
+                <span>Accueil</span>
+            </a>
+            <a href="trends.html" class="bottom-nav__item">
+                <img class="bottom-nav__icon bottom-nav__icon--trends" src="assets/img/icon/card_icon.svg" alt="" width="28" height="21" decoding="async"/>
+                <span>Trends</span>
+            </a>
+            <a href="glossaire.html" class="bottom-nav__item">
+                <img class="bottom-nav__icon bottom-nav__icon--glossaire" src="assets/img/icon/glossaire_icon.svg" alt="" width="24" height="23" decoding="async"/>
+                <span>Glossaire</span>
+            </a>
+            <a href="rechercher.html" class="bottom-nav__item bottom-nav__item--active" aria-current="page">
+                <img class="bottom-nav__icon bottom-nav__icon--search" src="assets/img/icon/search_icon.svg" alt="" width="22" height="22" decoding="async"/>
+                <span>Rechercher</span>
+            </a>
+        </nav>
+        <div class="home-indicator" aria-hidden="true"></div>
+    </div>
+</div>
+
+<script src="assets/js/main.js" defer></script>
+</body>
+
+</html>
