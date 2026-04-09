@@ -319,7 +319,7 @@ body {
     background: #fff;
     overflow: hidden;
     box-shadow:
-        var(--shadow-offset-x) var(--shadow-offset-y) 0 0 rgba(17, 17, 17, 0.06),
+        var(--shadow-offset-x) var(--shadow-offset-y) 0 0 #fee440,
         0 1px 0 rgba(255, 255, 255, 0.9) inset;
     font: inherit;
     text-align: inherit;
