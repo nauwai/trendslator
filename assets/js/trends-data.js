@@ -128,17 +128,9 @@
         var accent = ACCENTS[index % ACCENTS.length];
         var thumb = thumbnailFor(t);
         var desc = truncate(t.d, 180);
+        /* Indice de vigilance — désactivé temporairement
         var vig = t.vigilancePct;
-        return (
-            "<article class=\"trend-card trend-card--link\" data-open-trend=\"" +
-            escapeHtml(t.id) +
-            "\" tabindex=\"0\" role=\"button\" aria-haspopup=\"dialog\" aria-controls=\"trend-sheet\">" +
-            "<div class=\"trend-card__media\">" +
-            "<img src=\"" +
-            escapeHtml(thumb) +
-            "\" alt=\"\" width=\"900\" height=\"506\" loading=\"" +
-            (index === 0 ? "eager" : "lazy") +
-            "\"/>" +
+        var vigilanceHtml =
             "<div class=\"trend-hero__vigilance trend-card__vigilance\" role=\"status\">" +
             "<svg class=\"trend-hero__vigilance-icon\" width=\"18\" height=\"18\" viewBox=\"0 0 18 18\" fill=\"none\" aria-hidden=\"true\">" +
             "<path d=\"M9 2L2 15h14L9 2z\" stroke=\"currentColor\" stroke-width=\"1.4\" stroke-linejoin=\"round\"/>" +
@@ -151,7 +143,21 @@
             "<svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\" aria-hidden=\"true\">" +
             "<circle cx=\"7\" cy=\"7\" r=\"6\" stroke=\"currentColor\" stroke-width=\"1.2\"/>" +
             "<path d=\"M7 6v4M7 4h.01\" stroke=\"currentColor\" stroke-width=\"1.2\" stroke-linecap=\"round\"/>" +
-            "</svg></span></div></div>" +
+            "</svg></span></div>";
+        */
+        var vigilanceHtml = "";
+        return (
+            "<article class=\"trend-card trend-card--link\" data-open-trend=\"" +
+            escapeHtml(t.id) +
+            "\" tabindex=\"0\" role=\"button\" aria-haspopup=\"dialog\" aria-controls=\"trend-sheet\">" +
+            "<div class=\"trend-card__media\">" +
+            "<img src=\"" +
+            escapeHtml(thumb) +
+            "\" alt=\"\" width=\"900\" height=\"506\" loading=\"" +
+            (index === 0 ? "eager" : "lazy") +
+            "\"/>" +
+            vigilanceHtml +
+            "</div>" +
             "<div class=\"trend-card__accent trend-card__accent--" +
             accent +
             "\" aria-hidden=\"true\"></div>" +
@@ -169,7 +175,24 @@
     function detailHtml(t) {
         var accent = ACCENTS[t.thumbIndex % ACCENTS.length];
         var thumb = thumbnailFor(t);
+        /* Indice de vigilance — désactivé temporairement
         var vig = t.vigilancePct;
+        var vigilanceHtml =
+            "<div class=\"trend-hero__vigilance\" role=\"status\">" +
+            "<svg class=\"trend-hero__vigilance-icon\" width=\"18\" height=\"18\" viewBox=\"0 0 18 18\" fill=\"none\" aria-hidden=\"true\">" +
+            "<path d=\"M9 2L2 15h14L9 2z\" stroke=\"currentColor\" stroke-width=\"1.4\" stroke-linejoin=\"round\"/>" +
+            "<path d=\"M9 7v4M9 12h.01\" stroke=\"currentColor\" stroke-width=\"1.4\" stroke-linecap=\"round\"/>" +
+            "</svg>" +
+            "<span class=\"trend-hero__vigilance-text\">Indice de vigilance : " +
+            vig +
+            "%</span>" +
+            "<span class=\"trend-hero__vigilance-info\" title=\"Information\" aria-label=\"Plus d’informations sur l’indice\">" +
+            "<svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\" aria-hidden=\"true\">" +
+            "<circle cx=\"7\" cy=\"7\" r=\"6\" stroke=\"currentColor\" stroke-width=\"1.2\"/>" +
+            "<path d=\"M7 6v4M7 4h.01\" stroke=\"currentColor\" stroke-width=\"1.2\" stroke-linecap=\"round\"/>" +
+            "</svg></span></div>";
+        */
+        var vigilanceHtml = "";
         var play =
             t.v && /^https?:\/\//i.test(t.v)
                 ? "<a href=\"" +
@@ -190,19 +213,7 @@
             "<img src=\"" +
             escapeHtml(thumb) +
             "\" alt=\"\" width=\"900\" height=\"506\" loading=\"lazy\"/>" +
-            "<div class=\"trend-hero__vigilance\" role=\"status\">" +
-            "<svg class=\"trend-hero__vigilance-icon\" width=\"18\" height=\"18\" viewBox=\"0 0 18 18\" fill=\"none\" aria-hidden=\"true\">" +
-            "<path d=\"M9 2L2 15h14L9 2z\" stroke=\"currentColor\" stroke-width=\"1.4\" stroke-linejoin=\"round\"/>" +
-            "<path d=\"M9 7v4M9 12h.01\" stroke=\"currentColor\" stroke-width=\"1.4\" stroke-linecap=\"round\"/>" +
-            "</svg>" +
-            "<span class=\"trend-hero__vigilance-text\">Indice de vigilance : " +
-            vig +
-            "%</span>" +
-            "<span class=\"trend-hero__vigilance-info\" title=\"Information\" aria-label=\"Plus d’informations sur l’indice\">" +
-            "<svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\" aria-hidden=\"true\">" +
-            "<circle cx=\"7\" cy=\"7\" r=\"6\" stroke=\"currentColor\" stroke-width=\"1.2\"/>" +
-            "<path d=\"M7 6v4M7 4h.01\" stroke=\"currentColor\" stroke-width=\"1.2\" stroke-linecap=\"round\"/>" +
-            "</svg></span></div>" +
+            vigilanceHtml +
             play +
             "</div>" +
             "<div class=\"trend-hero__divider trend-hero__divider--" +
