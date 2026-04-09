@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+  <script>
+    (function () {
+      try {
+        if (localStorage.getItem("trendslator_onboarding_v1")) {
+          window.location.replace("index.html");
+        }
+      } catch (e) {}
+    })();
+  </script>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
   <meta name="theme-color" content="#fe502d"/>
@@ -624,6 +633,7 @@
 
 <script>
   (() => {
+    const STORAGE_KEY = 'trendslator_onboarding_v1';
     const splash     = document.getElementById('splash');
     const onboarding = document.getElementById('onboarding');
     const cardsArea  = document.getElementById('cards-area');
@@ -633,6 +643,13 @@
     let current      = 0;
     let animating    = false;
     let canAdvance   = false;
+
+    function finishOnboarding() {
+      try {
+        localStorage.setItem(STORAGE_KEY, '1');
+      } catch (e) {}
+      window.location.href = 'index.html';
+    }
 
     /* ── Splash → Onboarding */
     function startOnboarding() {
@@ -660,7 +677,7 @@
       }
 
       if (current >= TOTAL) {
-        window.location.href = 'index.html';
+        finishOnboarding();
         return;
       }
 
@@ -679,9 +696,10 @@
     cardsArea.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, { passive: true });
     cardsArea.addEventListener('touchend',   e => { if (e.changedTouches[0].clientX - tx < -40) next(); }, { passive: true });
 
-    /* ── PASSER click */
-    btnPasser.addEventListener('click', () => {
-      if (current >= TOTAL - 1) window.location.href = 'index.html';
+    /* ── PASSER / C'EST PARTI ! */
+    btnPasser.addEventListener('click', (e) => {
+      e.preventDefault();
+      finishOnboarding();
     });
 
   })();

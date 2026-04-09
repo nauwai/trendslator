@@ -2,7 +2,7 @@
     "name": "Trendslator",
     "short_name": "Trendslator",
     "description": "Tendances et langage du web francophone",
-    "start_url": "/index.html",
+    "start_url": "/onboarding.html",
     "scope": "/",
     "display": "standalone",
     "display_override": ["standalone", "browser"],
