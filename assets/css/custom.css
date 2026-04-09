@@ -103,16 +103,28 @@ body {
 
 .page-head--simple {
     padding-bottom: 8px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.page-head--simple .page-head__title {
+    margin-bottom: 0;
+    font-size: clamp(2rem, 7.6vw, 2.5rem);
+    flex-shrink: 0;
 }
 
 .trends-tabs {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    padding: 4px;
+    gap: 6px;
+    padding: 3px;
     border: 1px solid rgba(0, 0, 0, 0.08);
     border-radius: 999px;
     background: #fff;
+    margin-left: auto;
 }
 
 .trends-tab {
@@ -120,11 +132,12 @@ body {
     border: 0;
     background: transparent;
     border-radius: 999px;
-    padding: 8px 14px;
-    font-size: 0.85rem;
+    padding: 7px 10px;
+    font-size: 0.78rem;
     font-weight: 700;
     color: var(--color-muted);
     cursor: pointer;
+    white-space: nowrap;
 }
 
 .trends-tab.is-active {
