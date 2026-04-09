@@ -167,7 +167,10 @@
             "</h2>" +
             "<p class=\"trend-card__desc\">" +
             escapeHtml(desc) +
-            "<span class=\"trend-card__more\">lire la suite&hellip;</span></p>" +
+            "</p>" +
+            "<div class=\"trend-card__actions\">" +
+            "<span class=\"btn-brutal trend-card__cta\">Lire la suite</span>" +
+            "</div>" +
             "</div></article>"
         );
     }

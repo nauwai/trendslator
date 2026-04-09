@@ -262,7 +262,7 @@ body {
 }
 
 .trend-card__body {
-    padding: 14px 20px 18px;
+    padding: 14px 20px 0;
 }
 
 .trend-card__title {
@@ -280,12 +280,21 @@ body {
     line-height: 1.5;
 }
 
-.trend-card__more {
-    display: inline;
-    color: inherit;
-    text-decoration: underline;
-    text-underline-offset: 2px;
-    font-weight: 600;
+.trend-card__actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 14px;
+    padding-right: var(--shadow-offset-x);
+    padding-bottom: var(--shadow-offset-y);
+}
+
+.trend-card__actions .btn-brutal {
+    box-shadow: var(--shadow-offset-x) var(--shadow-offset-y) 0 0 var(--color-yellow);
+}
+
+.trend-card__actions .btn-brutal:active {
+    transform: translate(2px, 2px);
+    box-shadow: calc(var(--shadow-offset-x) - 2px) calc(var(--shadow-offset-y) - 2px) 0 0 var(--color-yellow);
 }
 
 .trend-card__expand {
