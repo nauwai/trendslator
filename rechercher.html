@@ -38,10 +38,10 @@
                 </span>
                 <input type="search" class="glossary-search__input" id="search-page-input" placeholder="Rechercher" autocomplete="off" enterkeyhint="search"/>
             </label>
-            <button type="button" class="glossary-cancel" id="search-page-cancel">Annuler</button>
+            <button type="button" class="glossary-cancel" id="search-page-submit">Rechercher</button>
         </div>
 
-        <div class="search-body">
+        <div class="search-body" id="search-default-view">
             <section class="search-block" aria-labelledby="search-trends-heading">
                 <div class="search-block__head">
                     <h2 id="search-trends-heading" class="search-block__title">Les trends du moment</h2>
@@ -52,11 +52,14 @@
 
             <hr class="search-divider"/>
 
-            <section class="search-block" aria-labelledby="search-global-heading">
-                <h2 id="search-global-heading" class="search-block__title search-block__title--solo">Recherche globale</h2>
-                <p class="search-global-help" id="search-global-help">Tape un mot pour rechercher dans toutes les données (trends, anciennes trends, glossaire).</p>
-                <div id="search-global-results"></div>
+            <section class="search-block" aria-labelledby="search-suggestions-heading">
+                <h2 id="search-suggestions-heading" class="search-block__title search-block__title--solo">Suggestions</h2>
+                <div id="search-suggestions" class="search-suggestions"></div>
             </section>
+        </div>
+
+        <div id="search-results-view" hidden>
+            <div id="search-global-results"></div>
         </div>
     </main>
 

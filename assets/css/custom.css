@@ -1164,6 +1164,22 @@ button.glossary-row {
     color: #8e8e93;
 }
 
+.search-suggestions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.search-suggestion-chip {
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    background: #fff;
+    border-radius: 999px;
+    padding: 7px 10px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--color-purple);
+}
+
 .search-global-group {
     margin-bottom: 16px;
 }

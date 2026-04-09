@@ -141,9 +141,13 @@
                 );
                 grouped[letter].forEach(function (item, idx) {
                     var isExpandable = item.definition.length > 90;
+                    var previewLen = 89;
                     var shortDef = isExpandable
-                        ? item.definition.slice(0, 89).trim() + "…"
+                        ? item.definition.slice(0, previewLen).trim() + "…"
                         : item.definition;
+                    var remainingDef = isExpandable
+                        ? item.definition.slice(previewLen).trim()
+                        : "";
                     var panelId = "glossary-panel-" + letter + "-" + idx;
                     var common =
                         '<span class="glossary-badge ' +
@@ -172,7 +176,7 @@
                                 '<div class="glossary-panel" id="' +
                                 panelId +
                                 '" hidden><p class="glossary-definition">' +
-                                esc(item.definition) +
+                                esc(remainingDef) +
                                 "</p></div>"
                         );
                     } else {
@@ -334,9 +338,11 @@
 
     function initSearchPage() {
         var input = document.getElementById("search-page-input");
-        var cancel = document.getElementById("search-page-cancel");
+        var submitBtn = document.getElementById("search-page-submit");
         var globalRoot = document.getElementById("search-global-results");
-        var helpEl = document.getElementById("search-global-help");
+        var defaultView = document.getElementById("search-default-view");
+        var resultsView = document.getElementById("search-results-view");
+        var suggestionsEl = document.getElementById("search-suggestions");
         var refreshBtn = document.getElementById("search-refresh-btn");
         if (!input || !globalRoot) return;
 
@@ -356,20 +362,14 @@
         }
 
         function renderGroups(groups, q) {
-            if (!q) {
-                globalRoot.innerHTML = "";
-                if (helpEl) {
-                    helpEl.textContent =
-                        "Tape un mot pour rechercher dans toutes les données (trends, anciennes trends, glossaire).";
-                }
-                return;
-            }
             var hasAny = groups.some(function (g) {
                 return g.items.length > 0;
             });
             if (!hasAny) {
                 globalRoot.innerHTML =
-                    '<p class="search-global-help">Aucun résultat pour « ' + esc(q) + " ».</p>";
+                    '<section class="search-global-group"><h3 class="search-global-group__title">Résultats</h3><p class="search-global-help">Aucun résultat pour « ' +
+                    esc(q) +
+                    " ».</p></section>";
                 return;
             }
             globalRoot.innerHTML = groups
@@ -417,8 +417,18 @@
                 .join("");
         }
 
-        function filterAll(q) {
-            var qq = q.toLowerCase();
+        function runSearch(q) {
+            var clean = String(q || "").trim();
+            if (!clean) {
+                if (resultsView) resultsView.hidden = true;
+                if (defaultView) defaultView.hidden = false;
+                globalRoot.innerHTML = "";
+                return;
+            }
+            if (defaultView) defaultView.hidden = true;
+            if (resultsView) resultsView.hidden = false;
+
+            var qq = clean.toLowerCase();
             var trends = store.trends
                 .filter(function (t) {
                     return hit(t.ti, qq) || hit(t.d, qq) || hit(t.m, qq) || hit((t.ty || []).join(" "), qq);
@@ -468,13 +478,47 @@
                     { title: "Anciennes trends", items: old },
                     { title: "Glossaire", items: glossary }
                 ],
-                q
+                clean
             );
+        }
+
+        function renderSuggestions() {
+            if (!suggestionsEl) return;
+            var items = [];
+            store.trends.slice(0, 8).forEach(function (t) {
+                if (t && t.ti) items.push(t.ti);
+            });
+            store.old.slice(0, 8).forEach(function (t) {
+                if (t && t.title) items.push(t.title);
+            });
+            store.glossary.slice(0, 8).forEach(function (g) {
+                if (g && g.mot) items.push(g.mot);
+            });
+            var uniq = [];
+            var seen = {};
+            items.forEach(function (it) {
+                var key = it.toLowerCase();
+                if (!seen[key]) {
+                    seen[key] = true;
+                    uniq.push(it);
+                }
+            });
+            suggestionsEl.innerHTML = uniq
+                .slice(0, 14)
+                .map(function (text) {
+                    return (
+                        '<button type="button" class="search-suggestion-chip" data-suggestion="' +
+                        esc(text) +
+                        '">' +
+                        esc(text) +
+                        "</button>"
+                    );
+                })
+                .join("");
         }
 
         function loadSearchData() {
             if (!T) {
-                if (helpEl) helpEl.textContent = "Module de recherche indisponible.";
                 return;
             }
             Promise.all([
@@ -494,23 +538,34 @@
                 store.trends = trendsRaw ? T.normalizeAll(trendsRaw).list : [];
                 store.old = oldRaw ? T.normalizeOldTrends(oldRaw) : [];
                 store.glossary = glossRaw ? T.normalizeGlossary(glossRaw) : [];
-                filterAll(input.value.trim());
+                renderSuggestions();
+                runSearch(input.value.trim());
             });
         }
 
-        if (cancel) {
-            cancel.addEventListener("click", function () {
-                input.value = "";
-                filterAll("");
-                input.blur();
+        if (submitBtn) {
+            submitBtn.addEventListener("click", function () {
+                runSearch(input.value.trim());
             });
         }
-        input.addEventListener("input", function () {
-            filterAll(input.value.trim());
+        input.addEventListener("keydown", function (e) {
+            if (e.key === "Enter") {
+                e.preventDefault();
+                runSearch(input.value.trim());
+            }
         });
         if (refreshBtn) {
             refreshBtn.addEventListener("click", function () {
                 loadSearchData();
+            });
+        }
+        if (suggestionsEl) {
+            suggestionsEl.addEventListener("click", function (e) {
+                var chip = e.target.closest("[data-suggestion]");
+                if (!chip) return;
+                var value = chip.getAttribute("data-suggestion") || "";
+                input.value = value;
+                runSearch(value);
             });
         }
 
