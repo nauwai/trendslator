@@ -70,7 +70,7 @@ body {
     color: var(--color-coral);
     letter-spacing: -0.02em;
     line-height: 1.05;
-    margin-bottom: 14px;
+    margin-bottom: 25px;
 }
 
 .page-head__row {
@@ -160,6 +160,7 @@ body {
     padding-left: 0;
     padding-right: 0;
     padding-bottom: 32px;
+    background: #f0f0f2;
 }
 
 .trends-loading {
@@ -169,8 +170,15 @@ body {
     color: var(--color-muted);
 }
 
+.trends-cards-root {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    padding: 8px 16px 0;
+}
+
 .trend-card {
-    margin-bottom: 20px;
+    margin-bottom: 0;
 }
 
 .trend-card:last-child {
@@ -254,7 +262,7 @@ body {
 }
 
 .trend-card__body {
-    padding: 14px 20px 0;
+    padding: 14px 20px 18px;
 }
 
 .trend-card__title {
@@ -304,10 +312,15 @@ body {
 .trend-card--link {
     display: block;
     width: 100%;
-    margin-top: 20px;
+    margin-top: 0;
     padding: 0;
-    border: none;
-    background: none;
+    border: 1px solid rgba(17, 17, 17, 0.14);
+    border-radius: 16px;
+    background: #fff;
+    overflow: hidden;
+    box-shadow:
+        var(--shadow-offset-x) var(--shadow-offset-y) 0 0 rgba(17, 17, 17, 0.06),
+        0 1px 0 rgba(255, 255, 255, 0.9) inset;
     font: inherit;
     text-align: inherit;
     text-decoration: none;
@@ -652,7 +665,9 @@ body {
 
 /* Mot du jour */
 .word-of-day {
-    margin-top: 28px;
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .word-of-day__heading {
@@ -1239,7 +1254,9 @@ button.glossary-row {
 
 
 .tt-quiz-module {
-    padding: 0 20px 40px;
+    margin-top: 28px;
+    padding: 28px 20px 40px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
     font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
@@ -1258,7 +1275,7 @@ button.glossary-row {
 .tt-quiz-card {
     position: relative;
     z-index: 2;
-    background: #7B2FBE;
+    background: #9d4edd;
     border: 2px solid #1C1C1E;
     padding: 20px;
 }
@@ -1269,7 +1286,7 @@ button.glossary-row {
     left: 6px;
     right: -6px;
     bottom: -6px;
-    background: #FF9A3C;
+    background: #fe502d;
     z-index: 1;
 }
 
