@@ -18,6 +18,24 @@ def get_views(video: Dict[str, Any]) -> int:
     return 0
 
 
+def fetch_fallback_video_from_ddg(title: str, hashtag: str) -> str:
+    from duckduckgo_search import DDGS
+    queries = [
+        f"site:tiktok.com {hashtag} {title}",
+        f"site:tiktok.com {hashtag}"
+    ]
+    for q in queries:
+        try:
+            results = DDGS().videos(q, max_results=5)
+            for res in results:
+                url = res.get("content", "")
+                if url and "tiktok.com/" in url and "/video/" in url:
+                    return url
+        except Exception as e:
+            pass
+    return ""
+
+
 def normalize_hashtag(raw_value: str) -> str:
     if not isinstance(raw_value, str):
         return ""
@@ -66,17 +84,26 @@ def main() -> None:
 
         print(f"[VIDEO] Trend {idx}: recherche top vidéo pour #{hashtag}")
         top_video = fetch_top_video_for_hashtag(hashtag, token)
-        if not top_video:
-            print(f"[VIDEO] Trend {idx}: aucune vidéo trouvée pour #{hashtag}")
-            continue
+        video_url = ""
+        
+        if top_video:
+            video_url = top_video.get("webVideoUrl") or top_video.get("url") or ""
+            if video_url:
+                trend["video_views"] = get_views(top_video)
 
-        video_url = top_video.get("webVideoUrl") or top_video.get("url") or ""
+        if not video_url:
+            print(f"[VIDEO] Trend {idx}: aucune vidéo trouvée via Apify, fallback DDG...")
+            title = trend.get("ti", "")
+            video_url = fetch_fallback_video_from_ddg(title, hashtag)
+
         if video_url:
             trend["v"] = video_url
-            trend["video_views"] = get_views(top_video)
-            print(f"[VIDEO] Trend {idx}: vidéo mise à jour.")
+            print(f"[VIDEO] Trend {idx}: vidéo mise à jour ({video_url}).")
         else:
-            print(f"[VIDEO] Trend {idx}: URL vidéo absente, skip.")
+            print(f"[VIDEO] Trend {idx}: URL vidéo introuvable au final.")
+            # Force la suppression si c'est un tag générique de Claude
+            if "/tag/" in trend.get("v", "") or "/search" in trend.get("v", ""):
+                trend["v"] = ""
 
     OUTPUT_FILE.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"[VIDEO] Enrichissement terminé: {OUTPUT_FILE}")
