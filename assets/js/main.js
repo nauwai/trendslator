@@ -140,33 +140,50 @@
                         '">'
                 );
                 grouped[letter].forEach(function (item, idx) {
-                    var shortDef =
-                        item.definition.length > 90
-                            ? item.definition.slice(0, 89).trim() + "…"
-                            : item.definition;
+                    var isExpandable = item.definition.length > 90;
+                    var shortDef = isExpandable
+                        ? item.definition.slice(0, 89).trim() + "…"
+                        : item.definition;
                     var panelId = "glossary-panel-" + letter + "-" + idx;
-                    parts.push(
-                        '<button type="button" class="glossary-row" aria-expanded="false" aria-controls="' +
-                            panelId +
-                            '">' +
-                            '<span class="glossary-badge ' +
-                            badgeClass(idx) +
-                            '">' +
-                            esc(item.mot) +
-                            "</span>" +
-                            '<p class="glossary-snippet">' +
-                            esc(shortDef) +
-                            "</p>" +
-                            '<span class="glossary-chevron" aria-hidden="true">' +
-                            '<svg width="12" height="12" viewBox="0 0 12 12" fill="none">' +
-                            '<path d="M2.5 4.5L6 8l3.5-3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />' +
-                            "</svg></span></button>" +
-                            '<div class="glossary-panel" id="' +
-                            panelId +
-                            '" hidden><p class="glossary-definition">' +
-                            esc(item.definition) +
-                            "</p></div>"
-                    );
+                    var common =
+                        '<span class="glossary-badge ' +
+                        badgeClass(idx) +
+                        '">' +
+                        esc(item.mot) +
+                        "</span>" +
+                        '<p class="glossary-snippet">' +
+                        esc(shortDef) +
+                        "</p>" +
+                        (isExpandable
+                            ? '<span class="glossary-chevron" aria-hidden="true">' +
+                              '<svg width="12" height="12" viewBox="0 0 12 12" fill="none">' +
+                              '<path d="M2.5 4.5L6 8l3.5-3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />' +
+                              "</svg></span>"
+                            : '<span class="glossary-chevron" aria-hidden="true"></span>');
+                    if (isExpandable) {
+                        parts.push(
+                            '<button type="button" class="glossary-row" aria-expanded="false" aria-controls="' +
+                                panelId +
+                                '" data-search="' +
+                                esc((item.mot + " " + item.definition).toLowerCase()) +
+                                '">' +
+                                common +
+                                "</button>" +
+                                '<div class="glossary-panel" id="' +
+                                panelId +
+                                '" hidden><p class="glossary-definition">' +
+                                esc(item.definition) +
+                                "</p></div>"
+                        );
+                    } else {
+                        parts.push(
+                            '<article class="glossary-row glossary-row--static" data-search="' +
+                                esc((item.mot + " " + item.definition).toLowerCase()) +
+                                '">' +
+                                common +
+                                "</article>"
+                        );
+                    }
                 });
                 parts.push("</section>");
             });
@@ -178,7 +195,7 @@
 
         function bindGlossaryAccordionAndSearch() {
             scrollEl.addEventListener("click", function (e) {
-                var row = e.target.closest(".glossary-row");
+                var row = e.target.closest("button.glossary-row");
                 if (!row) return;
                 var expanded = row.getAttribute("aria-expanded") === "true";
                 var panelId = row.getAttribute("aria-controls");
@@ -199,23 +216,19 @@
                 input.addEventListener("input", function () {
                     var q = input.value.trim().toLowerCase();
                     scrollEl.querySelectorAll(".glossary-row").forEach(function (row) {
-                        var badge = row.querySelector(".glossary-badge");
-                        var snippet = row.querySelector(".glossary-snippet");
-                        var panel = document.getElementById(row.getAttribute("aria-controls"));
-                        var full =
-                            (badge ? badge.textContent : "") +
-                            " " +
-                            (snippet ? snippet.textContent : "") +
-                            " " +
-                            (panel ? panel.textContent : "");
-                        var show = !q || full.toLowerCase().indexOf(q) !== -1;
+                        var panelId = row.getAttribute("aria-controls");
+                        var panel = panelId ? document.getElementById(panelId) : null;
+                        var haystack = row.getAttribute("data-search") || "";
+                        var show = !q || haystack.indexOf(q) !== -1;
                         row.style.display = show ? "" : "none";
                         if (panel) {
                             panel.hidden = true;
                             panel.style.display = show ? "" : "none";
                         }
-                        row.setAttribute("aria-expanded", "false");
-                        row.classList.remove("is-open");
+                        if (row.matches("button.glossary-row")) {
+                            row.setAttribute("aria-expanded", "false");
+                            row.classList.remove("is-open");
+                        }
                     });
                     scrollEl.querySelectorAll(".glossary-section").forEach(function (sec) {
                         var visible = !!sec.querySelector('.glossary-row:not([style*="display: none"])');
@@ -322,12 +335,186 @@
     function initSearchPage() {
         var input = document.getElementById("search-page-input");
         var cancel = document.getElementById("search-page-cancel");
-        if (cancel && input) {
+        var globalRoot = document.getElementById("search-global-results");
+        var helpEl = document.getElementById("search-global-help");
+        var refreshBtn = document.getElementById("search-refresh-btn");
+        if (!input || !globalRoot) return;
+
+        var T = window.TrendslatorData;
+        var store = { trends: [], old: [], glossary: [] };
+
+        function esc(s) {
+            return String(s == null ? "" : s)
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;");
+        }
+
+        function hit(text, q) {
+            return String(text || "").toLowerCase().indexOf(q) !== -1;
+        }
+
+        function renderGroups(groups, q) {
+            if (!q) {
+                globalRoot.innerHTML = "";
+                if (helpEl) {
+                    helpEl.textContent =
+                        "Tape un mot pour rechercher dans toutes les données (trends, anciennes trends, glossaire).";
+                }
+                return;
+            }
+            var hasAny = groups.some(function (g) {
+                return g.items.length > 0;
+            });
+            if (!hasAny) {
+                globalRoot.innerHTML =
+                    '<p class="search-global-help">Aucun résultat pour « ' + esc(q) + " ».</p>";
+                return;
+            }
+            globalRoot.innerHTML = groups
+                .map(function (g) {
+                    if (!g.items.length) return "";
+                    return (
+                        '<section class="search-global-group">' +
+                        '<h3 class="search-global-group__title">' +
+                        esc(g.title) +
+                        " (" +
+                        g.items.length +
+                        ")</h3>" +
+                        '<ul class="search-global-list">' +
+                        g.items
+                            .map(function (it) {
+                                var isLink = !!it.href;
+                                var tag = isLink ? "a" : "div";
+                                var href = isLink ? ' href="' + esc(it.href) + '"' : "";
+                                return (
+                                    "<li><" +
+                                    tag +
+                                    ' class="search-global-item"' +
+                                    href +
+                                    ">" +
+                                    '<p class="search-global-item__title">' +
+                                    esc(it.title) +
+                                    "</p>" +
+                                    (it.meta
+                                        ? '<p class="search-global-item__meta">' + esc(it.meta) + "</p>"
+                                        : "") +
+                                    (it.snippet
+                                        ? '<p class="search-global-item__snippet">' +
+                                          esc(it.snippet) +
+                                          "</p>"
+                                        : "") +
+                                    "</" +
+                                    tag +
+                                    "></li>"
+                                );
+                            })
+                            .join("") +
+                        "</ul></section>"
+                    );
+                })
+                .join("");
+        }
+
+        function filterAll(q) {
+            var qq = q.toLowerCase();
+            var trends = store.trends
+                .filter(function (t) {
+                    return hit(t.ti, qq) || hit(t.d, qq) || hit(t.m, qq) || hit((t.ty || []).join(" "), qq);
+                })
+                .slice(0, 20)
+                .map(function (t) {
+                    return {
+                        title: t.ti,
+                        meta: "Trend du moment",
+                        snippet: t.d,
+                        href: "trends.html?trend=" + encodeURIComponent(t.id)
+                    };
+                });
+
+            var old = store.old
+                .filter(function (t) {
+                    return hit(t.title, qq) || hit(t.description, qq) || hit(t.tag, qq) || hit(t.category, qq);
+                })
+                .slice(0, 20)
+                .map(function (t) {
+                    return {
+                        title: t.title,
+                        meta: [t.tag, t.category].filter(Boolean).join(" · ") || "Ancienne trend",
+                        snippet: t.description,
+                        href: "trends.html?tab=old"
+                    };
+                });
+
+            var glossary = store.glossary
+                .filter(function (g) {
+                    return hit(g.mot, qq) || hit(g.definition, qq);
+                })
+                .slice(0, 20)
+                .map(function (g) {
+                    var letter = g.mot.charAt(0).toUpperCase();
+                    return {
+                        title: g.mot,
+                        meta: "Glossaire",
+                        snippet: g.definition,
+                        href: "glossaire.html#glossary-letter-" + encodeURIComponent(letter)
+                    };
+                });
+
+            renderGroups(
+                [
+                    { title: "Trends du moment", items: trends },
+                    { title: "Anciennes trends", items: old },
+                    { title: "Glossaire", items: glossary }
+                ],
+                q
+            );
+        }
+
+        function loadSearchData() {
+            if (!T) {
+                if (helpEl) helpEl.textContent = "Module de recherche indisponible.";
+                return;
+            }
+            Promise.all([
+                T.load().catch(function () {
+                    return null;
+                }),
+                T.loadOldTrends().catch(function () {
+                    return null;
+                }),
+                T.loadGlossary().catch(function () {
+                    return null;
+                })
+            ]).then(function (res) {
+                var trendsRaw = res[0];
+                var oldRaw = res[1];
+                var glossRaw = res[2];
+                store.trends = trendsRaw ? T.normalizeAll(trendsRaw).list : [];
+                store.old = oldRaw ? T.normalizeOldTrends(oldRaw) : [];
+                store.glossary = glossRaw ? T.normalizeGlossary(glossRaw) : [];
+                filterAll(input.value.trim());
+            });
+        }
+
+        if (cancel) {
             cancel.addEventListener("click", function () {
                 input.value = "";
+                filterAll("");
                 input.blur();
             });
         }
+        input.addEventListener("input", function () {
+            filterAll(input.value.trim());
+        });
+        if (refreshBtn) {
+            refreshBtn.addEventListener("click", function () {
+                loadSearchData();
+            });
+        }
+
+        loadSearchData();
     }
 
     function initTrendsTabs() {
@@ -352,7 +539,8 @@
             });
         });
 
-        activate("new");
+        var requested = new URLSearchParams(window.location.search).get("tab");
+        activate(requested === "old" ? "old" : "new");
     }
 
     function initTrendSheet() {

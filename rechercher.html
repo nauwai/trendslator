@@ -45,41 +45,17 @@
             <section class="search-block" aria-labelledby="search-trends-heading">
                 <div class="search-block__head">
                     <h2 id="search-trends-heading" class="search-block__title">Les trends du moment</h2>
-                    <button type="button" class="search-block__action">Actualiser</button>
+                    <button type="button" class="search-block__action" id="search-refresh-btn">Actualiser</button>
                 </div>
                 <ul class="search-list" id="search-trends-list"></ul>
             </section>
 
             <hr class="search-divider"/>
 
-            <section class="search-block" aria-labelledby="search-essentials-heading">
-                <h2 id="search-essentials-heading" class="search-block__title search-block__title--solo">Les incontournables</h2>
-                <ul class="search-list">
-                    <li class="search-hit">
-                        <span class="search-hit__dot search-hit__dot--grey" aria-hidden="true"></span>
-                        <span class="search-hit__label search-hit__label--muted">Its the first of the mouth</span>
-                    </li>
-                    <li class="search-hit">
-                        <span class="search-hit__dot search-hit__dot--grey" aria-hidden="true"></span>
-                        <span class="search-hit__label search-hit__label--muted">Oh p****n Laurent&nbsp;!</span>
-                    </li>
-                    <li class="search-hit">
-                        <span class="search-hit__dot search-hit__dot--grey" aria-hidden="true"></span>
-                        <span class="search-hit__label search-hit__label--muted">Quoicoubeh / Apagnan</span>
-                    </li>
-                    <li class="search-hit">
-                        <span class="search-hit__dot search-hit__dot--grey" aria-hidden="true"></span>
-                        <span class="search-hit__label search-hit__label--muted">Six Seven</span>
-                    </li>
-                    <li class="search-hit">
-                        <span class="search-hit__dot search-hit__dot--grey" aria-hidden="true"></span>
-                        <span class="search-hit__label search-hit__label--muted">La tiktokerie</span>
-                    </li>
-                    <li class="search-hit">
-                        <span class="search-hit__dot search-hit__dot--grey" aria-hidden="true"></span>
-                        <span class="search-hit__label search-hit__label--muted">Ça c’est un gâté</span>
-                    </li>
-                </ul>
+            <section class="search-block" aria-labelledby="search-global-heading">
+                <h2 id="search-global-heading" class="search-block__title search-block__title--solo">Recherche globale</h2>
+                <p class="search-global-help" id="search-global-help">Tape un mot pour rechercher dans toutes les données (trends, anciennes trends, glossaire).</p>
+                <div id="search-global-results"></div>
             </section>
         </div>
     </main>
