@@ -551,6 +551,120 @@
         activate(requested === "old" ? "old" : "new");
     }
 
+    function parseTrendVideoForEmbed(url) {
+        var u = String(url || "").trim();
+        if (!/^https?:\/\//i.test(u)) return null;
+        var tik = u.match(/tiktok\.com\/@[^/]+\/video\/(\d+)/i);
+        if (!tik) tik = u.match(/tiktok\.com\/[^?#]*\/video\/(\d+)/i);
+        if (tik) {
+            return {
+                kind: "tiktok",
+                embedSrc: "https://www.tiktok.com/player/v1/" + tik[1] + "?autoplay=1"
+            };
+        }
+        var yt = u.match(
+            /(?:youtube\.com\/watch\?v=|youtube\.com\/embed\/|youtu\.be\/)([\w-]{11})/
+        );
+        if (yt) {
+            return {
+                kind: "youtube",
+                embedSrc: "https://www.youtube-nocookie.com/embed/" + yt[1] + "?autoplay=1&rel=0"
+            };
+        }
+        if (/\.(mp4|webm|ogg)(\?|$)/i.test(u)) return { kind: "direct", src: u };
+        return null;
+    }
+
+    function stopTrendHeroVideo(media) {
+        if (!media) return;
+        var slot = media.querySelector(".trend-hero__player-slot");
+        if (slot) {
+            slot.querySelectorAll("video").forEach(function (v) {
+                v.pause();
+                v.removeAttribute("src");
+                v.load();
+            });
+            slot.innerHTML = "";
+            slot.hidden = true;
+            slot.setAttribute("aria-hidden", "true");
+        }
+        media.classList.remove("is-playing-video");
+        var closeBtn = media.querySelector(".trend-hero__video-close");
+        if (closeBtn) closeBtn.hidden = true;
+        var playBtn = media.querySelector(".trend-hero__play");
+        if (playBtn) playBtn.hidden = false;
+    }
+
+    function startTrendHeroVideo(media, url) {
+        if (!media || !url) return;
+        var slot = media.querySelector(".trend-hero__player-slot");
+        var playBtn = media.querySelector(".trend-hero__play");
+        var closeBtn = media.querySelector(".trend-hero__video-close");
+        if (!slot) return;
+        stopTrendHeroVideo(media);
+        var info = parseTrendVideoForEmbed(url);
+        if (!info) {
+            var wrap = document.createElement("div");
+            wrap.className = "trend-hero__player-fallback";
+            var p = document.createElement("p");
+            p.textContent = "Lecture intégrée indisponible pour ce lien.";
+            wrap.appendChild(p);
+            var a = document.createElement("a");
+            a.href = url;
+            a.target = "_blank";
+            a.rel = "noopener noreferrer";
+            a.textContent = "Ouvrir dans le navigateur";
+            wrap.appendChild(a);
+            slot.appendChild(wrap);
+        } else if (info.kind === "direct") {
+            var vid = document.createElement("video");
+            vid.className = "trend-hero__native-video";
+            vid.setAttribute("controls", "");
+            vid.setAttribute("playsinline", "");
+            vid.setAttribute("webkit-playsinline", "");
+            vid.src = info.src;
+            slot.appendChild(vid);
+            vid.play().catch(function () {});
+        } else {
+            var iframe = document.createElement("iframe");
+            iframe.className = "trend-hero__embed";
+            iframe.setAttribute("src", info.embedSrc);
+            iframe.setAttribute("title", "Lecteur vidéo");
+            iframe.setAttribute("allowfullscreen", "");
+            iframe.setAttribute(
+                "allow",
+                "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            );
+            slot.appendChild(iframe);
+        }
+        media.classList.add("is-playing-video");
+        slot.hidden = false;
+        slot.setAttribute("aria-hidden", "false");
+        if (playBtn) playBtn.hidden = true;
+        if (closeBtn) closeBtn.hidden = false;
+    }
+
+    function initTrendDetailVideo() {
+        document.addEventListener("click", function (e) {
+            var closeBtn = e.target.closest(".trend-hero__video-close");
+            if (closeBtn) {
+                var mediaClose = closeBtn.closest(".trend-hero__media");
+                if (mediaClose) {
+                    e.preventDefault();
+                    stopTrendHeroVideo(mediaClose);
+                }
+                return;
+            }
+            var playBtn = e.target.closest(".trend-hero__play[data-trend-video-url]");
+            if (!playBtn) return;
+            e.preventDefault();
+            e.stopPropagation();
+            var media = playBtn.closest(".trend-hero__media");
+            var rawUrl = playBtn.getAttribute("data-trend-video-url");
+            if (media && rawUrl) startTrendHeroVideo(media, rawUrl);
+        });
+    }
+
     function initTrendSheet() {
         window.TrendslatorOpenSheet = function () {};
 
@@ -659,6 +773,12 @@
 
         document.addEventListener("keydown", function (e) {
             if (e.key === "Escape" && root.classList.contains("is-open")) {
+                var playing = contentEl && contentEl.querySelector(".trend-hero__media.is-playing-video");
+                if (playing) {
+                    e.preventDefault();
+                    stopTrendHeroVideo(playing);
+                    return;
+                }
                 closeSheet();
             }
         });
@@ -983,6 +1103,7 @@
         initGlossary();
         initSearchPage();
         initTrendsTabs();
+        initTrendDetailVideo();
         initTrendSheet();
         trendslatorHydrate();
         registerServiceWorker();

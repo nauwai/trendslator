@@ -442,12 +442,96 @@ body {
     justify-content: center;
     cursor: pointer;
     padding-left: 4px;
+    z-index: 3;
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
 }
 
 .trend-hero__play:active {
     transform: translate(-50%, -50%) scale(0.95);
+}
+
+.trend-hero__media.is-playing-video .trend-hero__play {
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.trend-hero__poster {
+    transition: opacity 0.2s ease;
+}
+
+.trend-hero__media.is-playing-video .trend-hero__poster {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.trend-hero__player-slot {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    background: #0a0a0a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.trend-hero__player-slot[hidden] {
+    display: none !important;
+}
+
+.trend-hero__embed {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+}
+
+.trend-hero__native-video {
+    width: 100%;
+    max-height: 100%;
+    display: block;
+    object-fit: contain;
+}
+
+.trend-hero__player-fallback {
+    padding: 16px 20px;
+    color: #fff;
+    font-size: 0.9rem;
+    line-height: 1.45;
+    text-align: center;
+}
+
+.trend-hero__player-fallback a {
+    color: #fff;
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.trend-hero__video-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 5;
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.94);
+    color: var(--color-text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+}
+
+.trend-hero__video-close[hidden] {
+    display: none !important;
+}
+
+.trend-hero__video-close:active {
+    transform: scale(0.96);
 }
 
 .trend-hero__divider {

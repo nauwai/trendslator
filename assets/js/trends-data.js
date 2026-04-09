@@ -198,11 +198,16 @@
         var vigilanceHtml = "";
         var play =
             t.v && /^https?:\/\//i.test(t.v)
-                ? "<a href=\"" +
+                ? "<div class=\"trend-hero__player-slot\" hidden aria-hidden=\"true\"></div>" +
+                  "<button type=\"button\" class=\"trend-hero__video-close\" hidden aria-label=\"Fermer la vidéo\">" +
+                  "<svg width=\"20\" height=\"20\" viewBox=\"0 0 20 20\" fill=\"none\" aria-hidden=\"true\">" +
+                  "<path d=\"M5 5l10 10M15 5L5 15\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\"/></svg>" +
+                  "</button>" +
+                  "<button type=\"button\" class=\"trend-hero__play\" data-trend-video-url=\"" +
                   escapeHtml(t.v) +
-                  "\" class=\"trend-hero__play\" target=\"_blank\" rel=\"noopener noreferrer\" aria-label=\"Ouvrir la vidéo (nouvel onglet)\">" +
+                  "\" aria-label=\"Lire la vidéo\">" +
                   "<svg width=\"28\" height=\"28\" viewBox=\"0 0 28 28\" fill=\"none\" aria-hidden=\"true\">" +
-                  "<path d=\"M11 8l10 6-10 6V8z\" fill=\"currentColor\"/></svg></a>"
+                  "<path d=\"M11 8l10 6-10 6V8z\" fill=\"currentColor\"/></svg></button>"
                 : "";
 
         var metaParts = [];
@@ -213,7 +218,7 @@
         return (
             "<div class=\"trend-hero\">" +
             "<div class=\"trend-hero__media\">" +
-            "<img src=\"" +
+            "<img class=\"trend-hero__poster\" src=\"" +
             escapeHtml(thumb) +
             "\" alt=\"\" width=\"900\" height=\"506\" loading=\"lazy\"/>" +
             vigilanceHtml +
