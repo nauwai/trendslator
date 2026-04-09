@@ -342,7 +342,6 @@
         var globalRoot = document.getElementById("search-global-results");
         var defaultView = document.getElementById("search-default-view");
         var resultsView = document.getElementById("search-results-view");
-        var suggestionsEl = document.getElementById("search-suggestions");
         var refreshBtn = document.getElementById("search-refresh-btn");
         if (!input || !globalRoot) return;
 
@@ -482,41 +481,6 @@
             );
         }
 
-        function renderSuggestions() {
-            if (!suggestionsEl) return;
-            var items = [];
-            store.trends.slice(0, 8).forEach(function (t) {
-                if (t && t.ti) items.push(t.ti);
-            });
-            store.old.slice(0, 8).forEach(function (t) {
-                if (t && t.title) items.push(t.title);
-            });
-            store.glossary.slice(0, 8).forEach(function (g) {
-                if (g && g.mot) items.push(g.mot);
-            });
-            var uniq = [];
-            var seen = {};
-            items.forEach(function (it) {
-                var key = it.toLowerCase();
-                if (!seen[key]) {
-                    seen[key] = true;
-                    uniq.push(it);
-                }
-            });
-            suggestionsEl.innerHTML = uniq
-                .slice(0, 14)
-                .map(function (text) {
-                    return (
-                        '<button type="button" class="search-suggestion-chip" data-suggestion="' +
-                        esc(text) +
-                        '">' +
-                        esc(text) +
-                        "</button>"
-                    );
-                })
-                .join("");
-        }
-
         function loadSearchData() {
             if (!T) {
                 return;
@@ -538,7 +502,6 @@
                 store.trends = trendsRaw ? T.normalizeAll(trendsRaw).list : [];
                 store.old = oldRaw ? T.normalizeOldTrends(oldRaw) : [];
                 store.glossary = glossRaw ? T.normalizeGlossary(glossRaw) : [];
-                renderSuggestions();
                 runSearch(input.value.trim());
             });
         }
@@ -559,16 +522,6 @@
                 loadSearchData();
             });
         }
-        if (suggestionsEl) {
-            suggestionsEl.addEventListener("click", function (e) {
-                var chip = e.target.closest("[data-suggestion]");
-                if (!chip) return;
-                var value = chip.getAttribute("data-suggestion") || "";
-                input.value = value;
-                runSearch(value);
-            });
-        }
-
         loadSearchData();
     }
 
