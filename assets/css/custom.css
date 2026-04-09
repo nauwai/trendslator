@@ -105,6 +105,33 @@ body {
     padding-bottom: 8px;
 }
 
+.trends-tabs {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 999px;
+    background: #fff;
+}
+
+.trends-tab {
+    appearance: none;
+    border: 0;
+    background: transparent;
+    border-radius: 999px;
+    padding: 8px 14px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--color-muted);
+    cursor: pointer;
+}
+
+.trends-tab.is-active {
+    color: #fff;
+    background: var(--color-purple);
+}
+
 /* Contenu scrollable (zone centrale sous statut + titre d’onglet) */
 .content {
     flex: 1;
@@ -135,6 +162,38 @@ body {
 
 .trend-card:last-child {
     margin-bottom: 0;
+}
+
+.old-trends-root {
+    padding: 0 20px 8px;
+}
+
+.old-trend-card {
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 14px;
+    background: #fff;
+    padding: 14px;
+    margin-bottom: 12px;
+}
+
+.old-trend-card__title {
+    margin: 0 0 6px;
+    font-size: 1.02rem;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+}
+
+.old-trend-card__meta {
+    margin: 0 0 8px;
+    font-size: 0.78rem;
+    color: #8a8a8f;
+}
+
+.old-trend-card__desc {
+    margin: 0;
+    font-size: 0.88rem;
+    line-height: 1.45;
+    color: var(--color-muted);
 }
 
 .trend-card__media {
@@ -830,6 +889,13 @@ body {
     background: transparent;
 }
 
+button.glossary-row {
+    width: 100%;
+    border: 0;
+    text-align: left;
+    cursor: pointer;
+}
+
 .glossary-row:last-child {
     border-bottom: none;
 }
@@ -875,6 +941,27 @@ body {
     color: var(--color-text);
     opacity: 0.75;
     flex-shrink: 0;
+    transition: transform 0.2s ease;
+}
+
+.glossary-row.is-open .glossary-chevron {
+    transform: rotate(180deg);
+}
+
+.glossary-panel {
+    padding: 0 8px 12px 2px;
+    margin-top: -6px;
+}
+
+.glossary-panel[hidden] {
+    display: none;
+}
+
+.glossary-definition {
+    margin: 0 0 0 116px;
+    font-size: 0.875rem;
+    line-height: 1.45;
+    color: #4f4f55;
 }
 
 .glossary-index {

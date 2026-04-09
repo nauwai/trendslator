@@ -1,5 +1,9 @@
 (function () {
     var JSON_URL = "trend_detector/data/trends.json";
+    var OLD_TRENDS_URL = "trend_detector/data/old_trends.json";
+    var OLD_TRENDS_URL_FALLBACK = "trend_detector/data/old_trend.json";
+    var GLOSSARY_URL = "trend_detector/data/glossaire.json";
+    var GLOSSARY_URL_FALLBACK = "trend_detector/data/glossary.json";
     var THUMBNAILS = [
         "assets/img/thumbnail/skibiditentafruit.png",
         "assets/img/thumbnail/kiki-pitchoune.jpg"
@@ -293,15 +297,89 @@
         return parts.join("");
     }
 
+    function normalizeOldTrends(data) {
+        var arr = Array.isArray(data) ? data : [];
+        return arr.map(function (t, i) {
+            var title = (t && (t["Titre"] || t.titre || t.title)) || ("Tendance ancienne " + (i + 1));
+            var desc = (t && (t["Description"] || t.description)) || "";
+            var tag = (t && (t["Tag"] || t.tag)) || "";
+            var category = (t && (t["Catégorie"] || t.categorie || t.category)) || "";
+            return {
+                id: "old-" + slugify(title) + "-" + i,
+                title: String(title).trim(),
+                description: String(desc).trim(),
+                tag: String(tag || "").trim(),
+                category: String(category || "").trim()
+            };
+        });
+    }
+
+    function oldTrendCardHtml(item) {
+        var meta = [];
+        if (item.tag) meta.push("Tag: " + item.tag);
+        if (item.category) meta.push("Catégorie: " + item.category);
+        return (
+            "<article class=\"old-trend-card\">" +
+            "<h2 class=\"old-trend-card__title\">" +
+            escapeHtml(item.title) +
+            "</h2>" +
+            (meta.length
+                ? "<p class=\"old-trend-card__meta\">" + escapeHtml(meta.join(" · ")) + "</p>"
+                : "") +
+            "<p class=\"old-trend-card__desc\">" +
+            escapeHtml(truncate(item.description, 280) || "Description indisponible.") +
+            "</p>" +
+            "</article>"
+        );
+    }
+
+    function normalizeGlossary(data) {
+        var arr = Array.isArray(data) ? data : [];
+        return arr
+            .map(function (it) {
+                var mot = (it && (it.mot || it.word || it.term || it.titre)) || "";
+                var def = (it && (it.definition || it.def || it.description)) || "";
+                return { mot: String(mot).trim(), definition: String(def).trim() };
+            })
+            .filter(function (it) {
+                return it.mot && it.definition;
+            });
+    }
+
     window.TrendslatorData = {
         JSON_URL: JSON_URL,
+        OLD_TRENDS_URL: OLD_TRENDS_URL,
+        GLOSSARY_URL: GLOSSARY_URL,
         load: function () {
             return fetch(JSON_URL, { cache: "no-store" }).then(function (r) {
                 if (!r.ok) throw new Error("trends_json");
                 return r.json();
             });
         },
+        loadOldTrends: function () {
+            return fetch(OLD_TRENDS_URL, { cache: "no-store" })
+                .then(function (r) {
+                    if (r.ok) return r.json();
+                    return fetch(OLD_TRENDS_URL_FALLBACK, { cache: "no-store" }).then(function (rf) {
+                        if (!rf.ok) throw new Error("old_trends_json");
+                        return rf.json();
+                    });
+                });
+        },
+        loadGlossary: function () {
+            return fetch(GLOSSARY_URL, { cache: "no-store" })
+                .then(function (r) {
+                    if (r.ok) return r.json();
+                    return fetch(GLOSSARY_URL_FALLBACK, { cache: "no-store" }).then(function (rf) {
+                        if (!rf.ok) throw new Error("glossary_json");
+                        return rf.json();
+                    });
+                });
+        },
         normalizeAll: normalizeAll,
+        normalizeOldTrends: normalizeOldTrends,
+        oldTrendCardHtml: oldTrendCardHtml,
+        normalizeGlossary: normalizeGlossary,
         pickFeatured: pickFeatured,
         thumbnailFor: thumbnailFor,
         truncate: truncate,

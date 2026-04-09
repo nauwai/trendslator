@@ -4,12 +4,15 @@
         var indexEl = document.getElementById("glossary-index");
         if (!scrollEl || !indexEl) return;
 
-        var sections = scrollEl.querySelectorAll(".glossary-section");
         var scrubPointerId = null;
         var scrubStartY = 0;
         var scrubMode = false;
         var lastScrubLetter = "";
         var suppressIndexLinkClick = false;
+
+        function getSections() {
+            return scrollEl.querySelectorAll(".glossary-section");
+        }
 
         function setActiveLetter(letter) {
             indexEl.querySelectorAll("[data-letter]").forEach(function (el) {
@@ -19,6 +22,29 @@
                 } else {
                     el.classList.toggle("glossary-index__letter--active", on);
                     el.classList.toggle("glossary-index__letter--inactive", !on);
+                }
+            });
+        }
+
+        function syncIndexLinks() {
+            indexEl.querySelectorAll("[data-letter]").forEach(function (el) {
+                var letter = el.getAttribute("data-letter");
+                var exists = !!document.getElementById("glossary-letter-" + letter);
+                if (el.matches("a.glossary-index__link")) {
+                    if (!exists) {
+                        var span = document.createElement("span");
+                        span.className = "glossary-index__letter glossary-index__letter--inactive";
+                        span.setAttribute("data-letter", letter);
+                        span.textContent = letter;
+                        el.replaceWith(span);
+                    }
+                } else if (exists) {
+                    var a = document.createElement("a");
+                    a.href = "#glossary-letter-" + letter;
+                    a.className = "glossary-index__link";
+                    a.setAttribute("data-letter", letter);
+                    a.textContent = letter;
+                    el.replaceWith(a);
                 }
             });
         }
@@ -41,8 +67,8 @@
                 } else {
                     target.scrollIntoView({ behavior: "smooth", block: "start" });
                 }
+                setActiveLetter(letter);
             }
-            setActiveLetter(letter);
         }
 
         function applyScrub(clientY, clientX) {
@@ -53,6 +79,7 @@
         }
 
         function syncActiveFromScroll() {
+            var sections = getSections();
             if (!sections.length) return;
             var st = scrollEl.scrollTop;
             var threshold = 32;
@@ -66,8 +93,140 @@
             setActiveLetter(current);
         }
 
+        function badgeClass(index) {
+            var arr = ["glossary-badge--orange", "glossary-badge--yellow", "glossary-badge--purple"];
+            return arr[index % arr.length];
+        }
+
+        function esc(s) {
+            return String(s == null ? "" : s)
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;");
+        }
+
+        function renderGlossary(entries) {
+            var loading = document.getElementById("glossary-loading");
+            if (loading) loading.remove();
+
+            if (!entries.length) {
+                scrollEl.innerHTML =
+                    '<p class="trends-loading">Aucun terme disponible dans le glossaire.</p>';
+                return;
+            }
+
+            entries.sort(function (a, b) {
+                return a.mot.localeCompare(b.mot, "fr", { sensitivity: "base" });
+            });
+            var grouped = {};
+            entries.forEach(function (item) {
+                var letter = item.mot.charAt(0).toUpperCase();
+                if (!/^[A-Z]$/.test(letter)) letter = "A";
+                if (!grouped[letter]) grouped[letter] = [];
+                grouped[letter].push(item);
+            });
+
+            var letters = Object.keys(grouped).sort();
+            var parts = [];
+            letters.forEach(function (letter) {
+                parts.push(
+                    '<section id="glossary-letter-' +
+                        letter +
+                        '" class="glossary-section" data-letter="' +
+                        letter +
+                        '" aria-label="Lettre ' +
+                        letter +
+                        '">'
+                );
+                grouped[letter].forEach(function (item, idx) {
+                    var shortDef =
+                        item.definition.length > 90
+                            ? item.definition.slice(0, 89).trim() + "…"
+                            : item.definition;
+                    var panelId = "glossary-panel-" + letter + "-" + idx;
+                    parts.push(
+                        '<button type="button" class="glossary-row" aria-expanded="false" aria-controls="' +
+                            panelId +
+                            '">' +
+                            '<span class="glossary-badge ' +
+                            badgeClass(idx) +
+                            '">' +
+                            esc(item.mot) +
+                            "</span>" +
+                            '<p class="glossary-snippet">' +
+                            esc(shortDef) +
+                            "</p>" +
+                            '<span class="glossary-chevron" aria-hidden="true">' +
+                            '<svg width="12" height="12" viewBox="0 0 12 12" fill="none">' +
+                            '<path d="M2.5 4.5L6 8l3.5-3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />' +
+                            "</svg></span></button>" +
+                            '<div class="glossary-panel" id="' +
+                            panelId +
+                            '" hidden><p class="glossary-definition">' +
+                            esc(item.definition) +
+                            "</p></div>"
+                    );
+                });
+                parts.push("</section>");
+            });
+
+            scrollEl.innerHTML = parts.join("");
+            syncIndexLinks();
+            syncActiveFromScroll();
+        }
+
+        function bindGlossaryAccordionAndSearch() {
+            scrollEl.addEventListener("click", function (e) {
+                var row = e.target.closest(".glossary-row");
+                if (!row) return;
+                var expanded = row.getAttribute("aria-expanded") === "true";
+                var panelId = row.getAttribute("aria-controls");
+                var panel = panelId ? document.getElementById(panelId) : null;
+                row.setAttribute("aria-expanded", expanded ? "false" : "true");
+                row.classList.toggle("is-open", !expanded);
+                if (panel) panel.hidden = expanded;
+            });
+
+            var input = document.getElementById("glossary-search-input");
+            var cancel = document.getElementById("glossary-search-cancel");
+            if (cancel && input) {
+                cancel.addEventListener("click", function () {
+                    input.value = "";
+                    input.dispatchEvent(new Event("input"));
+                    input.blur();
+                });
+                input.addEventListener("input", function () {
+                    var q = input.value.trim().toLowerCase();
+                    scrollEl.querySelectorAll(".glossary-row").forEach(function (row) {
+                        var badge = row.querySelector(".glossary-badge");
+                        var snippet = row.querySelector(".glossary-snippet");
+                        var panel = document.getElementById(row.getAttribute("aria-controls"));
+                        var full =
+                            (badge ? badge.textContent : "") +
+                            " " +
+                            (snippet ? snippet.textContent : "") +
+                            " " +
+                            (panel ? panel.textContent : "");
+                        var show = !q || full.toLowerCase().indexOf(q) !== -1;
+                        row.style.display = show ? "" : "none";
+                        if (panel) {
+                            panel.hidden = true;
+                            panel.style.display = show ? "" : "none";
+                        }
+                        row.setAttribute("aria-expanded", "false");
+                        row.classList.remove("is-open");
+                    });
+                    scrollEl.querySelectorAll(".glossary-section").forEach(function (sec) {
+                        var visible = !!sec.querySelector('.glossary-row:not([style*="display: none"])');
+                        sec.style.display = visible ? "" : "none";
+                    });
+                    syncActiveFromScroll();
+                });
+            }
+        }
+
         scrollEl.addEventListener("scroll", syncActiveFromScroll, { passive: true });
-        syncActiveFromScroll();
 
         indexEl.addEventListener(
             "click",
@@ -81,17 +240,15 @@
             true
         );
 
-        indexEl.querySelectorAll('a[href^="#glossary-letter-"]').forEach(function (a) {
-            a.addEventListener("click", function (e) {
-                e.preventDefault();
-                var id = a.getAttribute("href").slice(1);
-                var target = document.getElementById(id);
-                if (target) {
-                    target.scrollIntoView({ behavior: "smooth", block: "start" });
-                }
-                var letter = id.replace("glossary-letter-", "");
-                if (letter.length === 1) setActiveLetter(letter);
-            });
+        indexEl.addEventListener("click", function (e) {
+            var a = e.target.closest('a[href^="#glossary-letter-"]');
+            if (!a) return;
+            e.preventDefault();
+            var id = a.getAttribute("href").slice(1);
+            var target = document.getElementById(id);
+            if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+            var letter = id.replace("glossary-letter-", "");
+            if (letter.length === 1) setActiveLetter(letter);
         });
 
         indexEl.addEventListener("pointerdown", function (e) {
@@ -141,23 +298,24 @@
             } catch (err2) {}
         });
 
-        var input = document.getElementById("glossary-search-input");
-        var cancel = document.getElementById("glossary-search-cancel");
-        if (cancel && input) {
-            cancel.addEventListener("click", function () {
-                input.value = "";
-                input.blur();
-            });
-        }
+        bindGlossaryAccordionAndSearch();
 
-        if (window.location.hash === "#glossary-letter-D") {
-            var d = document.getElementById("glossary-letter-D");
-            if (d) {
-                requestAnimationFrame(function () {
-                    d.scrollIntoView({ behavior: "auto", block: "start" });
-                    syncActiveFromScroll();
+        var T = window.TrendslatorData;
+        if (T && typeof T.loadGlossary === "function") {
+            T.loadGlossary()
+                .then(function (data) {
+                    renderGlossary(T.normalizeGlossary(data));
+                })
+                .catch(function () {
+                    var loading = document.getElementById("glossary-loading");
+                    if (loading) {
+                        loading.textContent = "Impossible de charger le glossaire.";
+                    }
+                    syncIndexLinks();
                 });
-            }
+        } else {
+            syncIndexLinks();
+            syncActiveFromScroll();
         }
     }
 
@@ -170,6 +328,31 @@
                 input.blur();
             });
         }
+    }
+
+    function initTrendsTabs() {
+        var tabs = document.querySelectorAll("[data-trends-tab]");
+        if (!tabs.length) return;
+        var panelNew = document.getElementById("trends-panel-new");
+        var panelOld = document.getElementById("trends-panel-old");
+
+        function activate(name) {
+            tabs.forEach(function (btn) {
+                var on = btn.getAttribute("data-trends-tab") === name;
+                btn.classList.toggle("is-active", on);
+                btn.setAttribute("aria-selected", on ? "true" : "false");
+            });
+            if (panelNew) panelNew.hidden = name !== "new";
+            if (panelOld) panelOld.hidden = name !== "old";
+        }
+
+        tabs.forEach(function (btn) {
+            btn.addEventListener("click", function () {
+                activate(btn.getAttribute("data-trends-tab"));
+            });
+        });
+
+        activate("new");
     }
 
     function initTrendSheet() {
@@ -464,7 +647,8 @@
         var needsData =
             document.getElementById("home-featured-root") ||
             document.getElementById("trends-cards-root") ||
-            document.getElementById("search-trends-list");
+            document.getElementById("search-trends-list") ||
+            document.getElementById("old-trends-root");
 
         if (document.getElementById("tt-quiz-question")) {
             initHomeQuiz(STATIC_QUIZ_QUESTIONS);
@@ -474,8 +658,18 @@
             return;
         }
 
-        T.load()
-            .then(function (data) {
+        Promise.all([
+            T.load().catch(function () {
+                return null;
+            }),
+            T.loadOldTrends().catch(function () {
+                return null;
+            })
+        ])
+            .then(function (results) {
+                var data = results[0];
+                var oldData = results[1];
+                if (!data) throw new Error("trends_missing");
                 var norm = T.normalizeAll(data);
                 window.__trendById = norm.byId;
 
@@ -521,6 +715,19 @@
                     }
                 }
 
+                var oldRoot = document.getElementById("old-trends-root");
+                var oldLoadingEl = document.getElementById("old-trends-loading");
+                if (oldRoot) {
+                    var oldItems = T.normalizeOldTrends(oldData || []);
+                    if (oldItems.length) {
+                        oldRoot.innerHTML = oldItems.map(T.oldTrendCardHtml).join("");
+                        oldRoot.hidden = false;
+                        if (oldLoadingEl) oldLoadingEl.hidden = true;
+                    } else if (oldLoadingEl) {
+                        oldLoadingEl.textContent = "Aucune ancienne trend disponible.";
+                    }
+                }
+
                 var searchUl = document.getElementById("search-trends-list");
                 if (searchUl) {
                     searchUl.innerHTML = T.searchHitsHtml(norm.list, 12);
@@ -558,6 +765,11 @@
                 if (loadingEl) {
                     loadingEl.textContent = "Impossible de charger les tendances. Vérifiez la connexion.";
                 }
+                var oldLoadingEl = document.getElementById("old-trends-loading");
+                if (oldLoadingEl) {
+                    oldLoadingEl.textContent =
+                        "Impossible de charger les anciennes trends.";
+                }
                 var searchUlFail = document.getElementById("search-trends-list");
                 if (searchUlFail && !searchUlFail.querySelector("a.search-hit")) {
                     searchUlFail.innerHTML =
@@ -574,6 +786,7 @@
     document.addEventListener("DOMContentLoaded", function () {
         initGlossary();
         initSearchPage();
+        initTrendsTabs();
         initTrendSheet();
         trendslatorHydrate();
         registerServiceWorker();
