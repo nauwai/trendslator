@@ -7,8 +7,9 @@
     --color-yellow: #fee440;
     --color-nav-inactive: #9ca3af;
     --color-border: #111111;
-    /* DA : angles droits (néo-brut / sérieux), pas de coins arrondis globaux */
+    /* DA : blocs en angles droits ; exceptions : pastilles (pill), bouton play rond */
     --radius: 0;
+    --radius-pill: 999px;
     --shadow-offset-x: 6px;
     --shadow-offset-y: 6px;
     --font: "DM Sans", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
@@ -86,7 +87,7 @@ body {
     display: inline-flex;
     align-items: center;
     padding: 6px 14px;
-    border-radius: var(--radius);
+    border-radius: var(--radius-pill);
     font-size: 0.8125rem;
     font-weight: 600;
     white-space: nowrap;
@@ -436,7 +437,7 @@ body {
     width: 64px;
     height: 64px;
     border: none;
-    border-radius: var(--radius);
+    border-radius: 50%;
     background: rgba(255, 255, 255, 0.45);
     color: #fff;
     display: flex;
