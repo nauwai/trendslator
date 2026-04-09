@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+    <meta name="theme-color" content="#fe502d"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-title" content="Trendslator"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="default"/>
+    <link rel="manifest" href="assets/img/favicon/site.webmanifest"/>
+    <link rel="icon" href="assets/img/favicon/favicon.ico" sizes="any"/>
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon/favicon-32x32.png"/>
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon/favicon-16x16.png"/>
+    <link rel="apple-touch-icon" href="assets/img/favicon/apple-touch-icon.png"/>
+    <meta name="description" content="À propos — Trendslator, tendances et langage du web francophone"/>
+    <meta name="author" content="Trendslator"/>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Gasoek+One&display=swap" rel="stylesheet"/>
+
+    <link rel="stylesheet" href="assets/css/custom.css"/>
+
+    <title>À propos — Trendslator</title>
+</head>
+
+<body>
+<div class="app">
+    <header class="page-head">
+        <h1 class="page-head__title">À propos</h1>
+    </header>
+
+    <main class="content">
+        <div class="about-page">
+            <p class="about-page__lead">
+                Trendslator est une vitrine mobile pour suivre le langage et les tendances du web francophone — memes, expressions, formats, et le contexte qui va avec.
+            </p>
+
+            <section class="about-page__section" aria-labelledby="about-what-heading">
+                <h2 id="about-what-heading">Ce que tu trouves ici</h2>
+                <p>
+                    Un flux des tendances du moment, des fiches pour creuser chaque sujet, un glossaire pour décoder le vocabulaire, et un petit quiz pour tester si tu es à la page.
+                </p>
+            </section>
+
+            <section class="about-page__section" aria-labelledby="about-why-heading">
+                <h2 id="about-why-heading">Pourquoi ce projet</h2>
+                <p>
+                    L’objectif est de rendre ces signaux lisibles et contextualisés : d’où vient une expression, ce qu’elle veut dire aujourd’hui, et comment elle circule en ligne — sans se prendre trop au sérieux.
+                </p>
+            </section>
+
+            <section class="about-page__section" aria-labelledby="about-data-heading">
+                <h2 id="about-data-heading">Données et vigilance</h2>
+                <p>
+                    Les contenus sont assemblés à partir de sources ouvertes et de signaux publics (réseaux, actualités culturelles web). Les chiffres et exemples peuvent évoluer vite : pense à vérifier sur les plateformes si tu en as besoin pour un usage pro ou académique.
+                </p>
+            </section>
+
+            <section class="about-page__section" aria-labelledby="about-contact-heading">
+                <h2 id="about-contact-heading">Projet</h2>
+                <p>
+                    Trendslator est un projet expérimental et évolutif. Les textes et l’interface peuvent changer au fil des mises à jour.
+                </p>
+            </section>
+        </div>
+    </main>
+
+    <div class="app-dock">
+        <nav class="bottom-nav" aria-label="Navigation principale">
+            <a href="index.html" class="bottom-nav__item bottom-nav__item--active" aria-current="page">
+                <img class="bottom-nav__icon bottom-nav__icon--home" src="assets/img/icon/home_icon.svg" alt="" width="24" height="24" decoding="async"/>
+                <span>Accueil</span>
+            </a>
+            <a href="trends.html" class="bottom-nav__item">
+                <img class="bottom-nav__icon bottom-nav__icon--trends" src="assets/img/icon/card_icon.svg" alt="" width="28" height="21" decoding="async"/>
+                <span>Trends</span>
+            </a>
+            <a href="glossaire.html" class="bottom-nav__item">
+                <img class="bottom-nav__icon bottom-nav__icon--glossaire" src="assets/img/icon/glossaire_icon.svg" alt="" width="24" height="23" decoding="async"/>
+                <span>Glossaire</span>
+            </a>
+            <a href="rechercher.html" class="bottom-nav__item">
+                <img class="bottom-nav__icon bottom-nav__icon--search" src="assets/img/icon/search_icon.svg" alt="" width="22" height="22" decoding="async"/>
+                <span>Rechercher</span>
+            </a>
+        </nav>
+    </div>
+</div>
+
+<script src="assets/js/trends-data.js" defer></script>
+<script src="assets/js/main.js" defer></script>
+</body>
+
+</html>
