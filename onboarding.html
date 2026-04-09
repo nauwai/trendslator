@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+  <meta name="theme-color" content="#fe502d"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="default"/>
+  <link rel="manifest" href="assets/img/favicon/site.webmanifest"/>
+  <link rel="icon" href="assets/img/favicon/favicon.ico" sizes="any"/>
+  <link rel="apple-touch-icon" href="assets/img/favicon/apple-touch-icon.png"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Gasoek+One&display=swap" rel="stylesheet"/>
+  <title>Trendslator</title>
+  <style>
+    :root {
+      --orange: #fe502d;
+      --yellow: #fee440;
+      --purple: #9d4edd;
+      --black: #111111;
+      --white: #ffffff;
+      --radius-card: 18px;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      height: 100%;
+      overflow: hidden;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: "DM Sans", -apple-system, sans-serif;
+      background: #e8e8e8;
+    }
+
+    /* ─── WRAPPER ──────────────────────────────── */
+    .app {
+      max-width: 430px;
+      height: 100dvh;
+      margin: 0 auto;
+      background: var(--orange);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* ─── SPLASH ───────────────────────────────── */
+    .splash {
+      position: absolute;
+      inset: 0;
+      background: var(--orange);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: calc(env(safe-area-inset-top, 0px) + 12px);
+      z-index: 20;
+      transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1),
+                  opacity   0.55s ease;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .splash.exit {
+      transform: translateY(-105%);
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .splash__logo {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .logo-trend {
+      font-family: "Gasoek One", sans-serif;
+      font-size: 72px;
+      line-height: 1;
+      color: var(--yellow);
+      letter-spacing: -0.02em;
+    }
+
+    .logo-slator-wrap {
+      background: var(--black);
+      padding: 5px 20px 7px;
+    }
+
+    .logo-slator {
+      font-family: "Gasoek One", sans-serif;
+      font-size: 27.8px;
+      letter-spacing: 0.15em;
+      color: var(--yellow);
+    }
+
+    .splash__hint {
+      font-family: "Gasoek One", sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      color: rgba(0, 0, 0, 0.32);
+      margin-bottom: 28px;
+    }
+
+    /* Cards preview stack at bottom of splash */
+    .splash__preview {
+      width: 100%;
+      position: relative;
+      height: 200px;
+      flex-shrink: 0;
+    }
+
+    .preview-card {
+      position: absolute;
+      left: 20px;
+      right: 20px;
+      border-radius: 16px 16px 0 0;
+    }
+
+    .preview-card--1 { background: var(--black);  height: 200px; bottom: 0;    z-index: 3; }
+    .preview-card--2 { background: var(--yellow); height: 180px; bottom: -20px; z-index: 2; }
+    .preview-card--3 { background: var(--purple); height: 160px; bottom: -40px; z-index: 1; }
+
+    /* ─── ONBOARDING ───────────────────────────── */
+    .onboarding {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      padding-top: calc(env(safe-area-inset-top, 0px) + 24px);
+      padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 24px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease 0.1s;
+    }
+
+    .onboarding.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* Cards area — takes all space between top padding and passer btn */
+    .cards-area {
+      flex: 1;
+      position: relative;
+      margin: 0 20px;
+      min-height: 0;
+      padding-bottom: 14px;
+    }
+
+    /* ─── CARDS ────────────────────────────────── */
+    .ocard {
+      position: absolute;
+      inset: 0;
+      border-radius: var(--radius-card);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+                  opacity   0.45s ease;
+      will-change: transform;
+      cursor: pointer;
+    }
+
+    /* ── Stack depths */
+    .ocard[data-pos="0"] { transform: translateY(0)    scale(1);     z-index: 3; }
+    .ocard[data-pos="1"] { transform: translateY(18px) scale(0.958); z-index: 2; }
+    .ocard[data-pos="2"] { transform: translateY(36px) scale(0.916); z-index: 1; }
+    .ocard[data-pos="out"] {
+      transform: translateX(-115%) rotate(-7deg);
+      opacity: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* ── Card colours */
+    .ocard--black  { background: var(--black);  }
+    .ocard--yellow { background: var(--yellow); }
+    .ocard--purple { background: var(--purple); }
+
+    /* ─── CARD INNER (left-aligned, top-anchored) ── */
+    .ocard__inner {
+      flex: 1;
+      padding: 28px 24px 26px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      text-align: left;
+      gap: 8px;
+      min-height: 0;
+    }
+
+    .ocard__progress {
+      width: 100%;
+      height: 8px;
+      border-radius: 999px;
+      overflow: hidden;
+      margin-bottom: 10px;
+    }
+
+    @media (min-width: 900px) {
+      .ocard__progress {
+        width: calc(100% + 24px);
+        margin-right: -24px;
+      }
+    }
+
+    .ocard__progress-fill {
+      display: block;
+      height: 100%;
+      width: var(--progress, 0%);
+      border-radius: inherit;
+    }
+
+    .ocard--black .ocard__progress { background: rgba(255,255,255,0.2); }
+    .ocard--black .ocard__progress-fill { background: var(--yellow); }
+    .ocard--yellow .ocard__progress { background: rgba(0,0,0,0.15); }
+    .ocard--yellow .ocard__progress-fill { background: var(--black); }
+    .ocard--purple .ocard__progress { background: rgba(255,255,255,0.22); }
+    .ocard--purple .ocard__progress-fill { background: var(--yellow); }
+
+    /* ── Step label */
+    .ocard__step {
+      font-family: "Gasoek One", sans-serif;
+      font-size: 14px;
+      letter-spacing: 0.08em;
+      margin-bottom: 4px;
+      opacity: 0.75;
+    }
+
+    .ocard--black  .ocard__step { color: var(--yellow); }
+    .ocard--yellow .ocard__step { color: var(--black);  }
+    .ocard--purple .ocard__step { color: var(--yellow); }
+
+    /* ── Main title — 27.8px Gasoek One */
+    .ocard__title {
+      font-family: "Gasoek One", sans-serif;
+      font-size: 28px;
+      font-weight: 400;
+      line-height: 1.05;
+      letter-spacing: -0.01em;
+      margin-bottom: 2px;
+    }
+
+    .ocard--black  .ocard__title { color: var(--yellow); }
+    .ocard--yellow .ocard__title { color: var(--black);  }
+    .ocard--purple .ocard__title { color: var(--yellow); }
+
+    /* Highlight inside title */
+    .ocard__title mark {
+      background: var(--purple);
+      color: var(--yellow);
+      padding: 1px 7px 3px;
+      border-radius: 3px;
+      font-style: normal;
+    }
+
+    .ocard--yellow .ocard__title mark {
+      background: var(--orange);
+      color: var(--white);
+    }
+
+    /* ── Subtitle */
+    .ocard__sub {
+      font-family: "DM Sans", -apple-system, sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      line-height: 1.35;
+      margin-bottom: 8px;
+    }
+
+    .ocard--black  .ocard__sub { color: #ffffff; }
+    .ocard--yellow .ocard__sub { color: rgba(0,0,0,0.50);       }
+    .ocard--purple .ocard__sub { color: rgba(255,255,255,0.6);  }
+
+    /* ── Body text */
+    .ocard__body {
+      font-family: "DM Sans", -apple-system, sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      font-weight: 400;
+      flex: 0 0 auto;
+      margin-bottom: 2px;
+    }
+
+    .ocard[data-idx="0"] .ocard__title {
+      line-height: 1.1;
+      margin-bottom: 4px;
+    }
+
+    .ocard[data-idx="0"] .ocard__body {
+      font-size: 17px;
+      line-height: 1.5;
+      font-weight: 400;
+    }
+
+    .ocard[data-idx="0"] .ocard__step {
+      color: var(--yellow);
+      opacity: 1;
+    }
+
+    .ocard--black  .ocard__body { color: #ffffff; }
+    .ocard--yellow .ocard__body { color: rgba(0,0,0,0.68);       }
+    .ocard--purple .ocard__body { color: rgba(255,255,255,0.80); }
+
+    .ocard__foot {
+      width: 100%;
+      margin-top: auto;
+      padding-top: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .ocard__divider {
+      width: 100%;
+      height: 1px;
+    }
+
+    .ocard--black .ocard__divider,
+    .ocard--purple .ocard__divider {
+      background: rgba(255,255,255,0.16);
+    }
+
+    .ocard--yellow .ocard__divider {
+      background: rgba(0,0,0,0.12);
+    }
+
+    .ocard__meta {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      width: 100%;
+    }
+
+    .ocard__meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      min-width: 0;
+    }
+
+    .ocard__meta-label {
+      font-family: "DM Sans", -apple-system, sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      opacity: 0.65;
+    }
+
+    .ocard__meta-value {
+      font-family: "DM Sans", -apple-system, sans-serif;
+      font-size: 14px;
+      line-height: 1.35;
+      font-weight: 400;
+    }
+
+    .ocard--black .ocard__meta-label,
+    .ocard--purple .ocard__meta-label {
+      color: rgba(255,255,255,0.68);
+    }
+
+    .ocard--black .ocard__meta-value,
+    .ocard--purple .ocard__meta-value {
+      color: #ffffff;
+    }
+
+    .ocard--yellow .ocard__meta-label {
+      color: rgba(0,0,0,0.5);
+    }
+
+    .ocard--yellow .ocard__meta-value {
+      color: rgba(0,0,0,0.82);
+    }
+
+    /* ─── MOT DU JOUR (purple card) ───────────── */
+    .mot-du-jour {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 6px;
+    }
+
+    .mot-search {
+      width: calc(100% + 16px);
+      margin-right: -16px;
+      min-height: 44px;
+      border-radius: 999px;
+      border: 2px solid var(--black);
+      background: var(--white);
+      display: flex;
+      align-items: center;
+      padding: 0 14px;
+      box-shadow: 3px 3px 0 var(--black);
+      margin-bottom: 2px;
+    }
+
+    .mot-search span {
+      font-family: "DM Sans", -apple-system, sans-serif;
+      font-size: 14px;
+      color: rgba(0,0,0,0.55);
+      font-weight: 500;
+    }
+
+    .mot-du-jour__label-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .mot-du-jour__label {
+      font-family: "DM Sans", sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.75);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .mot-du-jour__word {
+      font-family: "DM Sans", sans-serif;
+      font-size: 12px;
+      font-weight: 800;
+      font-style: italic;
+      background: var(--yellow);
+      color: var(--black);
+      padding: 3px 10px;
+      border-radius: 4px;
+    }
+
+    .mot-du-jour__def {
+      background: var(--white);
+      border-radius: 10px;
+      padding: 14px 16px;
+      border: 2px solid var(--black);
+      box-shadow: 3px 3px 0 var(--black);
+    }
+
+    .mot-du-jour__def p {
+      font-family: "DM Sans", -apple-system, sans-serif;
+      font-size: 14px;
+      line-height: 1.55;
+      font-weight: 400;
+      color: var(--black);
+      font-style: normal;
+    }
+
+    /* ─── PASSER BUTTON ────────────────────────── */
+    .btn-passer {
+      display: block;
+      flex-shrink: 0;
+      margin: 18px 20px 0;
+      padding: 17px 20px;
+      background: var(--yellow);
+      border: none;
+      border-radius: 100px;
+      font-family: "Gasoek One", sans-serif;
+      font-size: 18px;
+      letter-spacing: 0.06em;
+      color: var(--black);
+      text-align: center;
+      cursor: pointer;
+      text-decoration: none;
+      transition: opacity 0.15s ease, transform 0.15s ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .btn-passer:active {
+      opacity: 0.85;
+      transform: scale(0.98);
+    }
+  </style>
+</head>
+<body>
+<div class="app">
+
+  <!-- ── SPLASH ─────────────────────────────────── -->
+  <div class="splash" id="splash">
+    <div class="splash__logo">
+      <span class="logo-trend">TREND</span>
+      <div class="logo-slator-wrap">
+        <span class="logo-slator">SLATOR</span>
+      </div>
+    </div>
+
+    <p class="splash__hint">SCROLLEZ POUR CONTINUER</p>
+
+    <div class="splash__preview">
+      <div class="preview-card preview-card--3"></div>
+      <div class="preview-card preview-card--2"></div>
+      <div class="preview-card preview-card--1"></div>
+    </div>
+  </div>
+
+  <!-- ── ONBOARDING ─────────────────────────────── -->
+  <div class="onboarding" id="onboarding">
+
+    <div class="cards-area" id="cards-area">
+
+      <!-- ── CARD 1 — black ── -->
+      <div class="ocard ocard--black" data-pos="0" data-idx="0">
+        <div class="ocard__inner">
+          <div class="ocard__progress" aria-hidden="true">
+            <span class="ocard__progress-fill" style="--progress:33.333%"></span>
+          </div>
+          <span class="ocard__step">1 / 3</span>
+          <h2 class="ocard__title">
+            BIENVENUE<br>
+            DANS<br>
+            <mark>TRENDSLATOR</mark>
+          </h2>
+          <p class="ocard__sub">L'APPLICATION QUI COMPILE<br>LES TRENDS</p>
+          <p class="ocard__body">
+            On traduit les tendances du web pour que tu comprennes ce que suit ton ado — sans jargon, sans perdre de temps.
+          </p>
+          <div class="ocard__foot">
+            <div class="ocard__divider"></div>
+            <div class="ocard__meta">
+              <div class="ocard__meta-item">
+                <span class="ocard__meta-label">Contenus</span>
+                <span class="ocard__meta-value">Tendances, expressions et décryptages en format simple.</span>
+              </div>
+              <div class="ocard__meta-item">
+                <span class="ocard__meta-label">Objectif</span>
+                <span class="ocard__meta-value">Te mettre à jour en quelques secondes dès l'ouverture.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── CARD 2 — yellow ── -->
+      <div class="ocard ocard--yellow" data-pos="1" data-idx="1">
+        <div class="ocard__inner">
+          <div class="ocard__progress" aria-hidden="true">
+            <span class="ocard__progress-fill" style="--progress:66.666%"></span>
+          </div>
+          <span class="ocard__step">2 / 3</span>
+          <h2 class="ocard__title">
+            DÉCOUVREZ<br>
+            DES <mark>TRENDS</mark>
+          </h2>
+          <p class="ocard__sub">CE QUI BUZZ CHEZ LES 11–15 ANS</p>
+          <p class="ocard__body">
+            Chaque semaine, les tendances qui tournent sur TikTok, Snapchat et YouTube Shorts — avec le contexte pour les comprendre.
+          </p>
+          <div class="ocard__foot">
+            <div class="ocard__divider"></div>
+            <div class="ocard__meta">
+              <div class="ocard__meta-item">
+                <span class="ocard__meta-label">Sources</span>
+                <span class="ocard__meta-value">TikTok, YouTube Shorts, Snapchat et vocabulaire du moment.</span>
+              </div>
+              <div class="ocard__meta-item">
+                <span class="ocard__meta-label">Format</span>
+                <span class="ocard__meta-value">Des cartes courtes, lisibles et mises à jour régulièrement.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── CARD 3 — purple ── -->
+      <div class="ocard ocard--purple" data-pos="2" data-idx="2">
+        <div class="ocard__inner">
+          <div class="ocard__progress" aria-hidden="true">
+            <span class="ocard__progress-fill" style="--progress:100%"></span>
+          </div>
+          <span class="ocard__step">3 / 3</span>
+          <h2 class="ocard__title">
+            RECHERCHEZ<br>
+            DES MOTS
+          </h2>
+          <p class="ocard__sub">COMPRENEZ LE LANGAGE DE LA GEN-Z</p>
+
+          <div class="mot-search" aria-hidden="true">
+            <span>Rechercher un mot...</span>
+          </div>
+
+          <div class="mot-du-jour">
+            <div class="mot-du-jour__label-row">
+              <span class="mot-du-jour__label">Mot du jour</span>
+              <span class="mot-du-jour__word">"Goumin"</span>
+            </div>
+            <div class="mot-du-jour__def">
+              <p>Ce terme est utilisé pour définir les chagrins d'amour. Ce mot provient d'une langue ivorienne appelée le Nouchi.</p>
+            </div>
+          </div>
+          <div class="ocard__foot">
+            <div class="ocard__divider"></div>
+            <div class="ocard__meta">
+              <div class="ocard__meta-item">
+                <span class="ocard__meta-label">Recherche</span>
+                <span class="ocard__meta-value">Retrouve vite un mot entendu à la maison, en story ou en vidéo.</span>
+              </div>
+              <div class="ocard__meta-item">
+                <span class="ocard__meta-label">Usage</span>
+                <span class="ocard__meta-value">Une définition claire, le contexte et le ton pour mieux comprendre.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /cards-area -->
+
+    <!-- PASSER -->
+    <a class="btn-passer" id="btn-passer" href="index.html">PASSER</a>
+
+  </div><!-- /onboarding -->
+
+</div><!-- /app -->
+
+<script>
+  (() => {
+    const splash     = document.getElementById('splash');
+    const onboarding = document.getElementById('onboarding');
+    const cardsArea  = document.getElementById('cards-area');
+    const btnPasser  = document.getElementById('btn-passer');
+    const cards      = [...document.querySelectorAll('.ocard')];
+    const TOTAL      = cards.length;
+    let current      = 0;
+    let animating    = false;
+    let canAdvance   = false;
+
+    /* ── Splash → Onboarding */
+    function startOnboarding() {
+      splash.classList.add('exit');
+      onboarding.classList.add('visible');
+      setTimeout(() => { canAdvance = true; }, 420);
+    }
+
+    splash.addEventListener('click',    startOnboarding, { once: true });
+    splash.addEventListener('touchend', startOnboarding, { once: true, passive: true });
+
+    /* ── Advance cards */
+    function next() {
+      if (animating || !canAdvance) return;
+
+      animating = true;
+
+      if (current < TOTAL) {
+        cards[current].dataset.pos = 'out';
+        current++;
+
+        for (let i = current; i < TOTAL; i++) {
+          cards[i].dataset.pos = String(Math.min(i - current, 2));
+        }
+      }
+
+      if (current >= TOTAL) {
+        window.location.href = 'index.html';
+        return;
+      }
+
+      if (current === TOTAL - 1) {
+        btnPasser.textContent = "C'EST PARTI !";
+      }
+
+      setTimeout(() => { animating = false; }, 450);
+    }
+
+    /* ── Tap card */
+    cardsArea.addEventListener('click', next);
+
+    /* ── Swipe left */
+    let tx = 0;
+    cardsArea.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, { passive: true });
+    cardsArea.addEventListener('touchend',   e => { if (e.changedTouches[0].clientX - tx < -40) next(); }, { passive: true });
+
+    /* ── PASSER click */
+    btnPasser.addEventListener('click', () => {
+      if (current >= TOTAL - 1) window.location.href = 'index.html';
+    });
+
+  })();
+</script>
+</body>
+</html>
