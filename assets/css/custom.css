@@ -65,6 +65,20 @@ body {
     background: var(--color-bg);
 }
 
+.page-head__title-row {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.page-head__title-row .page-head__title {
+    margin-bottom: 0;
+    flex: 1;
+    min-width: 0;
+}
+
 .page-head__title {
     font-family: var(--font-display);
     font-size: clamp(2.25rem, 9vw, 2.75rem);
@@ -74,6 +88,80 @@ body {
     letter-spacing: -0.02em;
     line-height: 1.05;
     margin-bottom: 25px;
+}
+
+.page-head__about-link {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    margin-bottom: 0.12em;
+    color: var(--color-muted);
+    opacity: 0.42;
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.page-head__about-link:hover {
+    opacity: 0.62;
+}
+
+.page-head__about-link:active {
+    opacity: 0.85;
+}
+
+.page-head__about-link:focus-visible {
+    outline: 2px solid var(--color-coral);
+    outline-offset: 3px;
+}
+
+.page-head__about-icon {
+    display: block;
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+    opacity: 0.95;
+}
+
+/* Page À propos */
+.about-page {
+    padding-bottom: 8px;
+}
+
+.about-page__lead {
+    font-size: 1.0625rem;
+    font-weight: 500;
+    color: var(--color-text);
+    line-height: 1.5;
+    margin: 0 0 20px;
+    letter-spacing: -0.02em;
+}
+
+.about-page__section {
+    margin-bottom: 22px;
+}
+
+.about-page__section h2 {
+    font-size: 0.9375rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--color-muted);
+    margin: 0 0 10px;
+}
+
+.about-page__section p {
+    font-size: 0.9375rem;
+    font-weight: 400;
+    color: var(--color-muted);
+    line-height: 1.55;
+    margin: 0 0 10px;
+}
+
+.about-page__section p:last-child {
+    margin-bottom: 0;
 }
 
 .page-head__row {
