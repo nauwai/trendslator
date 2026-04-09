@@ -11,6 +11,9 @@ permissions:
 jobs:
   update-trends:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./trend_detector
     steps:
       - name: Checkout
         uses: actions/checkout@v4
