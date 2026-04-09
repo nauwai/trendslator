@@ -31,6 +31,15 @@
         return Math.max(8, Math.min(98, Math.round((Math.min(n, 12) / 12) * 100)));
     }
 
+    function normalizeCover(cover) {
+        if (!cover) return "";
+        var v = String(cover).trim();
+        if (!v) return "";
+        if (/^https?:\/\//i.test(v)) return v;
+        if (/^(?:\.{1,2}\/|\/|assets\/)/i.test(v)) return v;
+        return "";
+    }
+
     function normalizeAll(data) {
         var raw = (data && data.tendances) || [];
         var list = [];
@@ -69,6 +78,7 @@
                 overallViews: t["Overall Views"] || "",
                 viewsPerPost: t["Views / Post"] || "",
                 video_views: typeof t.video_views === "number" ? t.video_views : parseInt(t.video_views, 10) || 0,
+                cover: normalizeCover(t.cover),
                 thumbIndex: i
             };
             list.push(trend);
@@ -88,6 +98,7 @@
     }
 
     function thumbnailFor(trend) {
+        if (trend && trend.cover) return trend.cover;
         return THUMBNAILS[trend.thumbIndex % THUMBNAILS.length];
     }
 
