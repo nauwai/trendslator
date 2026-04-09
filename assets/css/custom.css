@@ -262,7 +262,7 @@ body {
 }
 
 .trend-card__body {
-    padding: 14px 20px 0;
+    padding: 18px 22px 0;
 }
 
 .trend-card__title {
@@ -283,9 +283,9 @@ body {
 .trend-card__actions {
     display: flex;
     justify-content: flex-end;
-    margin-top: 14px;
-    padding-right: var(--shadow-offset-x);
-    padding-bottom: var(--shadow-offset-y);
+    margin-top: 16px;
+    padding-right: calc(var(--shadow-offset-x) + 12px);
+    padding-bottom: calc(var(--shadow-offset-y) + 14px);
 }
 
 .trend-card__actions .btn-brutal {
