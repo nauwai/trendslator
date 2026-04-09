@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trends Parents - Resultat Claude</title>
+  </head>
+  <body>
+    <main>
+      <h1>Trends Parents - Gen Alpha / College</h1>
+      <p id="last-update">Chargement...</p>
+      <p id="meta"></p>
+      <h2>Tendances</h2>
+      <div id="trends-list"></div>
+      <p id="error-message" hidden></p>
+    </main>
+
+    <script>
+      async function loadTrends() {
+        const lastUpdateEl = document.getElementById("last-update");
+        const metaEl = document.getElementById("meta");
+        const trendsListEl = document.getElementById("trends-list");
+        const errorEl = document.getElementById("error-message");
+
+        try {
+          const response = await fetch("./data/trends.json", { cache: "no-store" });
+          if (!response.ok) {
+            throw new Error("Impossible de charger data/trends.json");
+          }
+
+          const data = await response.json();
+          const trends = Array.isArray(data)
+            ? data
+            : Array.isArray(data.tendances)
+              ? data.tendances
+              : Array.isArray(data.trends)
+                ? data.trends
+              : Array.isArray(data.items)
+                ? data.items
+                : [];
+          const lastUpdate = data.last_update || "non fournie";
+          const total = trends.length;
+
+          lastUpdateEl.textContent = "Derniere mise a jour : " + lastUpdate;
+          metaEl.textContent = "Nombre de tendances : " + total;
+          trendsListEl.innerHTML = "";
+
+          if (trends.length === 0) {
+            trendsListEl.textContent = "Aucune tendance detectee.";
+            return;
+          }
+
+          for (const trend of trends) {
+            const keyword = trend.k || trend.ti || trend.title || "Sans mot-cle";
+            const hashtag = trend.hashtag || trend.m || "-";
+            const desc = trend.d || "Sans explication";
+            const type = trend.t || trend.ty || "-";
+            const exampleLink = trend.v || trend.context || "-";
+            const startDate = trend.da || "-";
+            const category = trend.c || "-";
+            const duration = trend.du || "-";
+            const overallPosts = trend["Overall Posts"] || "-";
+            const overallViews = trend["Overall Views"] || "-";
+            const viewsPerPost = trend["Views / Post"] || "-";
+            const videoViews = trend.video_views || "-";
+
+            const block = document.createElement("pre");
+            block.textContent =
+              "Mot-cle: " + keyword + "\n" +
+              "Hashtag: " + hashtag + "\n" +
+              "Description: " + desc + "\n" +
+              "Type: " + type + "\n" +
+              "Lien exemple: " + exampleLink + "\n" +
+              "Date de depart: " + startDate + "\n" +
+              "Categorie: " + category + "\n" +
+              "Duree (semaines): " + duration + "\n" +
+              "Overall Posts: " + overallPosts + "\n" +
+              "Overall Views: " + overallViews + "\n" +
+              "Views / Post: " + viewsPerPost + "\n" +
+              "Vues video: " + videoViews;
+            trendsListEl.appendChild(block);
+          }
+        } catch (error) {
+          lastUpdateEl.textContent = "Derniere mise a jour : indisponible";
+          errorEl.hidden = false;
+          errorEl.textContent = "Erreur : " + error.message;
+        }
+      }
+
+      loadTrends();
+    </script>
+  </body>
+</html>

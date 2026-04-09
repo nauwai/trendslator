@@ -1,0 +1,303 @@
+(function () {
+    var JSON_URL = "trend_detector/data/trends.json";
+    var THUMBNAILS = [
+        "assets/img/thumbnail/skibiditentafruit.png",
+        "assets/img/thumbnail/kiki-pitchoune.jpg"
+    ];
+    var TAG_CLASSES = ["trend-tag--purple", "trend-tag--orange", "trend-tag--challenge", "trend-tag--orange"];
+    var ACCENTS = ["purple", "yellow"];
+
+    function escapeHtml(s) {
+        return String(s == null ? "" : s)
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;");
+    }
+
+    function slugify(ti) {
+        var base = String(ti || "trend")
+            .normalize("NFD")
+            .replace(/\p{M}/gu, "")
+            .toLowerCase()
+            .replace(/[^a-z0-9]+/g, "-")
+            .replace(/^-|-$/g, "");
+        return base || "trend";
+    }
+
+    function vigilanceFromDu(du) {
+        var n = typeof du === "number" ? du : parseInt(du, 10);
+        if (!n || n < 0) n = 1;
+        return Math.max(8, Math.min(98, Math.round((Math.min(n, 12) / 12) * 100)));
+    }
+
+    function normalizeAll(data) {
+        var raw = (data && data.tendances) || [];
+        var list = [];
+        var byId = {};
+        var used = {};
+
+        raw.forEach(function (t, i) {
+            var base = slugify(t.ti);
+            var id = base;
+            var suf = 0;
+            while (used[id]) {
+                suf += 1;
+                id = base + "-" + suf;
+            }
+            used[id] = true;
+
+            var du = typeof t.du === "number" ? t.du : parseInt(t.du, 10);
+            if (isNaN(du)) du = 6;
+
+            var tag = (t.hashtag || "").replace(/^#/, "").trim();
+            var m = (t.m || "").trim();
+
+            var trend = {
+                id: id,
+                ti: t.ti || "",
+                m: m,
+                d: t.d || "",
+                ty: Array.isArray(t.ty) ? t.ty : [],
+                v: t.v || "",
+                da: t.da || "",
+                du: du,
+                vigilancePct: vigilanceFromDu(du),
+                c: Array.isArray(t.c) ? t.c : [],
+                hashtag: tag,
+                overallPosts: t["Overall Posts"] || "",
+                overallViews: t["Overall Views"] || "",
+                viewsPerPost: t["Views / Post"] || "",
+                video_views: typeof t.video_views === "number" ? t.video_views : parseInt(t.video_views, 10) || 0,
+                thumbIndex: i
+            };
+            list.push(trend);
+            byId[id] = trend;
+        });
+
+        return { list: list, synthese: data && data.synthese, byId: byId };
+    }
+
+    function pickFeatured(list) {
+        if (!list.length) return null;
+        return list.reduce(function (best, t) {
+            var vb = best.video_views || 0;
+            var vt = t.video_views || 0;
+            return vt > vb ? t : best;
+        });
+    }
+
+    function thumbnailFor(trend) {
+        return THUMBNAILS[trend.thumbIndex % THUMBNAILS.length];
+    }
+
+    function truncate(text, max) {
+        var s = String(text || "").trim();
+        if (s.length <= max) return s;
+        return s.slice(0, max - 1).trim() + "…";
+    }
+
+    function tagsHtml(ty) {
+        var parts = [];
+        var arr = ty && ty.length ? ty : ["tendance"];
+        for (var i = 0; i < Math.min(4, arr.length); i++) {
+            var cls = TAG_CLASSES[i % TAG_CLASSES.length];
+            parts.push(
+                "<li><span class=\"trend-tag " + cls + "\">" + escapeHtml(arr[i]) + "</span></li>"
+            );
+        }
+        return parts.join("");
+    }
+
+    function cardHtml(t, index) {
+        var accent = ACCENTS[index % ACCENTS.length];
+        var thumb = thumbnailFor(t);
+        var desc = truncate(t.d, 180);
+        var vig = t.vigilancePct;
+        return (
+            "<article class=\"trend-card trend-card--link\" data-open-trend=\"" +
+            escapeHtml(t.id) +
+            "\" tabindex=\"0\" role=\"button\" aria-haspopup=\"dialog\" aria-controls=\"trend-sheet\">" +
+            "<div class=\"trend-card__media\">" +
+            "<img src=\"" +
+            escapeHtml(thumb) +
+            "\" alt=\"\" width=\"900\" height=\"506\" loading=\"" +
+            (index === 0 ? "eager" : "lazy") +
+            "\"/>" +
+            "<div class=\"trend-hero__vigilance trend-card__vigilance\" role=\"status\">" +
+            "<svg class=\"trend-hero__vigilance-icon\" width=\"18\" height=\"18\" viewBox=\"0 0 18 18\" fill=\"none\" aria-hidden=\"true\">" +
+            "<path d=\"M9 2L2 15h14L9 2z\" stroke=\"currentColor\" stroke-width=\"1.4\" stroke-linejoin=\"round\"/>" +
+            "<path d=\"M9 7v4M9 12h.01\" stroke=\"currentColor\" stroke-width=\"1.4\" stroke-linecap=\"round\"/>" +
+            "</svg>" +
+            "<span class=\"trend-hero__vigilance-text\">Indice de vigilance : " +
+            vig +
+            "%</span>" +
+            "<span class=\"trend-hero__vigilance-info\" title=\"Information\" aria-label=\"Plus d’informations sur l’indice\">" +
+            "<svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\" aria-hidden=\"true\">" +
+            "<circle cx=\"7\" cy=\"7\" r=\"6\" stroke=\"currentColor\" stroke-width=\"1.2\"/>" +
+            "<path d=\"M7 6v4M7 4h.01\" stroke=\"currentColor\" stroke-width=\"1.2\" stroke-linecap=\"round\"/>" +
+            "</svg></span></div></div>" +
+            "<div class=\"trend-card__accent trend-card__accent--" +
+            accent +
+            "\" aria-hidden=\"true\"></div>" +
+            "<div class=\"trend-card__body\">" +
+            "<h2 class=\"trend-card__title\">" +
+            escapeHtml(t.ti) +
+            "</h2>" +
+            "<p class=\"trend-card__desc\">" +
+            escapeHtml(desc) +
+            "<span class=\"trend-card__more\">lire la suite&hellip;</span></p>" +
+            "</div></article>"
+        );
+    }
+
+    function detailHtml(t) {
+        var accent = ACCENTS[t.thumbIndex % ACCENTS.length];
+        var thumb = thumbnailFor(t);
+        var vig = t.vigilancePct;
+        var play =
+            t.v && /^https?:\/\//i.test(t.v)
+                ? "<a href=\"" +
+                  escapeHtml(t.v) +
+                  "\" class=\"trend-hero__play\" target=\"_blank\" rel=\"noopener noreferrer\" aria-label=\"Ouvrir la vidéo (nouvel onglet)\">" +
+                  "<svg width=\"28\" height=\"28\" viewBox=\"0 0 28 28\" fill=\"none\" aria-hidden=\"true\">" +
+                  "<path d=\"M11 8l10 6-10 6V8z\" fill=\"currentColor\"/></svg></a>"
+                : "";
+
+        var metaParts = [];
+        if (t.da) metaParts.push("<p><strong>Période observée :</strong> " + escapeHtml(t.da) + "</p>");
+        if (t.m) metaParts.push("<p><strong>Hashtag / signal :</strong> " + escapeHtml(t.m) + "</p>");
+        if (t.overallViews) metaParts.push("<p><strong>Vues (agrégat) :</strong> " + escapeHtml(t.overallViews) + "</p>");
+
+        return (
+            "<div class=\"trend-hero\">" +
+            "<div class=\"trend-hero__media\">" +
+            "<img src=\"" +
+            escapeHtml(thumb) +
+            "\" alt=\"\" width=\"900\" height=\"506\" loading=\"lazy\"/>" +
+            "<div class=\"trend-hero__vigilance\" role=\"status\">" +
+            "<svg class=\"trend-hero__vigilance-icon\" width=\"18\" height=\"18\" viewBox=\"0 0 18 18\" fill=\"none\" aria-hidden=\"true\">" +
+            "<path d=\"M9 2L2 15h14L9 2z\" stroke=\"currentColor\" stroke-width=\"1.4\" stroke-linejoin=\"round\"/>" +
+            "<path d=\"M9 7v4M9 12h.01\" stroke=\"currentColor\" stroke-width=\"1.4\" stroke-linecap=\"round\"/>" +
+            "</svg>" +
+            "<span class=\"trend-hero__vigilance-text\">Indice de vigilance : " +
+            vig +
+            "%</span>" +
+            "<span class=\"trend-hero__vigilance-info\" title=\"Information\" aria-label=\"Plus d’informations sur l’indice\">" +
+            "<svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\" aria-hidden=\"true\">" +
+            "<circle cx=\"7\" cy=\"7\" r=\"6\" stroke=\"currentColor\" stroke-width=\"1.2\"/>" +
+            "<path d=\"M7 6v4M7 4h.01\" stroke=\"currentColor\" stroke-width=\"1.2\" stroke-linecap=\"round\"/>" +
+            "</svg></span></div>" +
+            play +
+            "</div>" +
+            "<div class=\"trend-hero__divider trend-hero__divider--" +
+            accent +
+            "\" aria-hidden=\"true\"></div>" +
+            "<div class=\"trend-detail__inner\">" +
+            "<ul class=\"trend-tags\" aria-label=\"Thématiques\">" +
+            tagsHtml(t.ty) +
+            "</ul>" +
+            "<h1 class=\"trend-detail__title\">" +
+            escapeHtml(t.ti) +
+            "</h1>" +
+            "<div class=\"trend-detail__body\">" +
+            "<p>" +
+            escapeHtml(t.d) +
+            "</p>" +
+            metaParts.join("") +
+            "</div></div></div>"
+        );
+    }
+
+    function shuffle(arr) {
+        var a = arr.slice();
+        for (var i = a.length - 1; i > 0; i--) {
+            var j = Math.floor(Math.random() * (i + 1));
+            var tmp = a[i];
+            a[i] = a[j];
+            a[j] = tmp;
+        }
+        return a;
+    }
+
+    function buildQuizQuestions(list, count) {
+        count = count || 3;
+        if (!list || list.length < 3) return null;
+        var pool = list.slice();
+        var out = [];
+        for (var q = 0; q < count; q++) {
+            if (pool.length < 3) break;
+            var ci = Math.floor(Math.random() * pool.length);
+            var correct = pool[ci];
+            var others = pool.filter(function (_, i) {
+                return i !== ci;
+            });
+            others = shuffle(others);
+            var w1 = others[0];
+            var w2 = others[1];
+            var opts = shuffle([
+                { text: correct.ti, correct: true },
+                { text: w1.ti, correct: false },
+                { text: w2.ti, correct: false }
+            ]);
+            var letters = ["A. ", "B. ", "C. "];
+            var answers = opts.map(function (o, i) {
+                return { text: letters[i] + o.text, correct: o.correct };
+            });
+            out.push({
+                question:
+                    "Quelle tendance correspond le mieux à cette description ? « " +
+                    truncate(correct.d, 150) +
+                    " »",
+                answers: answers,
+                feedback: "Il s’agit bien de « " + correct.ti + " »."
+            });
+        }
+        return out.length ? out : null;
+    }
+
+    function searchHitsHtml(list, max) {
+        max = max || 8;
+        var dots = ["orange", "purple", "grey", "grey", "grey", "grey"];
+        var labels = ["orange", "purple", "muted", "muted", "muted", "muted"];
+        var parts = [];
+        for (var i = 0; i < Math.min(max, list.length); i++) {
+            var t = list[i];
+            var di = i % dots.length;
+            parts.push(
+                "<li>" +
+                "<a class=\"search-hit\" href=\"trends.html?trend=" +
+                encodeURIComponent(t.id) +
+                "\">" +
+                "<span class=\"search-hit__dot search-hit__dot--" +
+                dots[di] +
+                "\" aria-hidden=\"true\"></span>" +
+                "<span class=\"search-hit__label search-hit__label--" +
+                labels[di] +
+                "\">" +
+                escapeHtml(t.ti) +
+                "</span></a></li>"
+            );
+        }
+        return parts.join("");
+    }
+
+    window.TrendslatorData = {
+        JSON_URL: JSON_URL,
+        load: function () {
+            return fetch(JSON_URL, { cache: "no-store" }).then(function (r) {
+                if (!r.ok) throw new Error("trends_json");
+                return r.json();
+            });
+        },
+        normalizeAll: normalizeAll,
+        pickFeatured: pickFeatured,
+        thumbnailFor: thumbnailFor,
+        truncate: truncate,
+        cardHtml: cardHtml,
+        detailHtml: detailHtml,
+        buildQuizQuestions: buildQuizQuestions,
+        searchHitsHtml: searchHitsHtml,
+        escapeHtml: escapeHtml
+    };
+})();

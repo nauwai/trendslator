@@ -173,6 +173,8 @@
     }
 
     function initTrendSheet() {
+        window.TrendslatorOpenSheet = function () {};
+
         var root = document.getElementById("trend-sheet");
         if (!root) return;
 
@@ -180,8 +182,7 @@
         var backdrop = root.querySelector(".trend-sheet__backdrop");
         var scroller = document.getElementById("trend-sheet-scroller");
         var handle = document.getElementById("trend-sheet-handle");
-        var openers = document.querySelectorAll("[data-open-trend]");
-        var contents = root.querySelectorAll(".trend-sheet__content[data-trend-id]");
+        var contentEl = document.getElementById("trend-sheet-dynamic");
 
         var startY = 0;
         var dragY = 0;
@@ -193,14 +194,23 @@
             return cy >= rect.top && cy <= rect.bottom && cx >= rect.left && cx <= rect.right;
         }
 
+        function resolveTrend(id) {
+            var map = window.__trendById;
+            return map && map[id] ? map[id] : null;
+        }
+
         function showTrend(id) {
-            contents.forEach(function (el) {
-                el.hidden = el.getAttribute("data-trend-id") !== id;
-            });
+            var t = resolveTrend(id);
+            var T = window.TrendslatorData;
+            if (!contentEl || !t || !T) return false;
+            contentEl.innerHTML = T.detailHtml(t);
+            contentEl.setAttribute("data-trend-id", id);
+            contentEl.hidden = false;
+            return true;
         }
 
         function openSheet(id) {
-            showTrend(id);
+            if (!showTrend(id)) return;
             scroller.scrollTop = 0;
             panel.style.transition = "";
             panel.style.transform = "";
@@ -225,9 +235,10 @@
                     root.setAttribute("aria-hidden", "true");
                     panel.style.transition = "";
                     panel.style.transform = "";
-                    contents.forEach(function (el) {
-                        el.hidden = true;
-                    });
+                    if (contentEl) {
+                        contentEl.hidden = true;
+                        contentEl.innerHTML = "";
+                    }
                 },
                 { once: true }
             );
@@ -249,16 +260,20 @@
             );
         }
 
-        openers.forEach(function (el) {
-            el.addEventListener("click", function () {
-                openSheet(el.getAttribute("data-open-trend"));
-            });
-            el.addEventListener("keydown", function (e) {
-                if (e.key === "Enter" || e.key === " ") {
-                    e.preventDefault();
-                    openSheet(el.getAttribute("data-open-trend"));
-                }
-            });
+        window.TrendslatorOpenSheet = openSheet;
+
+        document.addEventListener("click", function (e) {
+            var el = e.target.closest("[data-open-trend]");
+            if (!el) return;
+            openSheet(el.getAttribute("data-open-trend"));
+        });
+
+        document.addEventListener("keydown", function (e) {
+            if (e.key !== "Enter" && e.key !== " ") return;
+            var el = e.target.closest("[data-open-trend]");
+            if (!el) return;
+            e.preventDefault();
+            openSheet(el.getAttribute("data-open-trend"));
         });
 
         backdrop.addEventListener("click", closeSheet);
@@ -274,7 +289,9 @@
             function (e) {
                 if (!root.classList.contains("is-open")) return;
                 startY = e.touches[0].clientY;
-                startedInHandle = pointInRect(startY, e.touches[0].clientX, handle.getBoundingClientRect());
+                startedInHandle =
+                    handle &&
+                    pointInRect(startY, e.touches[0].clientX, handle.getBoundingClientRect());
                 dragging = true;
                 dragY = 0;
                 panel.classList.add("is-dragging");
@@ -333,6 +350,222 @@
         panel.addEventListener("touchcancel", onTouchEnd, { passive: true });
     }
 
+    var STATIC_QUIZ_QUESTIONS = [
+        {
+            question: 'Que signifie l\'expression "C\'est ciao" ?',
+            answers: [
+                { text: "A. C'est l'heure de manger", correct: false },
+                { text: "B. C'est terminé / c'est raté", correct: true },
+                { text: "C. C'est dommage", correct: false }
+            ],
+            feedback: 'Exact. "C\'est ciao" veut dire que c\'est fini, mort, terminé.'
+        },
+        {
+            question: 'Que veut dire "être en goumin" ?',
+            answers: [
+                { text: "A. Être en chagrin d'amour", correct: true },
+                { text: "B. Être très en colère", correct: false },
+                { text: "C. Être très riche", correct: false }
+            ],
+            feedback: 'Bien vu. "Goumin" renvoie au chagrin d\'amour.'
+        },
+        {
+            question: 'Quand quelqu\'un dit "cheh", il veut dire quoi ?',
+            answers: [
+                { text: "A. Je suis choqué", correct: false },
+                { text: "B. Bien fait pour toi", correct: true },
+                { text: "C. Viens ici", correct: false }
+            ],
+            feedback: 'Oui. "Cheh" exprime clairement le "bien fait".'
+        }
+    ];
+
+    var homeQuizBound = false;
+    var quizState = { items: STATIC_QUIZ_QUESTIONS, current: 0, locked: false };
+
+    function escapeQuizHtml(s) {
+        return String(s == null ? "" : s)
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;");
+    }
+
+    function initHomeQuiz(questions) {
+        var questionEl = document.getElementById("tt-quiz-question");
+        var optionsEl = document.getElementById("tt-quiz-options");
+        var feedbackEl = document.getElementById("tt-quiz-feedback");
+        var nextBtn = document.getElementById("tt-quiz-next");
+        if (!questionEl || !optionsEl || !feedbackEl || !nextBtn) return;
+
+        quizState.items =
+            questions && questions.length >= 3 ? questions : STATIC_QUIZ_QUESTIONS;
+        quizState.current = 0;
+        quizState.locked = false;
+
+        function renderQuestion() {
+            var item = quizState.items[quizState.current];
+            quizState.locked = false;
+            questionEl.textContent = item.question;
+            feedbackEl.textContent = "";
+            nextBtn.hidden = true;
+            optionsEl.innerHTML = item.answers
+                .map(function (a) {
+                    return (
+                        '<button type="button" class="tt-quiz-btn" data-correct="' +
+                        !!a.correct +
+                        '">' +
+                        escapeQuizHtml(a.text) +
+                        "</button>"
+                    );
+                })
+                .join("");
+        }
+
+        function handleAnswer(btn) {
+            if (quizState.locked) return;
+            quizState.locked = true;
+            var item = quizState.items[quizState.current];
+            var isCorrect = btn.getAttribute("data-correct") === "true";
+            var buttons = optionsEl.querySelectorAll(".tt-quiz-btn");
+
+            buttons.forEach(function (button) {
+                var correct = button.getAttribute("data-correct") === "true";
+                button.classList.add("is-disabled");
+                if (correct) button.classList.add("is-correct");
+                if (button === btn && !isCorrect) button.classList.add("is-wrong");
+            });
+
+            feedbackEl.textContent = isCorrect
+                ? item.feedback
+                : "Pas tout à fait. La bonne réponse est surlignée en jaune.";
+
+            nextBtn.hidden = false;
+        }
+
+        if (!homeQuizBound) {
+            homeQuizBound = true;
+            optionsEl.addEventListener("click", function (e) {
+                var btn = e.target.closest(".tt-quiz-btn");
+                if (!btn || btn.classList.contains("is-disabled")) return;
+                handleAnswer(btn);
+            });
+            nextBtn.addEventListener("click", function () {
+                quizState.current = (quizState.current + 1) % quizState.items.length;
+                renderQuestion();
+            });
+        }
+
+        renderQuestion();
+    }
+
+    function trendslatorHydrate() {
+        var T = window.TrendslatorData;
+        var needsData =
+            document.getElementById("home-featured-root") ||
+            document.getElementById("trends-cards-root") ||
+            document.getElementById("search-trends-list");
+
+        if (document.getElementById("tt-quiz-question")) {
+            initHomeQuiz(STATIC_QUIZ_QUESTIONS);
+        }
+
+        if (!T || !needsData) {
+            return;
+        }
+
+        T.load()
+            .then(function (data) {
+                var norm = T.normalizeAll(data);
+                window.__trendById = norm.byId;
+
+                var featuredRoot = document.getElementById("home-featured-root");
+                if (featuredRoot) {
+                    var f = T.pickFeatured(norm.list);
+                    if (f) {
+                        var img = document.getElementById("home-featured-img");
+                        var titleEl = document.getElementById("home-featured-title");
+                        var descEl = document.getElementById("home-featured-desc");
+                        var linkEl = document.getElementById("home-featured-link");
+                        if (img) {
+                            img.src = T.thumbnailFor(f);
+                            img.alt = "Illustration — " + f.ti;
+                        }
+                        if (titleEl) titleEl.textContent = f.ti;
+                        if (descEl) descEl.textContent = f.d;
+                        if (linkEl) linkEl.href = "trends.html?trend=" + encodeURIComponent(f.id);
+                        var mot = f.hashtag || (f.m && f.m.replace(/^#\s*/, "")) || f.ti.split(/\s+/)[0];
+                        var wh = document.getElementById("word-of-day-highlight");
+                        var wd = document.getElementById("word-of-day-definition");
+                        if (wh) wh.textContent = mot;
+                        if (wd) wd.textContent = f.d;
+                    }
+                }
+
+                var trendsRoot = document.getElementById("trends-cards-root");
+                var loadingEl = document.getElementById("trends-loading");
+                if (trendsRoot) {
+                    trendsRoot.innerHTML = norm.list
+                        .map(function (t, i) {
+                            return T.cardHtml(t, i);
+                        })
+                        .join("");
+                    trendsRoot.hidden = false;
+                    if (loadingEl) loadingEl.hidden = true;
+
+                    var tid = new URLSearchParams(window.location.search).get("trend");
+                    if (tid && norm.byId[tid] && typeof window.TrendslatorOpenSheet === "function") {
+                        requestAnimationFrame(function () {
+                            window.TrendslatorOpenSheet(tid);
+                        });
+                    }
+                }
+
+                var searchUl = document.getElementById("search-trends-list");
+                if (searchUl) {
+                    searchUl.innerHTML = T.searchHitsHtml(norm.list, 12);
+                }
+
+                var dynQuiz = T.buildQuizQuestions(norm.list, 3);
+                if (document.getElementById("tt-quiz-question")) {
+                    initHomeQuiz(dynQuiz || STATIC_QUIZ_QUESTIONS);
+                }
+            })
+            .catch(function () {
+                window.__trendById = window.__trendById || {};
+                if (document.getElementById("tt-quiz-question")) {
+                    initHomeQuiz(STATIC_QUIZ_QUESTIONS);
+                }
+                var titleEl = document.getElementById("home-featured-title");
+                if (titleEl && titleEl.textContent.indexOf("Chargement") !== -1) {
+                    titleEl.textContent = "Tendances indisponibles";
+                }
+                var descEl = document.getElementById("home-featured-desc");
+                if (descEl && !descEl.textContent.trim()) {
+                    descEl.textContent =
+                        "Ouvrez la page Trends une fois le fichier trend_detector/data/trends.json accessible (serveur local ou déploiement).";
+                }
+                var whFail = document.getElementById("word-of-day-highlight");
+                if (whFail && /\u2026|^\s*$/.test(whFail.textContent.trim())) {
+                    whFail.textContent = "—";
+                }
+                var wdFail = document.getElementById("word-of-day-definition");
+                if (wdFail && !wdFail.textContent.trim()) {
+                    wdFail.textContent =
+                        "Les tendances n’ont pas pu être chargées. Vérifiez la connexion ou le chemin trend_detector/data/trends.json.";
+                }
+                var loadingEl = document.getElementById("trends-loading");
+                if (loadingEl) {
+                    loadingEl.textContent = "Impossible de charger les tendances. Vérifiez la connexion.";
+                }
+                var searchUlFail = document.getElementById("search-trends-list");
+                if (searchUlFail && !searchUlFail.querySelector("a.search-hit")) {
+                    searchUlFail.innerHTML =
+                        "<li><span class=\"search-hit__label search-hit__label--muted\">Impossible de charger les tendances.</span></li>";
+                }
+            });
+    }
+
     function registerServiceWorker() {
         if (!("serviceWorker" in navigator)) return;
         navigator.serviceWorker.register("sw.js", { scope: "./" }).catch(function () {});
@@ -342,93 +575,7 @@
         initGlossary();
         initSearchPage();
         initTrendSheet();
+        trendslatorHydrate();
         registerServiceWorker();
     });
-})();
-
-(function () {
-    const questions = [
-        {
-            question: 'Que signifie l\'expression "C\'est ciao" ?',
-            answers: [
-                { text: 'A. C\'est l\'heure de manger', correct: false },
-                { text: 'B. C\'est terminé / c\'est raté', correct: true },
-                { text: 'C. C\'est dommage', correct: false }
-            ],
-            feedback: 'Exact. "C\'est ciao" veut dire que c\'est fini, mort, terminé.'
-        },
-        {
-            question: 'Que veut dire "être en goumin" ?',
-            answers: [
-                { text: 'A. Être en chagrin d\'amour', correct: true },
-                { text: 'B. Être très en colère', correct: false },
-                { text: 'C. Être très riche', correct: false }
-            ],
-            feedback: 'Bien vu. "Goumin" renvoie au chagrin d\'amour.'
-        },
-        {
-            question: 'Quand quelqu\'un dit "cheh", il veut dire quoi ?',
-            answers: [
-                { text: 'A. Je suis choqué', correct: false },
-                { text: 'B. Bien fait pour toi', correct: true },
-                { text: 'C. Viens ici', correct: false }
-            ],
-            feedback: 'Oui. "Cheh" exprime clairement le "bien fait".'
-        }
-    ];
-
-    const questionEl = document.getElementById('tt-quiz-question');
-    const optionsEl = document.getElementById('tt-quiz-options');
-    const feedbackEl = document.getElementById('tt-quiz-feedback');
-    const nextBtn = document.getElementById('tt-quiz-next');
-
-    let current = 0;
-    let locked = false;
-
-    function renderQuestion() {
-        const item = questions[current];
-        locked = false;
-        questionEl.textContent = item.question;
-        feedbackEl.textContent = '';
-        nextBtn.hidden = true;
-
-        optionsEl.innerHTML = item.answers.map(answer => `
-        <button class="tt-quiz-btn" data-correct="${answer.correct}">
-          ${answer.text}
-        </button>
-      `).join('');
-
-        optionsEl.querySelectorAll('.tt-quiz-btn').forEach(btn => {
-            btn.addEventListener('click', () => handleAnswer(btn, item));
-        });
-    }
-
-    function handleAnswer(btn, item) {
-        if (locked) return;
-        locked = true;
-
-        const isCorrect = btn.dataset.correct === 'true';
-        const buttons = optionsEl.querySelectorAll('.tt-quiz-btn');
-
-        buttons.forEach(button => {
-            const correct = button.dataset.correct === 'true';
-            button.classList.add('is-disabled');
-
-            if (correct) button.classList.add('is-correct');
-            if (button === btn && !isCorrect) button.classList.add('is-wrong');
-        });
-
-        feedbackEl.textContent = isCorrect
-            ? item.feedback
-            : 'Pas tout à fait. La bonne réponse est surlignée en jaune.';
-
-        nextBtn.hidden = false;
-    }
-
-    nextBtn.addEventListener('click', () => {
-        current = (current + 1) % questions.length;
-        renderQuestion();
-    });
-
-    renderQuestion();
 })();

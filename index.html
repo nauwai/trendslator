@@ -36,24 +36,22 @@
     </header>
 
     <main class="content">
-        <article class="featured">
-            <div class="featured__media neo-shadow neo-shadow--purple">
-                <img src="assets/img/thumbnail/skibiditentafruit.png" alt="Illustration — L’île de la skididi tentafruit" width="800" height="450" loading="eager"/>
-            </div>
-            <h2 class="featured__title">L’île de la skididi tentafruit</h2>
-            <p class="featured__desc">
-                Une fausse télé-réalité produite sur TikTok où les candidats sont des fruits en 3D (bananes, fraises&hellip;) qui vivent des &laquo; dramas &raquo; de couple.
-            </p>
+        <article class="featured" id="home-featured-root">
+            <a class="featured__link" id="home-featured-link" href="trends.html">
+                <div class="featured__media neo-shadow neo-shadow--purple">
+                    <img id="home-featured-img" src="assets/img/thumbnail/skibiditentafruit.png" alt="" width="800" height="450" loading="eager"/>
+                </div>
+                <h2 class="featured__title" id="home-featured-title">Chargement de la tendance&hellip;</h2>
+                <p class="featured__desc" id="home-featured-desc"></p>
+            </a>
         </article>
 
         <section class="word-of-day" aria-labelledby="word-of-day-heading">
             <h2 id="word-of-day-heading" class="word-of-day__heading">
-                Mot du jour <span class="word-of-day__highlight">Goumin</span>
+                Mot du jour <span class="word-of-day__highlight" id="word-of-day-highlight">&hellip;</span>
             </h2>
             <div class="word-of-day__card">
-                <p class="word-of-day__definition">
-                    Ce terme est utilisé pour définir les chagrins d’amour, ce mot provient d’une langue ivoirienne appelée le Nouchi.
-                </p>
+                <p class="word-of-day__definition" id="word-of-day-definition"></p>
             </div>
             <div class="word-of-day__actions">
                 <button type="button" class="btn-brutal">Voir le Glossaire</button>
@@ -110,6 +108,7 @@
     </div>
 </div>
 
+<script src="assets/js/trends-data.js" defer></script>
 <script src="assets/js/main.js" defer></script>
 </body>
 

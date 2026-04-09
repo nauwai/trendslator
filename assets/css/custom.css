@@ -122,6 +122,13 @@ body {
     padding-bottom: 32px;
 }
 
+.trends-loading {
+    margin: 0;
+    padding: 0 20px 16px;
+    font-size: 0.9375rem;
+    color: var(--color-muted);
+}
+
 .trend-card {
     margin-bottom: 20px;
 }
@@ -530,6 +537,17 @@ body {
 
 .neo-shadow--yellow::after {
     background: var(--color-yellow);
+}
+
+.featured__link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+.featured__link:focus-visible {
+    outline: 2px solid var(--color-purple);
+    outline-offset: 4px;
 }
 
 .featured__media {
@@ -1005,6 +1023,8 @@ body {
     align-items: center;
     gap: 10px;
     padding: 11px 0;
+    text-decoration: none;
+    color: inherit;
 }
 
 .search-hit__dot {

@@ -32,60 +32,8 @@
     </header>
 
     <main class="content content--trends" id="trends-main">
-        <article class="trend-card trend-card--link" data-open-trend="skididi" tabindex="0" role="button" aria-haspopup="dialog" aria-controls="trend-sheet">
-            <div class="trend-card__media">
-                <img src="assets/img/thumbnail/skibiditentafruit.png" alt="" width="900" height="506" loading="eager"/>
-                <div class="trend-hero__vigilance trend-card__vigilance" role="status">
-                    <svg class="trend-hero__vigilance-icon" width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
-                        <path d="M9 2L2 15h14L9 2z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
-                        <path d="M9 7v4M9 12h.01" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
-                    </svg>
-                    <span class="trend-hero__vigilance-text">Indice de vigilance : 28%</span>
-                    <span class="trend-hero__vigilance-info" title="Information" aria-label="Plus d’informations sur l’indice">
-                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-                            <circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.2"/>
-                            <path d="M7 6v4M7 4h.01" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
-                        </svg>
-                    </span>
-                </div>
-            </div>
-            <div class="trend-card__accent trend-card__accent--purple" aria-hidden="true"></div>
-            <div class="trend-card__body">
-                <h2 class="trend-card__title">L’île de la Skididi Tentafruit</h2>
-                <p class="trend-card__desc">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
-                    <span class="trend-card__more">lire la suite&hellip;</span>
-                </p>
-            </div>
-        </article>
-
-        <article class="trend-card trend-card--link" data-open-trend="kiki" tabindex="0" role="button" aria-haspopup="dialog" aria-controls="trend-sheet">
-            <div class="trend-card__media">
-                <img src="assets/img/thumbnail/kiki-pitchoune.jpg" alt="" width="900" height="600" loading="lazy"/>
-                <div class="trend-hero__vigilance trend-card__vigilance" role="status">
-                    <svg class="trend-hero__vigilance-icon" width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
-                        <path d="M9 2L2 15h14L9 2z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
-                        <path d="M9 7v4M9 12h.01" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
-                    </svg>
-                    <span class="trend-hero__vigilance-text">Indice de vigilance : 40%</span>
-                    <span class="trend-hero__vigilance-info" title="Information" aria-label="Plus d’informations sur l’indice">
-                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-                            <circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.2"/>
-                            <path d="M7 6v4M7 4h.01" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
-                        </svg>
-                    </span>
-                </div>
-
-            </div>
-            <div class="trend-card__accent trend-card__accent--yellow" aria-hidden="true"></div>
-            <div class="trend-card__body">
-                <h2 class="trend-card__title">Kiki &amp; Pitchoune</h2>
-                <p class="trend-card__desc">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae lacus vel ligula faucibus dignissim. Nullam vehicula, augue id tincidunt viverra, lectus magna bibendum ex, vitae tempor felis.
-                    <span class="trend-card__more">lire la suite&hellip;</span>
-                </p>
-            </div>
-        </article>
+        <p class="trends-loading" id="trends-loading">Chargement des tendances&hellip;</p>
+        <div id="trends-cards-root" class="trends-cards-root" hidden></div>
     </main>
 
     <div class="app-dock">
@@ -117,104 +65,18 @@
                 <div class="trend-sheet__handle"></div>
             </div>
             <div class="trend-sheet__scroller" id="trend-sheet-scroller">
-                <div class="trend-sheet__content content--trend-detail trend-sheet__detail" data-trend-id="skididi" hidden>
-                    <div class="trend-hero">
-                        <div class="trend-hero__media">
-                            <img src="assets/img/thumbnail/skibiditentafruit.png" alt="" width="900" height="506" loading="lazy"/>
-                            <div class="trend-hero__vigilance" role="status">
-                                <svg class="trend-hero__vigilance-icon" width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
-                                    <path d="M9 2L2 15h14L9 2z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
-                                    <path d="M9 7v4M9 12h.01" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
-                                </svg>
-                                <span class="trend-hero__vigilance-text">Indice de vigilance : 28%</span>
-                                <span class="trend-hero__vigilance-info" title="Information" aria-label="Plus d’informations sur l’indice">
-                                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-                                        <circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.2"/>
-                                        <path d="M7 6v4M7 4h.01" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
-                                    </svg>
-                                </span>
-                            </div>
-                            <button type="button" class="trend-hero__play" aria-label="Lire la vidéo">
-                                <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
-                                    <path d="M11 8l10 6-10 6V8z" fill="currentColor"/>
-                                </svg>
-                            </button>
-                        </div>
-                        <div class="trend-hero__divider trend-hero__divider--purple" aria-hidden="true"></div>
-                        <div class="trend-detail__inner">
-                            <ul class="trend-tags" aria-label="Thématiques">
-                                <li><span class="trend-tag trend-tag--purple">TikTok</span></li>
-                                <li><span class="trend-tag trend-tag--orange">3D</span></li>
-                                <li><span class="trend-tag trend-tag--challenge">télé-réalité</span></li>
-                                <li><span class="trend-tag trend-tag--orange">humour</span></li>
-                            </ul>
-                            <h1 class="trend-detail__title">L’île de la Skididi Tentafruit</h1>
-                            <div class="trend-detail__body">
-                                <p>
-                                    Une fausse télé-réalité produite sur TikTok où les candidats sont des fruits en 3D (bananes, fraises&hellip;) qui vivent des &laquo; dramas &raquo; de couple. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                </p>
-                                <p>
-                                    Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                                </p>
-                                <p>
-                                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="trend-sheet__content content--trend-detail trend-sheet__detail" data-trend-id="kiki" hidden>
-                    <div class="trend-hero">
-                        <div class="trend-hero__media">
-                            <img src="assets/img/thumbnail/kiki-pitchoune.jpg" alt="" width="900" height="600" loading="lazy"/>
-                            <div class="trend-hero__vigilance" role="status">
-                                <svg class="trend-hero__vigilance-icon" width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
-                                    <path d="M9 2L2 15h14L9 2z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
-                                    <path d="M9 7v4M9 12h.01" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
-                                </svg>
-                                <span class="trend-hero__vigilance-text">Indice de vigilance : 40%</span>
-                                <span class="trend-hero__vigilance-info" title="Information" aria-label="Plus d’informations sur l’indice">
-                                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-                                        <circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.2"/>
-                                        <path d="M7 6v4M7 4h.01" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
-                                    </svg>
-                                </span>
-                            </div>
-                            <button type="button" class="trend-hero__play" aria-label="Lire la vidéo">
-                                <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
-                                    <path d="M11 8l10 6-10 6V8z" fill="currentColor"/>
-                                </svg>
-                            </button>
-                        </div>
-                        <div class="trend-hero__divider trend-hero__divider--yellow" aria-hidden="true"></div>
-                        <div class="trend-detail__inner">
-                            <ul class="trend-tags" aria-label="Thématiques">
-                                <li><span class="trend-tag trend-tag--purple">foot</span></li>
-                                <li><span class="trend-tag trend-tag--orange">pied à balle</span></li>
-                                <li><span class="trend-tag trend-tag--challenge">défi</span></li>
-                                <li><span class="trend-tag trend-tag--orange">humour</span></li>
-                            </ul>
-                            <h1 class="trend-detail__title">Kiki &amp; Pitchoune</h1>
-                            <div class="trend-detail__body">
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                                </p>
-                                <p>
-                                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                </p>
-                                <p>
-                                    Integer vitae lacus vel ligula faucibus dignissim. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Nullam vehicula, augue id tincidunt viverra, lectus magna bibendum ex.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <div
+                    class="trend-sheet__content content--trend-detail trend-sheet__detail"
+                    id="trend-sheet-dynamic"
+                    data-trend-id=""
+                    hidden
+                ></div>
             </div>
         </div>
     </div>
 </div>
 
+<script src="assets/js/trends-data.js" defer></script>
 <script src="assets/js/main.js" defer></script>
 </body>
 
