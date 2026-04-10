@@ -991,7 +991,7 @@
 
                 var featuredRoot = document.getElementById("home-featured-root");
                 if (featuredRoot) {
-                    var f = T.pickFeatured(norm.list);
+                    var f = T.featuredForHome(norm.byId, norm.list);
                     if (f) {
                         var img = document.getElementById("home-featured-img");
                         var titleEl = document.getElementById("home-featured-title");

@@ -101,6 +101,16 @@
         });
     }
 
+    /* id = slug du champ ti (ex. « Skibidi Phonk Remix Battles » → skibidi-phonk-remix-battles) */
+    var HOME_TOP_TENDANCE_ID = "skibidi-phonk-remix-battles";
+
+    function featuredForHome(byId, list) {
+        if (byId && HOME_TOP_TENDANCE_ID && byId[HOME_TOP_TENDANCE_ID]) {
+            return byId[HOME_TOP_TENDANCE_ID];
+        }
+        return pickFeatured(list);
+    }
+
     function thumbnailFor(trend) {
         if (trend && trend.cover) return trend.cover;
         return THUMBNAILS[trend.thumbIndex % THUMBNAILS.length];
@@ -428,6 +438,7 @@
         oldTrendCardHtml: oldTrendCardHtml,
         normalizeGlossary: normalizeGlossary,
         pickFeatured: pickFeatured,
+        featuredForHome: featuredForHome,
         thumbnailFor: thumbnailFor,
         truncate: truncate,
         cardHtml: cardHtml,
