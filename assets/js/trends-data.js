@@ -204,9 +204,10 @@
             var cls0 = META_TAG_CLASSES[mi % META_TAG_CLASSES.length];
             mi += 1;
             metaItems.push(
-                "<li><span class=\"trend-tag " +
+                "<li class=\"trend-detail__meta-row\"><span class=\"trend-detail__meta-key\">Période observée :</span>" +
+                    "<span class=\"trend-tag " +
                     cls0 +
-                    "\"><strong>Période observée :</strong> " +
+                    "\">" +
                     escapeHtml(t.da) +
                     "</span></li>"
             );
@@ -220,9 +221,10 @@
             var cls1 = META_TAG_CLASSES[mi % META_TAG_CLASSES.length];
             mi += 1;
             metaItems.push(
-                "<li><span class=\"trend-tag " +
+                "<li class=\"trend-detail__meta-row\"><span class=\"trend-detail__meta-key\">Hashtag / signal :</span>" +
+                    "<span class=\"trend-tag " +
                     cls1 +
-                    "\"><strong>Hashtag / signal :</strong> " +
+                    "\">" +
                     escapeHtml(signal) +
                     "</span></li>"
             );
@@ -230,9 +232,10 @@
         if (t.overallViews) {
             var cls2 = META_TAG_CLASSES[mi % META_TAG_CLASSES.length];
             metaItems.push(
-                "<li><span class=\"trend-tag " +
+                "<li class=\"trend-detail__meta-row\"><span class=\"trend-detail__meta-key\">Vues (agrégat) :</span>" +
+                    "<span class=\"trend-tag " +
                     cls2 +
-                    "\"><strong>Vues (agrégat) :</strong> " +
+                    "\">" +
                     escapeHtml(t.overallViews) +
                     "</span></li>"
             );
