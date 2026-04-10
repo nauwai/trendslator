@@ -8,7 +8,6 @@
         "assets/img/thumbnail/skibiditentafruit.png",
         "assets/img/thumbnail/kiki-pitchoune.jpg"
     ];
-    var TAG_CLASSES = ["trend-tag--purple", "trend-tag--orange", "trend-tag--challenge", "trend-tag--orange"];
     var ACCENTS = ["purple", "yellow"];
 
     function escapeHtml(s) {
@@ -112,18 +111,6 @@
         return s.slice(0, max - 1).trim() + "…";
     }
 
-    function tagsHtml(ty) {
-        var parts = [];
-        var arr = ty && ty.length ? ty : ["tendance"];
-        for (var i = 0; i < Math.min(4, arr.length); i++) {
-            var cls = TAG_CLASSES[i % TAG_CLASSES.length];
-            parts.push(
-                "<li><span class=\"trend-tag " + cls + "\">" + escapeHtml(arr[i]) + "</span></li>"
-            );
-        }
-        return parts.join("");
-    }
-
     function cardHtml(t, index) {
         var accent = ACCENTS[index % ACCENTS.length];
         var thumb = thumbnailFor(t);
@@ -212,8 +199,17 @@
 
         var metaParts = [];
         if (t.da) metaParts.push("<p><strong>Période observée :</strong> " + escapeHtml(t.da) + "</p>");
-        if (t.m) metaParts.push("<p><strong>Hashtag / signal :</strong> " + escapeHtml(t.m) + "</p>");
+        var signal = (t.m && String(t.m).trim()) || "";
+        if (!signal && t.hashtag) {
+            var h = String(t.hashtag).trim();
+            signal = h.indexOf("#") === 0 ? h : "#" + h;
+        }
+        if (signal) metaParts.push("<p><strong>Hashtag / signal :</strong> " + escapeHtml(signal) + "</p>");
         if (t.overallViews) metaParts.push("<p><strong>Vues (agrégat) :</strong> " + escapeHtml(t.overallViews) + "</p>");
+        var metaBlock =
+            metaParts.length > 0
+                ? "<div class=\"trend-detail__meta\" aria-label=\"Signaux et statistiques\">" + metaParts.join("") + "</div>"
+                : "";
 
         return (
             "<div class=\"trend-hero\">" +
@@ -228,18 +224,14 @@
             accent +
             "\" aria-hidden=\"true\"></div>" +
             "<div class=\"trend-detail__inner\">" +
-            "<ul class=\"trend-tags\" aria-label=\"Thématiques\">" +
-            tagsHtml(t.ty) +
-            "</ul>" +
+            metaBlock +
             "<h1 class=\"trend-detail__title\">" +
             escapeHtml(t.ti) +
             "</h1>" +
             "<div class=\"trend-detail__body\">" +
             "<p>" +
             escapeHtml(t.d) +
-            "</p>" +
-            metaParts.join("") +
-            "</div></div></div>"
+            "</p></div></div></div>"
         );
     }
 

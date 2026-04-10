@@ -642,36 +642,24 @@ body {
     padding: 16px 20px 0;
 }
 
-.trend-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    list-style: none;
+.trend-detail__meta {
     margin-bottom: 16px;
+    font-size: 0.875rem;
+    line-height: 1.45;
+    color: var(--color-muted);
 }
 
-.trend-tag {
-    display: inline-flex;
-    align-items: center;
-    padding: 6px 12px;
-    border-radius: var(--radius);
-    font-size: 0.8125rem;
-    font-weight: 600;
+.trend-detail__meta p {
+    margin: 0;
 }
 
-.trend-tag--purple {
-    background: var(--color-purple);
-    color: #fff;
+.trend-detail__meta p + p {
+    margin-top: 8px;
 }
 
-.trend-tag--orange {
-    background: var(--color-coral);
-    color: #fff;
-}
-
-.trend-tag--challenge {
-    background: var(--color-yellow);
-    color: var(--color-coral);
+.trend-detail__meta strong {
+    color: var(--color-text);
+    font-weight: 700;
 }
 
 .trend-detail__title {
