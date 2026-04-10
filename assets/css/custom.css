@@ -643,7 +643,7 @@ body {
 }
 
 .trend-detail__meta-tags {
-    margin-bottom: 16px;
+    margin-bottom: 28px;
     flex-direction: column;
     align-items: stretch;
     gap: 10px;
