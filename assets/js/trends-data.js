@@ -9,6 +9,7 @@
         "assets/img/thumbnail/kiki-pitchoune.jpg"
     ];
     var ACCENTS = ["purple", "yellow"];
+    var META_TAG_CLASSES = ["trend-tag--purple", "trend-tag--orange", "trend-tag--challenge"];
 
     function escapeHtml(s) {
         return String(s == null ? "" : s)
@@ -197,18 +198,50 @@
                   "<path d=\"M11 8l10 6-10 6V8z\" fill=\"currentColor\"/></svg></button>"
                 : "";
 
-        var metaParts = [];
-        if (t.da) metaParts.push("<p><strong>Période observée :</strong> " + escapeHtml(t.da) + "</p>");
+        var metaItems = [];
+        var mi = 0;
+        if (t.da) {
+            var cls0 = META_TAG_CLASSES[mi % META_TAG_CLASSES.length];
+            mi += 1;
+            metaItems.push(
+                "<li><span class=\"trend-tag " +
+                    cls0 +
+                    "\"><strong>Période observée :</strong> " +
+                    escapeHtml(t.da) +
+                    "</span></li>"
+            );
+        }
         var signal = (t.m && String(t.m).trim()) || "";
         if (!signal && t.hashtag) {
             var h = String(t.hashtag).trim();
             signal = h.indexOf("#") === 0 ? h : "#" + h;
         }
-        if (signal) metaParts.push("<p><strong>Hashtag / signal :</strong> " + escapeHtml(signal) + "</p>");
-        if (t.overallViews) metaParts.push("<p><strong>Vues (agrégat) :</strong> " + escapeHtml(t.overallViews) + "</p>");
+        if (signal) {
+            var cls1 = META_TAG_CLASSES[mi % META_TAG_CLASSES.length];
+            mi += 1;
+            metaItems.push(
+                "<li><span class=\"trend-tag " +
+                    cls1 +
+                    "\"><strong>Hashtag / signal :</strong> " +
+                    escapeHtml(signal) +
+                    "</span></li>"
+            );
+        }
+        if (t.overallViews) {
+            var cls2 = META_TAG_CLASSES[mi % META_TAG_CLASSES.length];
+            metaItems.push(
+                "<li><span class=\"trend-tag " +
+                    cls2 +
+                    "\"><strong>Vues (agrégat) :</strong> " +
+                    escapeHtml(t.overallViews) +
+                    "</span></li>"
+            );
+        }
         var metaBlock =
-            metaParts.length > 0
-                ? "<div class=\"trend-detail__meta\" aria-label=\"Signaux et statistiques\">" + metaParts.join("") + "</div>"
+            metaItems.length > 0
+                ? "<ul class=\"trend-tags trend-detail__meta-tags\" aria-label=\"Signaux et statistiques\">" +
+                  metaItems.join("") +
+                  "</ul>"
                 : "";
 
         return (
