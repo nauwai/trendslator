@@ -3,15 +3,15 @@
     {
       "ti": "Aura Check",
       "m": "#auracheck",
-      "d": "Les ados se filment ou filment leurs amis en silence, puis la communauté vote pour attribuer un score d'aura (charisme invisible). Un score bas = humiliation publique potentielle.",
+      "d": "Les ados se filment ou filment leurs amis en train de faire quelque chose de 'cool' ou de 'nul' et les autres commentent leur niveau d'aura (une sorte de charisme invisible). Un score d'aura élevé = tu es respecté, un score bas = tu es moqué.",
       "ty": [
-        "comportement",
         "slang",
+        "comportement",
         "format"
       ],
       "v": "https://www.tiktok.com/@collinskey/video/7634649672124075295",
-      "da": "mars 2026",
-      "du": 6,
+      "da": "fin mars 2026",
+      "du": 4,
       "c": [
         "morale"
       ],
@@ -19,231 +19,248 @@
       "Overall Posts": "458.9 Thousand",
       "Overall Views": "4.6 Billion",
       "Views / Post": "10,024",
-      "video_views": 72900000,
-      "cover": "https://linktr.ee/og/image/auracheck.jpg"
+      "video_views": 98700000,
+      "cover": "http://www.in5d.com/images/srthshgf.jpg"
     },
     {
       "ti": "NPC Freeze Challenge",
       "m": "#npcfreeze",
-      "d": "Un ado se fige comme un PNJ de jeu vidéo dans un lieu public (supermarché, couloir de collège) pendant que ses amis le filment. Variante 2026 plus extrême avec blocage de passages.",
+      "d": "Les ados se figent comme des personnages de jeu vidéo (NPC) au milieu d'une situation normale (couloir de collège, repas de famille) et attendent que quelqu'un les 'active' en leur parlant. Filmé et posté. Variante du NPC trend mais version freeze statique.",
       "ty": [
-        "comportement",
         "format",
+        "comportement",
         "son"
       ],
-      "v": "https://www.tiktok.com/@carolinebaniewicz/video/7257254987628088618",
-      "da": "avril 2026",
-      "du": 4,
+      "v": "https://www.tiktok.com/@loczniki/video/7327313659124813088",
+      "da": "début avril 2026",
+      "du": 5,
       "c": [
-        "physique",
-        "virtuelle"
+        "virtuelle",
+        "physique"
       ],
       "hashtag": "#npc",
       "Overall Posts": "552.9 Thousand",
       "Overall Views": "14.6 Billion",
       "Views / Post": "26,406",
-      "video_views": 5900000,
-      "cover": "https://i.ytimg.com/vi/yml8GNQrLA0/maxresdefault.jpg"
+      "video_views": 5400000,
+      "cover": "https://i.ytimg.com/vi/vm3pXu_6sVk/maxresdefault.jpg"
     },
     {
-      "ti": "Skibidi Lore Collège",
-      "m": "#skibidilore",
-      "d": "Les élèves recréent des scénarios inspirés de Skibidi Toilet dans leur collège, avec des rôles assignés (Titan, Camera Man). Peut générer de l'exclusion si un élève est forcé dans un rôle négatif.",
+      "ti": "Lore Dump sur les profs",
+      "m": "#loredump",
+      "d": "Les élèves partagent des anecdotes absurdes ou embarrassantes sur leurs profs sous forme de 'lore' (comme si le prof était un personnage de fiction avec une histoire secrète). Souvent anonymisé mais parfois reconnaissable. Peut glisser vers le harcèlement.",
       "ty": [
-        "meme",
-        "comportement",
-        "format"
+        "format",
+        "slang",
+        "comportement"
       ],
-      "v": "https://www.tiktok.com/@onlymoviesfr/video/7624224037148986647",
-      "da": "mars 2026",
-      "du": 5,
+      "v": "https://www.tiktok.com/@multimediaminds/video/7563831640670080278",
+      "da": "mi-mars 2026",
+      "du": 6,
+      "c": [
+        "morale",
+        "virtuelle"
+      ],
+      "hashtag": "#lore",
+      "Overall Posts": "332 Thousand",
+      "Overall Views": "7.7 Billion",
+      "Views / Post": "23,193",
+      "video_views": 13200000,
+      "cover": "https://i.ytimg.com/vi/zHG357gnx2s/maxresdefault.jpg"
+    },
+    {
+      "ti": "Skibidi Phonk Transition",
+      "m": "#skibidiphonk",
+      "d": "Format vidéo ultra-rapide : l'ado se filme normalement puis une transition brutale avec son phonk (musique agressive) le montre 'transformé' (tenue, attitude, expression). Très répété, son reconnaissable immédiatement par les ados.",
+      "ty": [
+        "son",
+        "format",
+        "meme"
+      ],
+      "v": "https://www.tiktok.com/@littlebig/video/6615528595261492485",
+      "da": "fin mars 2026",
+      "du": 3,
       "c": [
         "virtuelle",
-        "morale"
+        "physique"
       ],
       "hashtag": "#skibidi",
       "Overall Posts": "177.9 Thousand",
       "Overall Views": "5.4 Billion",
       "Views / Post": "30,354",
-      "video_views": 14400000,
-      "cover": "https://deutschtimes.de/wp-content/uploads/2025/02/Skibidi-meaning.webp"
+      "video_views": 8800000,
+      "cover": "https://i.audiomack.com/fuklab/8b5fd4f6cd.webp?width=1200"
     },
     {
       "ti": "Rizz or Miss",
       "m": "#rizzormiss",
-      "d": "Un ado tente une approche (drague ou blague) sur un camarade filmé à son insu, puis la vidéo est postée pour que les viewers jugent si c'était 'rizz' (cool) ou 'miss' (raté). Risque de honte publique.",
+      "d": "Un ado envoie un message de drague volontairement nul ou absurde à quelqu'un (ami ou inconnu) et filme la réaction ou poste le screenshot. Le but est de voir si son 'rizz' (charme naturel) fonctionne même avec un message ridicule. Pression sociale sur la séduction dès 12 ans.",
       "ty": [
         "comportement",
-        "format",
-        "slang"
+        "slang",
+        "format"
       ],
       "v": "https://www.tiktok.com/@juliangulchuk/video/7594545765058350350",
-      "da": "avril 2026",
+      "da": "début avril 2026",
       "du": 5,
       "c": [
-        "morale",
-        "physique"
+        "morale"
       ],
       "hashtag": "#rizz",
       "Overall Posts": "1.1 Million",
       "Overall Views": "34.7 Billion",
       "Views / Post": "31,545",
       "video_views": 32800000,
-      "cover": "https://rizzlines.gg/wp-content/uploads/2025/08/50-Rizz-Lines-That-Went-Viral-on-TikTok.png"
+      "cover": "https://i.ytimg.com/vi/ZiYqFKQcgso/maxresdefault.jpg"
     },
     {
-      "ti": "Brain Rot Tier List",
+      "ti": "Brainrot Tier List",
       "m": "#brainrottierlist",
-      "d": "Les ados classent leurs amis, profs ou célébrités dans des catégories absurdes (S-tier, F-tier) avec des personnages brainrot comme Tralalero Tralala ou Bombardiro Crocodilo. Inoffensif sauf si ciblé sur un camarade réel.",
+      "d": "Les ados classent des memes absurdes (Tralalero Tralala, Bombardiro Crocodilo, etc.) dans des catégories S/A/B/C/D. Celui qui ne connaît pas les memes est automatiquement exclu de la conversation. Crée un langage codé entre initiés.",
       "ty": [
         "meme",
-        "format",
-        "slang"
+        "slang",
+        "format"
       ],
-      "v": "https://www.tiktok.com/@experienceanatomy/video/7014181418611805446",
-      "da": "avril 2026",
+      "v": "https://www.tiktok.com/@brainrot_town1/video/7638248171465919777",
+      "da": "mi-avril 2026",
       "du": 4,
       "c": [
         "virtuelle"
       ],
-      "hashtag": "#brain",
-      "Overall Posts": "447.1 Thousand",
-      "Overall Views": "7.5 Billion",
-      "Views / Post": "16,775",
-      "video_views": 14400000,
-      "cover": "https://i.ytimg.com/vi/vI2c_Iqh0nI/maxresdefault.jpg"
+      "hashtag": "#brainrot",
+      "Overall Posts": "11.7 Thousand",
+      "Overall Views": "81.3 Million",
+      "Views / Post": "6,949",
+      "video_views": 2400000,
+      "cover": "https://static.animalbrainrot.com/images/blog_tier_list.webp"
     },
     {
-      "ti": "Sigma Grindset Morning",
-      "m": "#sigmagrindset",
-      "d": "Les collégiens se filment à 5h ou 6h du matin en train de 'grind' (travailler, s'entraîner) avec une musique épique. Pression de performance et de productivité extrême valorisée socialement.",
+      "ti": "Outfit Check Brutal",
+      "m": "#outfitcheckbrutal",
+      "d": "Un ado poste sa tenue du jour et demande explicitement un avis sans filtre. Les commentaires sont souvent très durs, parfois cruels. La tendance valorise la 'vérité brutale' comme une forme de respect. Peut générer une image corporelle négative.",
       "ty": [
         "format",
-        "comportement",
-        "slang"
+        "comportement"
       ],
-      "v": "https://www.tiktok.com/@the_billionaire__club_/video/7273781300119506184",
-      "da": "mars 2026",
+      "v": "https://www.tiktok.com/@so1v3y/video/7606427589103684895",
+      "da": "fin mars 2026",
       "du": 6,
       "c": [
         "morale",
         "physique"
       ],
+      "hashtag": "#outfit",
+      "Overall Posts": "11.9 Million",
+      "Overall Views": "142.2 Billion",
+      "Views / Post": "11,950",
+      "video_views": 7800000,
+      "cover": "https://cache.stylist.fr/data/photo/w2000_ci/6f/tendance-mode-tiktok-influence-fashion-week-style-fashion-streetwear-look-outfits.jpg"
+    },
+    {
+      "ti": "Sigma Grindset Morning",
+      "m": "#sigmagrindset",
+      "d": "Les ados (surtout garçons 12-15 ans) postent leur 'routine matinale sigma' : réveil à 5h, sport, pas de réseaux, musique lo-fi. Souvent parodique mais parfois sincère. Valorise l'isolement social comme signe de supériorité. Peut normaliser le rejet des émotions.",
+      "ty": [
+        "format",
+        "comportement",
+        "slang"
+      ],
+      "v": "https://www.tiktok.com/@the_billionaire__club_/video/7273511552492391688",
+      "da": "début avril 2026",
+      "du": 5,
+      "c": [
+        "morale"
+      ],
       "hashtag": "#sigmagrindset",
       "Overall Posts": "292 Thousand",
       "Overall Views": "7.9 Billion",
       "Views / Post": "27,055",
-      "video_views": 10400000,
+      "video_views": 2600000,
       "cover": "https://i.ytimg.com/vi/JZcgj2FecfE/maxresdefault.jpg"
     },
     {
-      "ti": "Tralalero Tralala Sound Dub",
-      "m": "#tralalerochallenge",
-      "d": "Utilisation du son viral 'Tralalero Tralala' (personnage brainrot italien) pour doubler des situations absurdes du quotidien scolaire. Très répandu, globalement inoffensif, sert de langue commune entre ados.",
+      "ti": "POV Tu es le personnage secondaire",
+      "m": "#povpersonnagesecondaire",
+      "d": "Format où l'ado se filme comme s'il était le personnage secondaire d'un film (pas le héros). Souvent mélancolique, musique triste, regard dans le vide. Exprime un sentiment d'invisibilité sociale. Signal émotionnel à prendre au sérieux si répété.",
       "ty": [
+        "format",
         "son",
-        "meme",
-        "format"
+        "comportement"
       ],
-      "v": "https://www.tiktok.com/@br.ai.nrot/video/7495815620152364310",
-      "da": "mars 2026",
-      "du": 5,
+      "v": "https://www.tiktok.com/@attractionspot/video/7150963439756709162",
+      "da": "mi-avril 2026",
+      "du": 4,
       "c": [
+        "morale",
         "virtuelle"
       ],
-      "hashtag": "#tralalero",
-      "Overall Posts": "17.1 Thousand",
-      "Overall Views": "992.2 Million",
-      "Views / Post": "58,023",
-      "video_views": 43000000,
-      "cover": "https://i.ytimg.com/vi/OJHmDQJYP1E/maxresdefault.jpg"
+      "hashtag": "#pov",
+      "Overall Posts": "50.2 Million",
+      "Overall Views": "1 Trillion",
+      "Views / Post": "19,920",
+      "video_views": 34000000,
+      "cover": "https://katall.fr/wp-content/uploads/2024/05/Google-My-business-et-article-de-blog-6-1.gif"
     },
     {
-      "ti": "Caught in 4K Exposé",
+      "ti": "Caught in 4K Collège",
       "m": "#caughtin4k",
-      "d": "Filmer un camarade dans une situation embarrassante (mensonge, comportement bizarre) et poster la vidéo avec le texte 'caught in 4K'. Peut virer au cyberharcèlement si ciblé de façon répétée.",
+      "d": "Filmer discrètement un camarade dans une situation embarrassante (qui dort en cours, qui mange bizarrement, qui répond mal à un prof) et poster sans consentement. Le terme 'caught in 4K' signifie 'pris en flagrant délit en haute définition'. Risque réel de cyberharcèlement.",
       "ty": [
         "comportement",
         "format",
         "slang"
       ],
       "v": "https://www.tiktok.com/@rickyboung/video/7463940458029272363",
-      "da": "avril 2026",
-      "du": 4,
+      "da": "fin mars 2026",
+      "du": 6,
       "c": [
-        "morale"
+        "morale",
+        "physique"
       ],
       "hashtag": "#caughtin4k",
       "Overall Posts": "86.1 Thousand",
       "Overall Views": "4.5 Billion",
       "Views / Post": "52,265",
       "video_views": 14500000,
-      "cover": "https://assets.capitalfm.com/2021/09/what-does-caught-in-4k-mean-on-tiktok-1614853667-view-0.png"
-    },
-    {
-      "ti": "Delulu Confession POV",
-      "m": "#deluluconfession",
-      "d": "Les ados font semblant de confesser des pensées 'delulu' (délirantes, irréalistes) sur un crush ou une situation. Format souvent drôle mais parfois utilisé pour humilier quelqu'un en le citant indirectement.",
-      "ty": [
-        "format",
-        "slang",
-        "comportement"
-      ],
-      "v": "https://www.tiktok.com/@c00ki3eartie/video/7474567367142558994",
-      "da": "avril 2026",
-      "du": 3,
-      "c": [
-        "morale",
-        "virtuelle"
-      ],
-      "hashtag": "#delulu",
-      "Overall Posts": "340.5 Thousand",
-      "Overall Views": "4.7 Billion",
-      "Views / Post": "13,803",
-      "video_views": 10900000,
-      "cover": "https://img.20mn.fr/wrRnoujZRwqvAuXhJs1t8Sk/1444x920_les-tiktokeurs-reprennent-le-terme-delulu-dans-leurs-videos-pour-illustrer-des-situations"
-    },
-    {
-      "ti": "Looksmaxxing Collège",
-      "m": "#looksmaxxing",
-      "d": "Les ados (surtout garçons 12-15 ans) suivent des routines extrêmes (mewing, cold shower, jeûne) pour améliorer leur apparence physique selon des standards viraux. Risque de dysmorphie et de régimes dangereux.",
-      "ty": [
-        "comportement",
-        "format",
-        "slang"
-      ],
-      "v": "https://www.tiktok.com/tag/looksmaxxing",
-      "da": "février 2026",
-      "du": 6,
-      "c": [
-        "physique",
-        "morale"
-      ],
-      "hashtag": "#looksmaxxing",
-      "Overall Posts": "40.4 Thousand",
-      "Overall Views": "1.4 Billion",
-      "Views / Post": "34,653",
-      "video_views": 0,
-      "cover": "https://i.ytimg.com/vi/kaafXgwfrMQ/oardefault.jpg?sqp=-oaymwEkCJUDENAFSFqQAgHyq4qpAxMIARUAAAAAJQAAyEI9AICiQ3gB&rs=AOn4CLCnbHSHok0THr95rJ3ioMyGrMLY4Q"
+      "cover": "https://i.ytimg.com/vi/_-G2oJ8jTiA/hq720_2.jpg?sqp=-oaymwEkCJUDENAFSFryq4qpAxYIARUAAAAAJQAAyEI9AICiQ3gB0AEB&rs=AOn4CLCwpb1ZmV_yCSFXAkyYLV66pBJ12g"
     }
   ],
   "synthese": {
     "top3_comprendre": [
-      "Tralalero Tralala Sound Dub : si votre enfant dit 'Tralalero' ou chante des sons absurdes, c'est de l'humour brainrot partagé, pas un problème.",
-      "Brain Rot Tier List : les classements S-tier/F-tier sont leur façon de hiérarchiser tout et n'importe quoi, souvent pour rire.",
-      "Aura Check : 't'as de l'aura' est le nouveau 't'es cool', comprendre ce mot clé aide à suivre les dynamiques sociales de votre enfant."
+      {
+        "ti": "Brainrot Tier List",
+        "raison": "Si votre enfant parle de Tralalero ou classe des trucs en S-tier, il parle ce langage codé. Ne pas le connaître = être exclu du groupe."
+      },
+      {
+        "ti": "Aura Check",
+        "raison": "Le mot 'aura' revient constamment dans les conversations IRL. Comprendre ce concept aide à décoder pourquoi certains ados sont valorisés ou moqués dans le groupe."
+      },
+      {
+        "ti": "Sigma Grindset Morning",
+        "raison": "Si votre fils parle de 'sigma', de 'grind' ou dit qu'il veut se lever à 5h pour être supérieur aux autres, c'est cette tendance."
+      }
     ],
     "top3_surveiller": [
-      "Looksmaxxing Collège : si votre enfant parle de mewing, de jeûne ou de 'glow up' obsessionnel, vérifiez qu'il ne suit pas de régimes ou routines physiques dangereuses conseillées par des inconnus en ligne.",
-      "Caught in 4K Exposé : si votre enfant filme ses camarades à leur insu ou est lui-même filmé, c'est potentiellement du cyberharcèlement déguisé en trend.",
-      "Rizz or Miss : des vidéos d'approches filmées sans consentement peuvent humilier des camarades publiquement, vérifiez ce que votre enfant poste ou reçoit."
+      {
+        "ti": "Caught in 4K Collège",
+        "risque": "Filmer un camarade sans consentement et poster = cyberharcèlement caractérisé. Vérifier si votre enfant est filmeur ou filmé."
+      },
+      {
+        "ti": "Outfit Check Brutal",
+        "risque": "Les commentaires peuvent être très violents sur le corps et la tenue. Image corporelle négative possible dès 12 ans, surtout chez les filles."
+      },
+      {
+        "ti": "Lore Dump sur les profs",
+        "risque": "Peut glisser vers la moquerie identifiable d'un adulte ou d'un camarade. Si le 'personnage' est reconnaissable, c'est du harcèlement déguisé en humour."
+      }
     ],
     "normal": [
-      "Tralalero Tralala Sound Dub",
-      "Brain Rot Tier List",
-      "Skibidi Lore Collège (si jeu entre amis consentants)",
-      "Delulu Confession POV (si non ciblé)"
+      "NPC Freeze Challenge",
+      "Skibidi Phonk Transition",
+      "Rizz or Miss (si entre amis consentants)",
+      "POV Tu es le personnage secondaire (sauf si répété avec détresse)"
     ],
-    "conseil": "Ne pas réagir avec panique aux mots brainrot ou aux memes absurdes : c'est leur langage générationnel normal. En revanche, ouvrez la conversation sur le consentement à être filmé et sur les standards physiques irréalistes vus en ligne, deux points de friction réels en 2026. Montrez de la curiosité plutôt que du jugement pour que votre enfant continue à vous parler de ce qu'il voit."
+    "conseil": "Parlez des tendances avec curiosité, pas avec peur : demandez à votre enfant de vous expliquer le brainrot ou l'aura, ça ouvre le dialogue. Surveillez surtout les vidéos postées sans consentement (Caught in 4K) et les commentaires reçus sur les posts de tenue. Si votre enfant se filme souvent comme 'personnage secondaire invisible', c'est un signal émotionnel qui mérite une vraie conversation."
   }
 }
