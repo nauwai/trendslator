@@ -1,115 +1,66 @@
 {
+  "date_generation": "06/07/2026",
   "tendances": [
     {
-      "ti": "Sigma Lore Dump",
-      "m": "#sigmalore",
-      "d": "Les ados créent des vidéos courtes où ils récitent des 'lois de vie' absurdes sur un ton ultra-sérieux, souvent avec une musique épique. C'est de l'humour second degré qui imite les vidéos de développement personnel pour adultes.",
+      "ti": "Aura Check",
+      "m": "#auracheck",
+      "d": "Les ados se notent mutuellement leur 'aura' (charisme, cool factor) de 0 à 100 dans les commentaires ou en vrai. Peut virer au classement social brutal.",
       "ty": [
-        "meme",
         "slang",
+        "comportement",
         "format"
       ],
-      "v": "https://www.tiktok.com/@argenby/video/7173631007885724929",
+      "v": "https://www.tiktok.com/@collinskey/video/7634649672124075295",
       "da": "mi-mai 2026",
-      "du": 4,
-      "c": "virtuelle",
-      "hashtag": "#sigma",
-      "Overall Posts": "2.9 Million",
-      "Overall Views": "82.8 Billion",
-      "Views / Post": "28,552",
-      "video_views": 160800000,
-      "cover": "https://i.ytimg.com/vi/oQ_GLjax8to/maxresdefault.jpg"
-    },
-    {
-      "ti": "NPC Freeze Challenge",
-      "m": "#npcfreeze",
-      "d": "Un ado se fige comme un personnage de jeu vidéo en plein milieu d'un lieu public (couloir de collège, centre commercial) pendant que ses amis filment les réactions des passants. Variante du NPC trend de 2023 mais version statique.",
-      "ty": [
-        "comportement",
-        "format",
-        "challenge"
+      "du": 8,
+      "c": [
+        "morale"
       ],
-      "v": "https://www.tiktok.com/@ghettotrio__/video/7206340756620037381",
-      "da": "début juin 2026",
-      "du": 3,
-      "c": "physique",
-      "hashtag": "#npc",
-      "Overall Posts": "552.9 Thousand",
-      "Overall Views": "14.6 Billion",
-      "Views / Post": "26,406",
-      "video_views": 19400000,
-      "cover": "https://d20ohkaloyme4g.cloudfront.net/img/document_thumbnails/5dbb148b093198f0dc857c978e62c531/thumb_1200_3000.png"
-    },
-    {
-      "ti": "Aura Farming IRL",
-      "m": "#aurafarm",
-      "d": "Les élèves s'attribuent des 'points d'aura' entre eux selon des actions jugées cool ou nulles. Exemple : 'tu viens de perdre 1000 aura' dit à quelqu'un qui trébuche. Crée une hiérarchie sociale informelle basée sur le jugement constant des pairs.",
-      "ty": [
-        "slang",
-        "comportement"
-      ],
-      "v": "https://www.tiktok.com/@bbkrunky/video/7585948787055611156",
-      "da": "fin avril 2026",
-      "du": 6,
-      "c": "morale",
       "hashtag": "#aura",
       "Overall Posts": "458.9 Thousand",
       "Overall Views": "4.6 Billion",
       "Views / Post": "10,024",
-      "video_views": 55300000,
-      "cover": "https://cdn-0001.qstv.on.epicgames.com/xVQJhESVdQIFwFzwyN/image/landscape_comp.jpeg"
+      "video_views": 136200000,
+      "cover": "https://dqy38fnwh4fqs.cloudfront.net/UHA9ROQOR8J7KL83AAE6BRKP79PM/projects/opengraph-image74f69134-c342-4e7f-9360-50ccb8fe936b.webp"
     },
     {
-      "ti": "Brainrot Tier List",
-      "m": "#brainrottierlist",
-      "d": "Les ados classent des personnages absurdes issus du brainrot internet (Tralalero Tralala, Bombardiro Crocodilo, etc.) dans des tableaux de classement partagés en story ou en vidéo. Langage totalement incompréhensible pour les adultes, c'est voulu.",
-      "ty": [
-        "meme",
-        "brainrot",
-        "format"
-      ],
-      "v": "https://www.tiktok.com/@collinskey/video/7616849748359728415",
-      "da": "mi-mai 2026",
-      "du": 5,
-      "c": "virtuelle",
-      "hashtag": "#brainrot",
-      "Overall Posts": "11.7 Thousand",
-      "Overall Views": "81.3 Million",
-      "Views / Post": "6,949",
-      "video_views": 172600000,
-      "cover": "https://static.animalbrainrot.com/images/blog_tier_list.webp"
-    },
-    {
-      "ti": "Outfit Check Brutal",
-      "m": "#outfitcheckbrutal",
-      "d": "Des vidéos où un ado filme sa tenue et demande un avis honnête. Les commentaires sont souvent très durs voire cruels. La tendance valorise la 'brutalité' comme signe d'authenticité. Risque réel de cyberharcèlement déguisé en jeu.",
+      "ti": "NPC Freeze Challenge",
+      "m": "#npcfreeze",
+      "d": "Se figer comme un personnage de jeu vidéo buggé dans un lieu public (supermarché, bus, couloir de collège) et filmer les réactions. Inoffensif mais peut gêner ou attirer l'attention négative.",
       "ty": [
         "format",
-        "comportement"
+        "comportement",
+        "son"
       ],
-      "v": "https://www.tiktok.com/@luvvleyzoe/video/7576770159449296158",
-      "da": "début juin 2026",
-      "du": 4,
-      "c": "morale",
-      "hashtag": "#outfit",
-      "Overall Posts": "11.9 Million",
-      "Overall Views": "142.2 Billion",
-      "Views / Post": "11,950",
-      "video_views": 24000000,
-      "cover": "https://i.ytimg.com/vi/2josk9OFoqU/oar2.jpg?sqp=-oaymwEkCJUDENAFSFqQAgHyq4qpAxMIARUAAAAAJQAAyEI9AICiQ3gB&rs=AOn4CLBLhmBG-chyaEelgTHNQVvv21T1gQ"
+      "v": "https://www.tiktok.com/@abishxafvzk/video/7617401107819564319",
+      "da": "fin mai 2026",
+      "du": 5,
+      "c": [
+        "physique",
+        "virtuelle"
+      ],
+      "hashtag": "#npc",
+      "Overall Posts": "552.9 Thousand",
+      "Overall Views": "14.6 Billion",
+      "Views / Post": "26,406",
+      "video_views": 502100,
+      "cover": "https://i.ytimg.com/vi/vm3pXu_6sVk/maxresdefault.jpg"
     },
     {
       "ti": "Looksmaxxing Collège",
       "m": "#looksmaxxingfr",
-      "d": "Des tutoriels très sérieux sur comment 'optimiser son apparence physique' : mewing (exercice de langue pour affiner la mâchoire), skincare, posture. Certains contenus poussent à des pratiques obsessionnelles ou véhiculent des standards physiques irréalistes.",
+      "d": "Tutoriels et défis pour 'optimiser' son apparence physique (mewing, skincare extrême, posture). Crée une pression intense sur le corps chez des enfants de 11-14 ans.",
       "ty": [
-        "comportement",
-        "format"
+        "format",
+        "comportement"
       ],
       "v": "https://www.tiktok.com/tag/looksmaxxing",
-      "da": "mars 2026",
-      "du": 8,
-      "c": "physique",
+      "da": "début mai 2026",
+      "du": 10,
+      "c": [
+        "physique",
+        "morale"
+      ],
       "hashtag": "#looksmaxxing",
       "Overall Posts": "40.4 Thousand",
       "Overall Views": "1.4 Billion",
@@ -118,101 +69,175 @@
       "cover": "https://neonmusic.online/wp-content/uploads/2024/05/444-61.jpg"
     },
     {
-      "ti": "Rizz Test Vocal",
-      "m": "#rizztest",
-      "d": "Un ado envoie un message vocal ou un texte à un inconnu ou un camarade pour tester son 'rizz' (capacité de séduction/charisme). Les réponses sont filmées et partagées. Peut mener à des situations embarrassantes ou à du harcèlement.",
+      "ti": "Rizz ou Pas Rizz",
+      "m": "#rizzornot",
+      "d": "Vidéos où on juge si une personne (souvent filmée à son insu) a du 'rizz' (séduction naturelle). Risque de moqueries et de diffusion d'images sans consentement.",
       "ty": [
-        "comportement",
         "slang",
-        "format"
+        "format",
+        "comportement"
       ],
-      "v": "https://www.tiktok.com/@juliangulchuk/video/7655043414928428301",
-      "da": "fin mai 2026",
-      "du": 3,
-      "c": "morale",
+      "v": "https://www.tiktok.com/@ejaycruzz/video/7655172550204378399",
+      "da": "fin avril 2026",
+      "du": 7,
+      "c": [
+        "morale"
+      ],
       "hashtag": "#rizz",
       "Overall Posts": "1.1 Million",
       "Overall Views": "34.7 Billion",
       "Views / Post": "31,545",
-      "video_views": 2900000,
-      "cover": "https://i.pinimg.com/736x/3e/72/6b/3e726b365e638b2061f991533c322295.jpg"
+      "video_views": 5200000,
+      "cover": "https://rizzapedia.com/wp-content/uploads/2025/02/TikTok-Rizz-Party.webp"
     },
     {
-      "ti": "Delulu Arc",
-      "m": "#deluluarc",
-      "d": "Les ados se filment en train de raconter leurs fantasmes totalement irréalistes (être célèbre, sortir avec une star) sur un ton assumé et humoristique. 'Delulu' = délirant. Tendance saine en général, sert d'exutoire créatif.",
+      "ti": "Skibidi Brainrot 3.0",
+      "m": "#skibidibrainrot",
+      "d": "Nouvelle vague de vidéos absurdes mélangeant sons aléatoires, personnages déformés et phrases sans sens ('ohio sigma glizzy'). Humour pur, langage incompréhensible pour les adultes, pas dangereux.",
       "ty": [
-        "slang",
-        "format",
-        "meme"
-      ],
-      "v": "https://www.tiktok.com/@maximbadyofficial/video/7277368519002426666",
-      "da": "mi-mai 2026",
-      "du": 5,
-      "c": "virtuelle",
-      "hashtag": "#delulu",
-      "Overall Posts": "340.5 Thousand",
-      "Overall Views": "4.7 Billion",
-      "Views / Post": "13,803",
-      "video_views": 4300000,
-      "cover": "https://neonmusic.online/wp-content/uploads/2023/08/Screenshot-2023-08-10-at-09.14.57-1024x448.jpg"
-    },
-    {
-      "ti": "Ghosting Game",
-      "m": "#ghostinggame",
-      "d": "Un groupe d'amis décide collectivement d'ignorer totalement une personne pendant une journée entière puis filme sa réaction. Présenté comme une blague mais constitue une forme d'exclusion sociale organisée et filmée.",
-      "ty": [
-        "comportement",
-        "format"
-      ],
-      "v": "https://www.tiktok.com/@packnzo2/video/7555219087798979870",
-      "da": "début juin 2026",
-      "du": 3,
-      "c": "morale",
-      "hashtag": "#ghosting",
-      "Overall Posts": "209.6 Thousand",
-      "Overall Views": "2.4 Billion",
-      "Views / Post": "11,450",
-      "video_views": 1500000,
-      "cover": "https://i.ytimg.com/vi/ow50HgkBbzs/maxresdefault.jpg"
-    },
-    {
-      "ti": "POV Trauma Dump Absurde",
-      "m": "#povtraumadump",
-      "d": "Format vidéo où l'ado joue une scène dramatique totalement exagérée sur un 'trauma' inventé et ridicule (ex: 'POV: ta mère a mis du beurre sur ton pain sans te demander'). Humour absurde, parodie des contenus émotionnels. Généralement inoffensif.",
-      "ty": [
-        "format",
         "meme",
+        "son",
         "slang"
       ],
-      "v": "https://www.tiktok.com/@florin/video/6850405335845375238",
-      "da": "fin mai 2026",
+      "v": "https://www.tiktok.com/@littlebig/video/6615528595261492485",
+      "da": "juin 2026",
       "du": 4,
-      "c": "virtuelle",
+      "c": [
+        "virtuelle"
+      ],
+      "hashtag": "#skibidi",
+      "Overall Posts": "177.9 Thousand",
+      "Overall Views": "5.4 Billion",
+      "Views / Post": "30,354",
+      "video_views": 8900000,
+      "cover": "https://findingdulcinea.com/wp-content/uploads/2025/12/Steal-a-Brainrot-Skibidi-Update.jpeg"
+    },
+    {
+      "ti": "Soft Life Flex",
+      "m": "#softlifefr",
+      "d": "Montrer sa vie 'douce et esthétique' : chambre aesthetic, goûters coûteux, vêtements de marque. Crée une compétition silencieuse sur le niveau de vie et peut exclure les enfants moins aisés.",
+      "ty": [
+        "format",
+        "comportement"
+      ],
+      "v": "https://www.tiktok.com/@brookeashleyhall/video/7614006611434065182",
+      "da": "mi-mai 2026",
+      "du": 9,
+      "c": [
+        "morale"
+      ],
+      "hashtag": "#softlife",
+      "Overall Posts": "193.6 Thousand",
+      "Overall Views": "1.2 Billion",
+      "Views / Post": "6,198",
+      "video_views": 1000000,
+      "cover": "https://slang.net/img/slang/xl/soft_life_7074.jpg"
+    },
+    {
+      "ti": "POV Trauma Dump",
+      "m": "#povtraumadump",
+      "d": "Vidéos où des ados partagent des expériences difficiles (famille, école) sous format POV dramatisé avec musique triste. Peut normaliser la surexposition émotionnelle et attirer des adultes malveillants.",
+      "ty": [
+        "format",
+        "son"
+      ],
+      "v": "https://www.tiktok.com/@demimykal/video/7494817224251952430",
+      "da": "fin mai 2026",
+      "du": 6,
+      "c": [
+        "morale",
+        "virtuelle"
+      ],
       "hashtag": "#pov",
       "Overall Posts": "50.2 Million",
       "Overall Views": "1 Trillion",
       "Views / Post": "19,920",
-      "video_views": 8400000,
-      "cover": "https://i.ytimg.com/vi/H_4asHf-t2E/oardefault.jpg?sqp=-oaymwEkCJUDENAFSFqQAgHyq4qpAxMIARUAAAAAJQAAyEI9AICiQ3gB&rs=AOn4CLA0VIOHjSA7UYMNR4lBeS652rwWKA"
+      "video_views": 76900000,
+      "cover": "https://i.ytimg.com/vi/PHIGwE9noys/hq720.jpg"
+    },
+    {
+      "ti": "Gyatt Ranking IRL",
+      "m": "#gyattranking",
+      "d": "Classement physique des camarades de classe basé sur un slang venu des streamers. Se fait à voix haute ou en story Snap. Forme de harcèlement déguisé en humour.",
+      "ty": [
+        "slang",
+        "comportement"
+      ],
+      "v": "https://www.tiktok.com/@blanc.aex/video/7338799900873821470",
+      "da": "début juin 2026",
+      "du": 5,
+      "c": [
+        "morale",
+        "physique"
+      ],
+      "hashtag": "#gyatt",
+      "Overall Posts": "248 Thousand",
+      "Overall Views": "1.7 Billion",
+      "Views / Post": "6,855",
+      "video_views": 5900000,
+      "cover": "https://i.ytimg.com/vi/-qPK90tplA4/maxresdefault.jpg"
+    },
+    {
+      "ti": "Demure Walk",
+      "m": "#demurewalk",
+      "d": "Marcher de façon exagérément 'élégante et discrète' en public en se filmant, souvent avec une voix off ironique. Tendance légère et humoristique, pas de risque identifié.",
+      "ty": [
+        "format",
+        "son",
+        "comportement"
+      ],
+      "v": "https://www.tiktok.com/@joolieannie/video/7399736793119247662",
+      "da": "mi-juin 2026",
+      "du": 4,
+      "c": [
+        "physique",
+        "virtuelle"
+      ],
+      "hashtag": "#demure",
+      "Overall Posts": "3.4 Thousand",
+      "Overall Views": "2.3 Million",
+      "Views / Post": "676",
+      "video_views": 57500000,
+      "cover": "https://cdna.artstation.com/p/assets/images/images/037/834/374/large/ivan-fiorelli-2-iceman-color.jpg?1621439573"
+    },
+    {
+      "ti": "Ghost Mode Challenge",
+      "m": "#ghostmodechallenge",
+      "d": "Disparaître volontairement des réseaux (supprimer stories, ne plus répondre) pendant 48h pour voir qui s'inquiète. Peut être un signal de mal-être ou un jeu de manipulation sociale.",
+      "ty": [
+        "comportement",
+        "format"
+      ],
+      "v": "https://www.tiktok.com/@thebrandonrobert/video/7440599361840598314",
+      "da": "fin mai 2026",
+      "du": 6,
+      "c": [
+        "morale"
+      ],
+      "hashtag": "#ghost",
+      "Overall Posts": "4.3 Million",
+      "Overall Views": "85.5 Billion",
+      "Views / Post": "19,884",
+      "video_views": 99500000,
+      "cover": "https://i.ytimg.com/vi/OgloCrlWYpQ/maxresdefault.jpg"
     }
   ],
   "synthese": {
     "top3_comprendre": [
-      "Brainrot Tier List",
-      "Sigma Lore Dump",
-      "Delulu Arc"
+      "Skibidi Brainrot 3.0 : si votre enfant parle 'ohio sigma', c'est de l'humour absurde entre ados, pas un problème",
+      "Aura Check : le mot 'aura' dans la bouche de votre enfant désigne son statut social perçu par les autres",
+      "Rizz : signifie charme naturel, souvent utilisé pour se comparer ou comparer les autres"
     ],
     "top3_surveiller": [
-      "Ghosting Game",
-      "Outfit Check Brutal",
-      "Aura Farming IRL"
+      "Gyatt Ranking IRL : classement physique des camarades, forme masquée de harcèlement à surveiller si votre enfant en parle ou semble affecté",
+      "Looksmaxxing Collège : obsession de l'apparence physique dès 11 ans, peut mener à des troubles de l'image corporelle",
+      "POV Trauma Dump : surexposition émotionnelle publique, risque de contact avec des inconnus et de manipulation"
     ],
     "normal": [
-      "POV Trauma Dump Absurde",
       "NPC Freeze Challenge",
-      "Rizz Test Vocal"
+      "Demure Walk",
+      "Soft Life Flex (à surveiller seulement si votre enfant réclame des achats inhabituels)"
     ],
-    "conseil": "Ces tendances sont souvent du second degré incompréhensible pour les adultes : ne pas surréagir. En revanche, le Ghosting Game et l'Outfit Check Brutal peuvent masquer du harcèlement réel sous couvert de jeu. Posez des questions ouvertes sur ce qui se passe dans le groupe, pas sur les vidéos elles-mêmes. Le looksmaxxing mérite une conversation calme sur l'image corporelle sans dramatiser."
+    "conseil": "Ne pas réagir avec panique aux mots bizarres (brainrot, rizz, sigma) qui sont souvent de l'humour inoffensif. En revanche, si votre enfant parle de 'classements' entre élèves ou disparaît soudainement des réseaux, ouvrez la conversation sans jugement. La clé : montrer que vous connaissez ces codes sans les ridiculiser."
   }
 }
