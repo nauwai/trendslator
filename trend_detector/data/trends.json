@@ -1,246 +1,249 @@
 {
   "tendances": [
     {
-      "ti": "Aura Check",
-      "m": "#auracheck",
-      "d": "Les ados se filment ou filment leurs amis en silence, puis la communauté vote en commentaires pour attribuer un score d'aura (charisme invisible). Un score bas peut devenir une moquerie publique.",
+      "ti": "Aura Farming 2.0",
+      "m": "#aurafarm",
+      "d": "Les ados accumulent des 'points d'aura' imaginaires en faisant des actions jugées cool, mystérieuses ou stylées devant leurs amis ou en vidéo. C'est une monnaie sociale fictive qui détermine leur statut dans le groupe.",
+      "ty": [
+        "slang",
+        "comportement",
+        "format"
+      ],
+      "v": "https://www.tiktok.com/@shweps1k0/video/7641593468351204628",
+      "da": "mi-juin 2026",
+      "du": 8,
+      "c": [
+        "morale"
+      ],
+      "hashtag": "",
+      "Overall Posts": "",
+      "Overall Views": "",
+      "Views / Post": "",
+      "video_views": 3400000,
+      "cover": "https://www.yooooga.com/wp-content/uploads/2025/10/Aura-Farming-The-Viral-Slang-Shaping-Digital-Identity.webp"
+    },
+    {
+      "ti": "NPC Classroom Challenge",
+      "m": "#npcclasse",
+      "d": "Des élèves filment en secret des camarades qui font des gestes répétitifs ou des expressions figées en classe, les montent en vidéo avec des sons NPC (personnage de jeu vidéo sans vie propre) et les postent sans leur accord. Risque réel de moquerie virale.",
+      "ty": [
+        "format",
+        "comportement",
+        "meme"
+      ],
+      "v": "https://www.tiktok.com/tag/npcclasse",
+      "da": "début juillet 2026",
+      "du": 4,
+      "c": [
+        "virtuelle",
+        "morale"
+      ],
+      "hashtag": "",
+      "Overall Posts": "",
+      "Overall Views": "",
+      "Views / Post": "",
+      "video_views": 0,
+      "cover": "https://image.slidesharecdn.com/understandingnpcstreamingontiktok-240205101538-2cf7ad9c/75/Is-Your-Kid-Watching-NPCs-on-TikTok-Here-s-What-You-Need-to-Know-2-2048.jpg"
+    },
+    {
+      "ti": "Looksmaxxing Collège",
+      "m": "#looksmaxxfr",
+      "d": "Tendance venue des forums incel adaptée aux ados : tutoriels pour 'optimiser' son apparence physique (mewing, jawline, skincare extrême). Crée une obsession du physique et des comparaisons toxiques entre élèves.",
       "ty": [
         "comportement",
         "format",
         "slang"
       ],
-      "v": "https://www.tiktok.com/@mc_videos001/video/7640136336703360277",
-      "da": "Début juin 2026",
-      "du": 6,
-      "c": [
-        "morale",
-        "virtuelle"
-      ],
-      "hashtag": "#aura",
-      "Overall Posts": "458.9 Thousand",
-      "Overall Views": "4.6 Billion",
-      "Views / Post": "10,024",
-      "video_views": 20800000,
-      "cover": "https://www.megabites.com.ph/wp-content/uploads/2023/06/vivo-Aura-Check-1-1.jpg"
-    },
-    {
-      "ti": "NPC Lore Perso",
-      "m": "#npclore",
-      "d": "Chaque ado invente un 'lore' (histoire fictive absurde) sur lui-même ou un camarade, comme s'il était un personnage de jeu vidéo. Peut virer au moquage déguisé en humour.",
-      "ty": [
-        "meme",
-        "slang",
-        "format"
-      ],
-      "v": "https://www.tiktok.com/@carolinebaniewicz/video/7257254987628088618",
-      "da": "Mi-juin 2026",
-      "du": 5,
-      "c": [
-        "virtuelle",
-        "morale"
-      ],
-      "hashtag": "#npc",
-      "Overall Posts": "552.9 Thousand",
-      "Overall Views": "14.6 Billion",
-      "Views / Post": "26,406",
-      "video_views": 5900000,
-      "cover": "https://i.ytimg.com/vi/1MeVphW_LWk/maxresdefault.jpg"
-    },
-    {
-      "ti": "Skibidi Phonk Walk",
-      "m": "#skibidiphonkwalk",
-      "d": "Démarche exagérée filmée en slow-mo sur un son phonk, imitant une allure 'sigma'. Se fait en groupe au collège ou dans la rue. Pression d'imitation forte pour appartenir au groupe.",
-      "ty": [
-        "son",
-        "comportement",
-        "format"
-      ],
-      "v": "https://www.tiktok.com/@termosimone22/video/7656038756826271008",
-      "da": "Fin mai 2026",
-      "du": 4,
+      "v": "https://www.tiktok.com/tag/looksmaxxfr",
+      "da": "fin mai 2026",
+      "du": 10,
       "c": [
         "physique",
         "morale"
       ],
-      "hashtag": "#skibidi",
-      "Overall Posts": "177.9 Thousand",
-      "Overall Views": "5.4 Billion",
-      "Views / Post": "30,354",
-      "video_views": 9000000,
-      "cover": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/0d/11/4d/0d114d4f-e748-f965-07c4-40baf1f649fe/artwork.jpg/1200x1200bf-60.jpg"
+      "hashtag": "",
+      "Overall Posts": "",
+      "Overall Views": "",
+      "Views / Post": "",
+      "video_views": 0,
+      "cover": "https://neonmusic.online/wp-content/uploads/2024/05/444-61.jpg"
     },
     {
-      "ti": "Ratio War",
-      "m": "#ratiowar",
-      "d": "Concours pour obtenir plus de likes sur un commentaire que sur la vidéo originale (ratio). Les ados s'organisent en groupe pour 'ratio' un camarade ou un inconnu, ce qui peut devenir du cyberharcèlement coordonné.",
+      "ti": "Rizz Test IRL",
+      "m": "#rizztest",
+      "d": "Un ado aborde un inconnu ou un camarade avec une phrase de drague absurde scriptée, filme la réaction à leur insu et poste la vidéo. Le 'rizz' désigne le charme naturel. Peut virer au harcèlement filmé.",
       "ty": [
         "comportement",
+        "slang",
         "format"
       ],
-      "v": "https://www.tiktok.com/@mrnateify/video/7639152439102393630",
-      "da": "Début juin 2026",
+      "v": "https://www.tiktok.com/@yoyo.officiall/video/7621718967211592974",
+      "da": "mi-juin 2026",
       "du": 5,
       "c": [
-        "virtuelle",
-        "morale"
+        "morale",
+        "physique"
       ],
-      "hashtag": "#ratio",
-      "Overall Posts": "77.2 Thousand",
-      "Overall Views": "1.1 Billion",
-      "Views / Post": "14,249",
-      "video_views": 5300000,
-      "cover": "https://i.ytimg.com/vi/Iid4CPHTADQ/maxresdefault.jpg"
+      "hashtag": "",
+      "Overall Posts": "",
+      "Overall Views": "",
+      "Views / Post": "",
+      "video_views": 867900,
+      "cover": "https://media.tag24.de/951x634/9/g/9gziiccjgl1y69n9sgp3s2jxpmjk7kxo.jpg"
     },
     {
-      "ti": "Delulu Arc",
-      "m": "#deluluarc",
-      "d": "Raconter en vidéo un scénario totalement délirant sur sa propre vie comme si c'était un épisode de série. Humour absurde majoritairement sain, mais peut normaliser le déni de réalité ou l'auto-dérision excessive.",
+      "ti": "Skibidi Lore Étendu",
+      "m": "#skibidilore",
+      "d": "Continuation du brainrot Skibidi Toilet : les ados créent des théories narratives complexes autour de l'univers, font des vidéos de 'lore explained' en français. Langage totalement absurde mais codé entre pairs. Inoffensif mais incompréhensible pour adultes.",
       "ty": [
+        "meme",
         "slang",
-        "format",
-        "meme"
+        "format"
       ],
-      "v": "https://www.tiktok.com/@maximbadyofficial/video/7277368519002426666",
-      "da": "Mi-juin 2026",
+      "v": "https://www.tiktok.com/@.melumii/video/7650548705547898134",
+      "da": "continu, pic juillet 2026",
       "du": 6,
       "c": [
         "virtuelle"
       ],
-      "hashtag": "#delulu",
-      "Overall Posts": "340.5 Thousand",
-      "Overall Views": "4.7 Billion",
-      "Views / Post": "13,803",
-      "video_views": 4400000,
-      "cover": "https://img.20mn.fr/wrRnoujZRwqvAuXhJs1t8Sk/1444x920_les-tiktokeurs-reprennent-le-terme-delulu-dans-leurs-videos-pour-illustrer-des-situations"
+      "hashtag": "",
+      "Overall Posts": "",
+      "Overall Views": "",
+      "Views / Post": "",
+      "video_views": 2100000,
+      "cover": "https://i.ytimg.com/vi/p2pgtUZseYo/maxresdefault.jpg"
     },
     {
-      "ti": "Glazing Challenge",
-      "m": "#glazingchallenge",
-      "d": "Complimenter quelqu'un de façon extrême et absurde (le 'glaze') pour le mettre mal à l'aise ou le ridiculiser devant les autres. Le mot 'glazer' quelqu'un est utilisé IRL au collège.",
+      "ti": "Sigma Silence",
+      "m": "#sigmasilence",
+      "d": "Trend comportementale : ignorer volontairement quelqu'un (parent, prof, camarade) en fixant le vide avec une musique dramatique, pour paraître 'sigma' (loup solitaire supérieur). Utilisé aussi pour mettre quelqu'un en ostracisme social filmé.",
       "ty": [
+        "comportement",
         "slang",
-        "comportement"
+        "son"
       ],
-      "v": "https://www.tiktok.com/@cherry_day_art/video/7194453226299723050",
-      "da": "Fin mai 2026",
+      "v": "https://www.tiktok.com/@auramunch5/video/7653193783055535363",
+      "da": "début juillet 2026",
       "du": 4,
       "c": [
-        "morale",
-        "physique"
+        "morale"
       ],
-      "hashtag": "#glazing",
-      "Overall Posts": "30.9 Thousand",
-      "Overall Views": "722.1 Million",
-      "Views / Post": "23,369",
-      "video_views": 1600000,
-      "cover": "https://info-welt.com/wp-content/uploads/2025/03/Glazing-Meaning-Slang.jpg"
+      "hashtag": "",
+      "Overall Posts": "",
+      "Overall Views": "",
+      "Views / Post": "",
+      "video_views": 287700,
+      "cover": "https://i.ytimg.com/vi/lLGMoMnvlnI/maxresdefault.jpg"
     },
     {
-      "ti": "Brain Rot Tier List",
-      "m": "#brainrottierlist",
-      "d": "Classer des memes absurdes (Tralalero, Bombardiro, etc.) dans des catégories S/A/B/C/D. Sert de code social : ne pas connaître ces memes = être 'hors du groupe'. Langage brainrot utilisé IRL.",
-      "ty": [
-        "meme",
-        "slang",
-        "format"
-      ],
-      "v": "https://www.tiktok.com/@instituteofhumananatomy/video/7625683618370817311",
-      "da": "Début juin 2026",
-      "du": 5,
-      "c": [
-        "virtuelle"
-      ],
-      "hashtag": "#brain",
-      "Overall Posts": "447.1 Thousand",
-      "Overall Views": "7.5 Billion",
-      "Views / Post": "16,775",
-      "video_views": 35000000,
-      "cover": "https://tiermaker.com/images/media/hero_images/2024/18404519/brainrot-tier-list-18404519/184045191757420400.png"
-    },
-    {
-      "ti": "Outfit Check Brutal",
-      "m": "#outfitcheckbrutal",
-      "d": "Poster une photo de sa tenue pour recevoir des avis 'honnêtes'. Les commentaires peuvent être très cruels. Forte pression sur l'apparence physique et le style vestimentaire.",
+      "ti": "POV Tu Survis au Collège",
+      "m": "#povcollege",
+      "d": "Format vidéo où l'ado joue un personnage qui 'survit' à des archétypes scolaires (la meuf populaire, le prof relou, le drama). Très codifié, révèle les hiérarchies sociales réelles vécues. Permet aux parents de comprendre le vécu scolaire de leur enfant.",
       "ty": [
         "format",
         "comportement"
       ],
-      "v": "https://www.tiktok.com/@radiancespam/video/7654682191208779039",
-      "da": "Mi-juin 2026",
-      "du": 5,
+      "v": "https://www.tiktok.com/@buikem07/video/7648891832234970376",
+      "da": "mi-juin 2026",
+      "du": 7,
       "c": [
         "morale",
-        "physique"
+        "virtuelle"
       ],
-      "hashtag": "#outfit",
-      "Overall Posts": "11.9 Million",
-      "Overall Views": "142.2 Billion",
-      "Views / Post": "11,950",
+      "hashtag": "",
+      "Overall Posts": "",
+      "Overall Views": "",
+      "Views / Post": "",
       "video_views": 5600000,
-      "cover": "https://cdn.genz.ai/drop-img/fashion/2026-fashion-trend-forecasts-tiktok.jpg"
+      "cover": "https://imgix.bustle.com/uploads/image/2021/8/24/8c21fa65-e18c-4f52-80ee-1bb6e057c25a-back_to_school.jpeg?w=374&h=653&fit=crop&crop=faces&dpr=2"
     },
     {
-      "ti": "Sigma Grindset Parodie",
-      "m": "#sigmagrindset",
-      "d": "Parodier les vidéos de 'mentalité sigma' avec des situations absurdes du quotidien collégien. Humour sain en surface, mais certains ados internalisent réellement les codes de domination sociale véhiculés.",
+      "ti": "Delulu Affirmations",
+      "m": "#deluluaffirmation",
+      "d": "Les ados récitent des affirmations positives absurdes et exagérées ('je suis la plus belle de l'univers, les garçons tombent à mes pieds') sur un ton semi-ironique. 'Delulu' = délirant. Tendance globalement saine mais peut masquer une vraie faible estime de soi.",
       "ty": [
-        "meme",
+        "slang",
         "son",
         "format"
       ],
-      "v": "https://www.tiktok.com/@realsigmax7/video/7653009234929470752",
-      "da": "Fin mai 2026",
-      "du": 6,
+      "v": "https://www.tiktok.com/@biancaxb08/video/7270227105588415790",
+      "da": "fin juin 2026",
+      "du": 5,
+      "c": [
+        "morale",
+        "virtuelle"
+      ],
+      "hashtag": "",
+      "Overall Posts": "",
+      "Overall Views": "",
+      "Views / Post": "",
+      "video_views": 11700000,
+      "cover": "https://img.freepik.com/premium-photo/heartwarming-image-parent-reading-bedtime-story-their-child-child-snuggled-up-bed-with-favorite-stuffed-animal-parent-sitting-beside-them-holding-storybook-room_1282204-5193.jpg?w=996"
+    },
+    {
+      "ti": "Caught in 4K Montage",
+      "m": "#caughtin4k",
+      "d": "Compilation de moments où quelqu'un est filmé à son insu en train de faire quelque chose de gênant (manger bizarrement, parler seul, avoir une mauvaise note). Postés sans consentement. Risque de cyberharcèlement déguisé en humour.",
+      "ty": [
+        "format",
+        "comportement",
+        "meme"
+      ],
+      "v": "https://www.tiktok.com/@rickyboung/video/7463940458029272363",
+      "da": "début juillet 2026",
+      "du": 4,
+      "c": [
+        "morale",
+        "virtuelle"
+      ],
+      "hashtag": "",
+      "Overall Posts": "",
+      "Overall Views": "",
+      "Views / Post": "",
+      "video_views": 14600000,
+      "cover": "https://i.pinimg.com/736x/5b/b7/79/5bb7795297507c09fdae1891a545cc68.jpg"
+    },
+    {
+      "ti": "Brain Rot Sound Duel",
+      "m": "#brainrotduel",
+      "d": "Deux ados s'affrontent en récitant le plus vite possible des phrases brainrot enchaînées (mélange de memes italiens, Skibidi, Ohio, Fanum Tax). C'est un jeu de culture internet pur. Celui qui ne connaît pas une référence 'perd de l'aura'. Crée une pression de consommation constante de contenu.",
+      "ty": [
+        "slang",
+        "comportement",
+        "son"
+      ],
+      "v": "https://www.tiktok.com/@_hiddenhub/video/7614173377741344022",
+      "da": "mi-juillet 2026",
+      "du": 3,
       "c": [
         "virtuelle",
         "morale"
       ],
-      "hashtag": "#sigmagrindset",
-      "Overall Posts": "292 Thousand",
-      "Overall Views": "7.9 Billion",
-      "Views / Post": "27,055",
-      "video_views": 2500000,
-      "cover": "https://media.gq-magazine.co.uk/photos/6362687ed85a7b93f28a0904/16:9/w_2560,c_limit/Sigma-grindset-patrick-bateman.jpeg"
-    },
-    {
-      "ti": "POV Exclusion",
-      "m": "#povexclusion",
-      "d": "Vidéos mettant en scène le fait d'être exclu d'un groupe ou d'ignorer quelqu'un. Présentées comme du contenu dramatique/fiction, elles normalisent l'exclusion sociale et peuvent inspirer des comportements réels.",
-      "ty": [
-        "format",
-        "comportement"
-      ],
-      "v": "https://www.tiktok.com/@suburban_prince/video/7438371044726934830",
-      "da": "Début juin 2026",
-      "du": 4,
-      "c": [
-        "morale",
-        "physique"
-      ],
-      "hashtag": "#pov",
-      "Overall Posts": "50.2 Million",
-      "Overall Views": "1 Trillion",
-      "Views / Post": "19,920",
-      "video_views": 29700000,
-      "cover": "https://www.mediamister.com/blog/wp-content/uploads/2025/11/different-types-of-pov-videos-on-tiktok.jpeg"
+      "hashtag": "",
+      "Overall Posts": "",
+      "Overall Views": "",
+      "Views / Post": "",
+      "video_views": 1100000,
+      "cover": "https://brainrot-games.io/data/image/StealBrainrotDuel.png"
     }
   ],
   "synthese": {
     "top3_comprendre": [
-      "Brain Rot Tier List : connaître ces memes = parler la langue de votre enfant",
-      "Delulu Arc : humour absurde normal, pas d'inquiétude si ponctuel",
-      "Skibidi Phonk Walk : démarche et son reconnaissables, signe d'appartenance au groupe"
+      "POV Tu Survis au Collège — révèle comment votre enfant perçoit son environnement scolaire et sa place sociale",
+      "Skibidi Lore Étendu — le langage brainrot est un dialecte générationnel, pas un signe de régression",
+      "Delulu Affirmations — humour d'autodérision qui peut aussi être un signal d'estime de soi fragile"
     ],
     "top3_surveiller": [
-      "Ratio War : peut basculer en cyberharcèlement organisé, vérifier les groupes de discussion",
-      "Outfit Check Brutal : risque réel sur l'estime corporelle, surveiller les commentaires reçus",
-      "POV Exclusion : si votre enfant regarde ou produit ce contenu en excès, discuter de l'exclusion sociale réelle"
+      "NPC Classroom Challenge — filmer des camarades sans consentement, risque de cyberharcèlement réel",
+      "Caught in 4K Montage — humiliation filmée banalisée, peut cibler votre enfant ou être pratiquée par lui",
+      "Looksmaxxing Collège — obsession du physique dès 11 ans, discours pseudo-scientifique sur l'apparence, peut mener à des troubles"
     ],
     "normal": [
-      "Delulu Arc",
-      "Brain Rot Tier List",
-      "Sigma Grindset Parodie (si pris au second degré)"
+      "Skibidi Lore Étendu",
+      "Brain Rot Sound Duel",
+      "Sigma Silence (version humoristique)",
+      "Delulu Affirmations"
     ],
-    "conseil": "Demandez à votre enfant de vous expliquer un meme brainrot : c'est une porte d'entrée non menaçante. Évitez de diaboliser ces codes, mais restez attentif aux scores, votes et classements publics qui touchent à l'apparence ou à la popularité. Si votre enfant parle d'aura, de ratio ou d'exclusion avec anxiété, c'est le bon moment pour écouter sans juger."
+    "conseil": "Ne pas interdire en bloc : demandez à votre enfant de vous expliquer une trend, cela ouvre le dialogue sans jugement. Surveillez surtout les vidéos filmées en classe ou impliquant d'autres élèves. Le vrai risque n'est pas le contenu absurde mais le consentement et la pression sociale invisible."
   }
 }
