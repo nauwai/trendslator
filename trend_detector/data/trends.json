@@ -1,169 +1,62 @@
 {
   "tendances": [
     {
-      "ti": "Aura Farming 2.0",
-      "m": "#aurafarm",
-      "d": "Les ados s'attribuent des points d'aura (charisme invisible) pour chaque action cool ou bizarre filmée. Variante 2026 : on 'farm' l'aura en ignorant ostensiblement quelqu'un ou en restant impassible face à une situation absurde. Devient un outil de hiérarchie sociale IRL.",
+      "ti": "Aura Check",
+      "m": "#auracheck",
+      "d": "Les ados se filment ou filment leurs amis en silence, puis la communauté vote en commentaires pour attribuer un score d'aura (charisme invisible). Un score bas peut devenir une moquerie publique.",
       "ty": [
-        "slang",
         "comportement",
+        "morale",
         "format"
       ],
-      "v": "https://www.tiktok.com/@gonjutsu/video/7666571972834430215",
-      "da": "mi-juin 2026",
+      "v": "https://www.tiktok.com/@collinskey/video/7634649672124075295",
+      "da": "fin juin 2026",
       "du": 8,
       "c": [
-        "morale"
-      ],
-      "hashtag": "",
-      "Overall Posts": "",
-      "Overall Views": "",
-      "Views / Post": "",
-      "video_views": 15100000,
-      "cover": "https://cdn11.dienmaycholon.vn/filewebdmclnew/public/userupload/files/blog-2025/xu-huong/trend-aura-farming-avatar.jpg"
-    },
-    {
-      "ti": "NPC Classroom",
-      "m": "#npcclassroom",
-      "d": "Des élèves imitent des PNJ de jeux vidéo en classe ou dans les couloirs : mouvements répétitifs, phrases en boucle, regard vide. Filmé en caméra cachée par des complices. Peut viser un élève sans son consentement pour le ridiculiser.",
-      "ty": [
-        "format",
-        "comportement",
-        "meme"
-      ],
-      "v": "https://www.tiktok.com/tag/npcclassroom",
-      "da": "fin juin 2026",
-      "du": 5,
-      "c": [
-        "virtuelle",
-        "physique"
-      ],
-      "hashtag": "",
-      "Overall Posts": "",
-      "Overall Views": "",
-      "Views / Post": "",
-      "video_views": 0,
-      "cover": "https://jalta.nl/wp-content/uploads/2023/02/NPC-tiktok-768x403.jpg"
-    },
-    {
-      "ti": "Sigma Silence Challenge",
-      "m": "#sigmasilence",
-      "d": "Ignorer totalement quelqu'un pendant 24h ou une journée d'école pour prouver qu'on est 'sigma' (loup solitaire dominant). Filmé comme preuve de self-control. Peut constituer une forme d'exclusion sociale organisée.",
-      "ty": [
-        "comportement",
-        "slang"
-      ],
-      "v": "https://www.tiktok.com/@sigmarule017/video/7657826894930267414",
-      "da": "début juillet 2026",
-      "du": 4,
-      "c": [
-        "morale"
-      ],
-      "hashtag": "",
-      "Overall Posts": "",
-      "Overall Views": "",
-      "Views / Post": "",
-      "video_views": 547100,
-      "cover": "https://linktr.ee/og/image/DjTuness.jpg"
-    },
-    {
-      "ti": "Brainrot Lore",
-      "m": "#brainrotlore",
-      "d": "Création de mythologies absurdes autour de personnages internet déjà connus (Tralalero, Bombardiro, etc.) avec de nouveaux épisodes narratifs en voix off robotique sur des images générées par IA. Langage totalement incompréhensible pour les adultes, très codé entre pairs.",
-      "ty": [
-        "meme",
-        "son",
-        "format"
-      ],
-      "v": "https://www.tiktok.com/@roadmenroyale/video/7485104977157868822",
-      "da": "mi-juin 2026",
-      "du": 6,
-      "c": [
-        "virtuelle"
-      ],
-      "hashtag": "",
-      "Overall Posts": "",
-      "Overall Views": "",
-      "Views / Post": "",
-      "video_views": 1300000,
-      "cover": "https://cdn.amkstation.com/wp-content/uploads/2025/07/brainrot-tiktok-3-billion-view-trend-1207257-1207257.webp"
-    },
-    {
-      "ti": "Glazing Wars",
-      "m": "#glazingwar",
-      "d": "'Glazer' = complimenter quelqu'un de façon exagérée et sarcastique. Les ados se défient à qui 'glaze' le plus un camarade ou une célébrité de façon absurde. Peut basculer en moquerie déguisée en compliment, difficile à détecter pour les adultes.",
-      "ty": [
-        "slang",
-        "comportement"
-      ],
-      "v": "https://www.tiktok.com/@gaptard/video/7323127105477152046",
-      "da": "fin juin 2026",
-      "du": 5,
-      "c": [
-        "morale"
-      ],
-      "hashtag": "",
-      "Overall Posts": "",
-      "Overall Views": "",
-      "Views / Post": "",
-      "video_views": 508100,
-      "cover": "https://coolslangs.com/wp-content/uploads/2024/05/Glazing-Slang-exmaple-tiktok-screenshot-1024x576.webp"
-    },
-    {
-      "ti": "POV : t'es en France",
-      "m": "#povtenfrance",
-      "d": "Format vidéo court où des ados rejouent des situations typiquement françaises avec un humour absurde et auto-dépréciatif. Très partagé sur Reels et Shorts. Tendance saine globalement, renforce un sentiment d'appartenance culturelle locale.",
-      "ty": [
-        "format",
-        "meme"
-      ],
-      "v": "https://www.tiktok.com/tag/povtenfrance",
-      "da": "début juillet 2026",
-      "du": 4,
-      "c": [
-        "virtuelle"
-      ],
-      "hashtag": "",
-      "Overall Posts": "",
-      "Overall Views": "",
-      "Views / Post": "",
-      "video_views": 0,
-      "cover": "https://static.cinemagia.ro/img/resize/db/movie/33/13/757/toy-story-5-859581l-175x0-w-7f6024a1.jpg"
-    },
-    {
-      "ti": "Outfit Check Brutal",
-      "m": "#outfitcheckbrutal",
-      "d": "Des ados filment leur tenue et demandent un avis 'brutal et honnête' en commentaires. Les réponses sont souvent cruelles. Crée une forte pression sur l'apparence physique et vestimentaire, surtout chez les filles de 11-13 ans.",
-      "ty": [
-        "format",
-        "comportement"
-      ],
-      "v": "https://www.tiktok.com/tag/outfitcheckbrutal",
-      "da": "mi-juin 2026",
-      "du": 6,
-      "c": [
         "morale",
-        "physique"
+        "virtuelle"
       ],
       "hashtag": "",
       "Overall Posts": "",
       "Overall Views": "",
       "Views / Post": "",
-      "video_views": 0,
-      "cover": "https://i.kym-cdn.com/entries/icons/original/000/049/267/utah_boy_fit_check.jpg"
+      "video_views": 148600000,
+      "cover": "https://metro.co.uk/wp-content/uploads/2024/10/SEC_224301302-bf72.jpg?quality=90&strip=all&w=646"
     },
     {
-      "ti": "Rizz Test IRL",
-      "m": "#rizztest",
-      "d": "Un ado aborde un inconnu ou un camarade avec une phrase de drague absurde pour tester son 'rizz' (charme naturel). Filmé à l'insu de la cible. Peut mettre des élèves en situation inconfortable ou humiliante sans consentement.",
+      "ti": "NPC Freeze Challenge",
+      "m": "#npcfreeze",
+      "d": "Un ado se fige comme un personnage de jeu vidéo en plein espace public (métro, supermarché, couloir de collège) pendant que ses amis le filment. Peut gêner ou effrayer des inconnus et attirer des réactions imprévisibles.",
       "ty": [
         "comportement",
-        "slang",
+        "format",
+        "son"
+      ],
+      "v": "https://www.tiktok.com/@y2mwad_/video/7270218987672259872",
+      "da": "mi-juillet 2026",
+      "du": 5,
+      "c": [
+        "physique",
+        "virtuelle"
+      ],
+      "hashtag": "",
+      "Overall Posts": "",
+      "Overall Views": "",
+      "Views / Post": "",
+      "video_views": 703000,
+      "cover": "https://i.ytimg.com/vi/vm3pXu_6sVk/maxresdefault.jpg"
+    },
+    {
+      "ti": "Looksmaxxing Collège",
+      "m": "#looksmaxxingfr",
+      "d": "Tutoriels et routines beauté/fitness extrêmes pour 'maximiser son apparence'. Inclut jeûne intermittent, mewing, cold shower à 5h. Normalisé entre collégiens, crée une pression corporelle intense.",
+      "ty": [
+        "comportement",
         "format"
       ],
-      "v": "https://www.tiktok.com/@kiacenit42/video/7569672908772035854",
-      "da": "fin juin 2026",
-      "du": 5,
+      "v": "https://www.tiktok.com/@juliamellee.fashion/video/7668996625146137872",
+      "da": "début juillet 2026",
+      "du": 10,
       "c": [
         "physique",
         "morale"
@@ -172,20 +65,86 @@
       "Overall Posts": "",
       "Overall Views": "",
       "Views / Post": "",
-      "video_views": 366000,
-      "cover": "https://i.ytimg.com/vi/aDWfGy6_ShM/oar2.jpg?sqp=-oaymwEkCJUDENAFSFqQAgHyq4qpAxMIARUAAAAAJQAAyEI9AICiQ3gB&rs=AOn4CLBUbr5dbKd1modunMT4GB7tI8bL9Q"
+      "video_views": 2900000,
+      "cover": "https://cdn.wionews.com/sites/default/files/2024/02/20/2002_WION_DECODING_130PM-1708422614-00000003.jpg"
     },
     {
-      "ti": "Delulu Arc",
-      "m": "#deluluarc",
-      "d": "'Être en delulu arc' = assumer publiquement une obsession irrationnelle pour une célébrité ou un camarade de classe. Présenté comme drôle et assumé. Peut glisser vers du harcèlement romantique normalisé ou de la fixation sur un pair.",
+      "ti": "Rizz ou Skibidi Verdict",
+      "m": "#rizzcheck2026",
+      "d": "Un élève est jugé publiquement par ses pairs via un sondage TikTok ou Snap : a-t-il du 'rizz' (charme naturel) ou est-il 'skibidi' (nul, ringard) ? Peut cibler un même élève de façon répétée, proche du cyberharcèlement.",
       "ty": [
         "slang",
         "comportement",
-        "meme"
+        "morale"
       ],
-      "v": "https://www.tiktok.com/@peoplecanchangess/video/7470232883035163911",
+      "v": "https://www.tiktok.com/tag/rizzcheck2026",
+      "da": "fin juin 2026",
+      "du": 7,
+      "c": [
+        "morale"
+      ],
+      "hashtag": "",
+      "Overall Posts": "",
+      "Overall Views": "",
+      "Views / Post": "",
+      "video_views": 0,
+      "cover": "https://rizzapedia.com/wp-content/uploads/2025/02/Skibidi-Rizz-1.webp"
+    },
+    {
+      "ti": "Brainrot Absurd Dub",
+      "m": "#brainrotdubfr",
+      "d": "Les ados doublent des vidéos anodines (animaux, dessin animé, politique) avec un langage totalement absurde et inventé ('sigma ohio grimace bombardino'). Humour pur, sans risque majeur, mais incompréhensible pour les adultes.",
+      "ty": [
+        "meme",
+        "son",
+        "slang"
+      ],
+      "v": "https://www.tiktok.com/tag/brainrotdubfr",
+      "da": "mi-juin 2026",
+      "du": 6,
+      "c": [
+        "virtuelle"
+      ],
+      "hashtag": "",
+      "Overall Posts": "",
+      "Overall Views": "",
+      "Views / Post": "",
+      "video_views": 0,
+      "cover": "https://gradasigo.id/uploads/Mengenal_Italian_Brainrot__Meme_Anomali_Berbasis_AI_yang_Viral_dengan_Karakter_Aneh_dan_Absurd_di_TikTok.jpg"
+    },
+    {
+      "ti": "Soft Life Flex",
+      "m": "#softlifefr",
+      "d": "Vidéos esthétiques montrant une vie 'douce et riche' : chambre aesthetic, goûters luxueux, tenues coûteuses. Crée une pression de consommation et un sentiment d'infériorité chez ceux qui n'ont pas les moyens.",
+      "ty": [
+        "format",
+        "comportement"
+      ],
+      "v": "https://www.tiktok.com/@shaylaraeworld/video/7515830504730512682",
       "da": "début juillet 2026",
+      "du": 9,
+      "c": [
+        "morale",
+        "virtuelle"
+      ],
+      "hashtag": "",
+      "Overall Posts": "",
+      "Overall Views": "",
+      "Views / Post": "",
+      "video_views": 1900000,
+      "cover": "https://content.api.news/v3/images/bin/968a1f3e3536633ec44a06ce79f40bff"
+    },
+    {
+      "ti": "Glazing Ton Crush",
+      "m": "#glazingcrush",
+      "d": "Poster une vidéo ou un vocal Snap en complimentant excessivement quelqu'un de son collège sans le nommer, en espérant qu'il se reconnaisse. Peut virer au drama, à l'humiliation publique ou à la rumeur.",
+      "ty": [
+        "comportement",
+        "slang",
+        "format"
+      ],
+      "v": "https://www.tiktok.com/tag/glazingcrush",
+      "da": "fin juillet 2026",
       "du": 4,
       "c": [
         "morale"
@@ -194,48 +153,94 @@
       "Overall Posts": "",
       "Overall Views": "",
       "Views / Post": "",
-      "video_views": 1600000,
-      "cover": "https://img.20mn.fr/wrRnoujZRwqvAuXhJs1t8Sk/1444x920_les-tiktokeurs-reprennent-le-terme-delulu-dans-leurs-videos-pour-illustrer-des-situations"
+      "video_views": 0,
+      "cover": "https://i0.wp.com/brunchvirals.com/wp-content/uploads/2023/03/Image-Of-What-Does-Glazing-Mean-On-TikTok.png?resize=960,591&ssl=1"
     },
     {
-      "ti": "Jumpscare Prank Hallway",
-      "m": "#jumpscarehalway",
-      "d": "Des élèves se cachent dans les couloirs ou toilettes du collège pour faire peur à des camarades, filmé en slow-mo avec son de choc. Certaines vidéos montrent des réactions physiques violentes (chutes, coups réflexes). Risque de blessure réelle.",
+      "ti": "Ick List Publique",
+      "m": "#icklistfr",
+      "d": "Lister publiquement les comportements qui 'donnent l'ick' (dégoût) chez les garçons ou les filles du collège. Souvent ciblé implicitement sur une personne réelle, peut déclencher du harcèlement de groupe.",
       "ty": [
+        "slang",
         "comportement",
-        "format",
-        "son"
+        "format"
       ],
-      "v": "https://www.tiktok.com/tag/jumpscarehalway",
+      "v": "https://www.tiktok.com/tag/icklistfr",
       "da": "mi-juillet 2026",
-      "du": 3,
+      "du": 5,
       "c": [
-        "physique"
+        "morale"
       ],
       "hashtag": "",
       "Overall Posts": "",
       "Overall Views": "",
       "Views / Post": "",
       "video_views": 0,
-      "cover": "https://i.ytimg.com/vi/hcFnwsce0Fk/maxresdefault.jpg"
+      "cover": "https://i.pinimg.com/736x/78/94/39/7894395de8c2bdef1c7276dcd5692539.jpg"
+    },
+    {
+      "ti": "Subway Surfers Brain Split",
+      "m": "#subwaysurfersbrain",
+      "d": "Format vidéo où une vidéo de gameplay Subway Surfers tourne en bas de l'écran pendant qu'une info choc ou un drama de collège est raconté en voix off. Utilisé pour diffuser des rumeurs sous couvert d'humour.",
+      "ty": [
+        "meme",
+        "format",
+        "son"
+      ],
+      "v": "https://www.tiktok.com/tag/subwaysurfersbrain",
+      "da": "début août 2026",
+      "du": 4,
+      "c": [
+        "virtuelle"
+      ],
+      "hashtag": "",
+      "Overall Posts": "",
+      "Overall Views": "",
+      "Views / Post": "",
+      "video_views": 0,
+      "cover": "https://i.ytimg.com/vi/q2kZMcdGj2E/oar2.jpg?sqp=-oaymwEkCMwCENAFSFqQAgHyq4qpAxMIARUAAAAAJQAAyEI9AICiQ3gB&rs=AOn4CLAM0HjfL_iOG1nbFmDtBsuLK9EvLw"
+    },
+    {
+      "ti": "Delulu Era Affirmations",
+      "m": "#deluluera",
+      "d": "Les ados se filment en récitant des affirmations positives absurdes et exagérées ('je suis la plus belle de l'univers, les autres sont jaloux'). Humour auto-dérision majoritairement, mais peut masquer une vraie souffrance ou alimenter un rapport toxique à l'image.",
+      "ty": [
+        "slang",
+        "format",
+        "comportement"
+      ],
+      "v": "https://www.tiktok.com/@officialmiasclips/video/7595014128805170463",
+      "da": "fin juin 2026",
+      "du": 7,
+      "c": [
+        "morale",
+        "virtuelle"
+      ],
+      "hashtag": "",
+      "Overall Posts": "",
+      "Overall Views": "",
+      "Views / Post": "",
+      "video_views": 8600000,
+      "cover": "https://i.etsystatic.com/64594884/r/il/eb7e3a/7907153841/il_1080xN.7907153841_afbz.jpg"
     }
   ],
   "synthese": {
     "top3_comprendre": [
-      "Brainrot Lore — si votre enfant parle de personnages au nom incompréhensible, c'est de la culture internet codée entre pairs, pas un problème",
-      "Aura Farming 2.0 — 'avoir de l'aura' est le nouveau critère de popularité, remplace le nombre de likes",
-      "Glazing Wars — quand votre enfant dit qu'il 'glaze' quelqu'un, il exagère des compliments souvent par dérision"
+      "Brainrot Absurd Dub — si votre enfant parle de 'bombardino' ou 'sigma ohio', c'est de l'humour absurde collectif, pas un problème",
+      "Delulu Era Affirmations — expression d'auto-dérision générationnelle, souvent sans gravité",
+      "NPC Freeze Challenge — imitation de personnages de jeux vidéo, à surveiller si pratiqué dans des lieux dangereux"
     ],
     "top3_surveiller": [
-      "Outfit Check Brutal — exposition volontaire au jugement physique cruel, risque fort sur l'estime de soi des 11-13 ans",
-      "Sigma Silence Challenge — l'exclusion sociale est gamifiée et présentée comme une qualité, difficile à identifier comme harcèlement",
-      "Jumpscare Prank Hallway — risque de blessure physique réelle, filmer sans consentement peut entraîner des sanctions scolaires"
+      "Rizz ou Skibidi Verdict — jugements publics répétés sur un même élève = cyberharcèlement potentiel, vérifier si votre enfant est ciblé ou participe",
+      "Ick List Publique — listes de 'dégoûts' qui visent souvent implicitement un camarade réel, risque de harcèlement de groupe",
+      "Looksmaxxing Collège — pression corporelle intense, jeûne et routines extrêmes normalisés entre 11-15 ans, surveiller les changements d'habitudes alimentaires"
     ],
     "normal": [
-      "POV t'es en France",
-      "NPC Classroom (si consenti entre amis)",
-      "Delulu Arc (si limité aux célébrités)"
+      "Soft Life Flex",
+      "Glazing Ton Crush",
+      "Subway Surfers Brain Split",
+      "Aura Check"
     ],
-    "conseil": "Ne pas réagir avec panique face au langage brainrot ou aux memes absurdes : c'est du lien social codé, pas un signal d'alarme. En revanche, ouvrir la conversation sur le consentement à être filmé et sur la différence entre humour et humiliation. Regarder ensemble quelques vidéos sans juger permet de rester dans la boucle sans perdre la confiance."
+    "conseil": "Ne pas réagir avec panique face au langage brainrot ou aux memes absurdes : c'est le code social de leur génération. En revanche, ouvrir la conversation sur les jugements publics en ligne (aura check, rizz verdict, ick list) sans accuser, en demandant 'tu as déjà vu ça sur TikTok ?' plutôt que 'tu fais ça ?'. Surveiller les changements corporels ou alimentaires liés au looksmaxxing sans dramatiser, en valorisant une image de soi saine."
   }
 }
